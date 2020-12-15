@@ -6,9 +6,9 @@ Welcome to the Wiki for TSWoW, hosted as a GitHub repository. Via pull-requests,
 
 ## Sections
 
-- [Documentation](Documentation/README)
-- [Introduction](Introduction/README)
-- [Tutorials](Tutorials/README)
+- [Documentation](Documentation/README.md)
+- [Introduction](Introduction/README.md)
+- [Tutorials](Tutorials/README.md)
 
 
 ## Guidelines

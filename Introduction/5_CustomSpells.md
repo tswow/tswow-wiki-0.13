@@ -22,7 +22,7 @@ The first building block of all spells is the spell itself. A spell is the "thin
 
 ![](spellbook.png)
 
-<center>Spells in a spellbook. Even Auto Attack is a spell, and has Spell ID 6603.</center>
+_Spells in a spellbook. Even Auto Attack is a spell, and has Spell ID 6603._
 
 Not all spells are visible in the spellbook, and not all spells can be cast. Different **ranks** of a spell are actually just separate spells with "Rank x" as their rank names and a serverside relation that states they are ranks of another spell.
 
@@ -55,7 +55,7 @@ The technical/general name for buffs, debuff and auras in World of Warcraft is "
 All Aura types are pre-programmed and can be attached to units via spell effects. A single aura generally does something very simple, such as "decrease armor by _x_" or "do _x_ amount of damage every _y_ seconds". If a spell is configured to be visible, all auras that its effects have attached will be shown as a single buff or debuff icon in their respective bars.
 
 ![](demonskin.png)
-<center> Demon Skin applies two auras (increase armor, increase healing done) and is shown as a single aura icon. The spell is configured to be positive (buff), to be visible, and have a duration of 30 minutes. </center>
+_ Demon Skin applies two auras (increase armor, increase healing done) and is shown as a single aura icon. The spell is configured to be positive (buff), to be visible, and have a duration of 30 minutes. _
 
 ## Death Bolt
 

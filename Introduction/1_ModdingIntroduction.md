@@ -3,22 +3,22 @@
 With TSWoW, you use the TypeScript programming language in the VSCodium/VSCode editor to modify the games data and behavior.
 
 ![](tswow-layout.png)
-<center>A typical TSWoW development environment</center>
+_A typical TSWoW development environment_
 
 ## Module Structure
 All TSWoW mods are structured as _modules_, which is a self-contained collection of scripts and game assets that modifies the game in some way. A module is a folder that lives in the `modules` subdirectory in your TSWoW installation.
 
 ![](modules.png)
-<center> Modules directory with two modules installed </center>
+**Modules directory with two modules installed**
 
 A module in TSWoW itself can contain three types of modifications, _data_, _live scripts_ and _assets_
 
 ![](module-contents.png)
-<center>Contents of a typical TSWoW module</center>
+_Contents of a typical TSWoW module_
 
 ![](module-vscodium.png)
 
-<center>Module as viewed from VSCodium</center>
+_Module as viewed from VSCodium_
 
 ## Data Scripts (data)
 
@@ -37,7 +37,7 @@ export const NECROMANCER = std.Classes.create('tswow','necromancer','NECROMANCER
 
 ![](custom-class.png)
 
-<center> Code example of a fully working custom class made with a Data Script</center>
+_ Code example of a fully working custom class made with a Data Script_
 
 ## Live Scripts (scripts)
 
@@ -55,7 +55,7 @@ export function Main(events: TSEventHandlers) {
 ```
 ![](live-script.png)
 
-<center> Code example of a Live Script </center>
+_ Code example of a Live Script _
 
 [For those interested, the above code when transpiled to C++]()
 
@@ -67,7 +67,7 @@ _Note to veterans: To modify DBC, LUA or XML files you use data scripts and not 
 
 ![](boar-file.png)
 ![](boar-ingame.png)
-<center> Silly boar recoloring using an asset replacement </center>
+_ Silly boar recoloring using an asset replacement _
 
 ## Summary
 

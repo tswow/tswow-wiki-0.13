@@ -51,10 +51,10 @@ NECROMANCER_CLASS.UI.description
 ```
 
 ![](necromancer-description.png)
-<center>Class descriptions added</center>
+_Class descriptions added_
 
 ![](necromancer-classcolor.png)
-<center>Class color modified</center>
+_Class color modified_
 
 ## Stats
 

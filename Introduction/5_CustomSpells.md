@@ -334,4 +334,4 @@ Some things for you to try out yourself:
 
 This has been a long tutorial with a lot of theory and troubleshooting. We choose to have this topic this early in the series because it is probably both the most complex and most important. TSWoW tries its best to make spell creation much easier than it used to be, but by their very nature spells are very complicated and it's impossible to make a single API that makes creating every kind of spell easy. Our aim is instead to teach you how to _think_ like a reverse engineer yourself, and to fill this wiki with plenty of code examples if you get stuck.
 
-The next tutorial will be about Talents, which is a very simple concept to grasp if you already understand spells well.
+[The next tutorial](6_CustomTalents.md) will be about Talents, which is a very simple concept to grasp if you already understand spells well.

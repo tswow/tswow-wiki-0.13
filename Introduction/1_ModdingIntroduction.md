@@ -76,4 +76,4 @@ You have now learnt the three things you can do with TSWoW:
 - Use Assets to replace **resource files and game assets**
 - Use Live scripts to **script the server**
 
-You should now be ready to get started and [install TSWoW]()
+You should now be ready to get started and [install TSWoW](2_Installation.md)

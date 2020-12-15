@@ -2,7 +2,7 @@
 
 In this section, we will create a basic TSWoW module and add a data script that we will compile. The purpose of this tutorial is to give you a feeling for how modding with TSWoW is like, so don't worry too much if you do not entirely understand the scripts you are asked to write yet.
 
-You should have read the [Modding Introduction](1_ModdingIntroduction) and [installed TSWoW](2_Installation) already.
+You should have read the [Modding Introduction](1_ModdingIntroduction.md) and [installed TSWoW](2_Installation.md) already.
 
 ## Creating a Module
 
@@ -80,4 +80,4 @@ For this change, it will not be sufficient to just rebuild the client because at
 
 ## Conclusion
 
-In this tutorial, you have created a basic module for TSWoW and made some changes to existing game data. In the next tutorials, we will delve deeper into TSWoW data scripting by creating [our own custom class](4_CustomClass).
+In this tutorial, you have created a basic module for TSWoW and made some changes to existing game data. In the next tutorials, we will delve deeper into TSWoW data scripting by creating [our own custom class](4_CustomClass.md).

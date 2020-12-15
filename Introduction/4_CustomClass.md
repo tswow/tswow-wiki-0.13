@@ -86,4 +86,4 @@ export const DEATH_SKILL = std.SkillLines
 DEATH_SKILL.Name.enGB.set(`Death`)
 ```
 
-We won't use these for anything yet, so just leave them there until the next tutorial, where we will [create custom spells for our class](5_CustomSpells).
+We won't use these for anything yet, so just leave them there until the next tutorial, where we will [create custom spells for our class](5_CustomSpells.md).

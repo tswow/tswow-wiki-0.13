@@ -48,4 +48,4 @@ You will need to install the following programs:
     - `ws account create myuser mypassword`
     - `ws account set gmlevel myuser 3 -1`
 
-7. Installation complete! You can now move on and [create your first module](3_YourFirstModule)
+7. Installation complete! You can now move on and [create your first module](3_YourFirstModule.md)

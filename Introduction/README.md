@@ -11,14 +11,14 @@ This section aims to explain the basic concepts of TSWoW modding and help new us
 ## Table of Contents
 
 - Intro
-    - [Modding Introduction](1_ModdingIntroduction)
-    - [Installation](2_Installation)
-    - [Your first mod](YourFirstModule)
+    - [Modding Introduction](1_ModdingIntroduction.md)
+    - [Installation](2_Installation.md)
+    - [Your first mod](3_YourFirstModule.md)
 - Data Scripts
-    - [(WoW) Classes](4_CustomClass)
-    - [Spells](5_CustomSpells)
-    - [Talents](6_CustomTalents)
-    - [Trainer](7_CustomTrainer)
+    - [(WoW) Classes](4_CustomClass.md)
+    - [Spells](5_CustomSpells.md)
+    - [Talents](6_CustomTalents.md)
+    - [Trainer](7_CustomTrainer.md)
     - Enemy creatures (Not written yet)
     - Items (Not written yet)
     - Quests (Not written yet)

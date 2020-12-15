@@ -88,3 +88,14 @@ IMP_ABOMINATION_TALENT.Requirements.add(SILLY_TALENT.ID, 3);
 ```
 
 This makes Improved Abomination require at least 3 points in the silly talent to work.
+
+## Conclusion
+
+In this tutorial, you have learnt how to:
+
+- Create a talent tree
+- Create talents from existing spells
+- Create a custom talent spell that modifies another spell
+- Make one talent required for another
+
+In the next tutorial, we will create a [trainer](7_CustomTrainer.md) for our Necromancer.

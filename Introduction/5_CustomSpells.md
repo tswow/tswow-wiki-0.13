@@ -54,8 +54,8 @@ The technical/general name for buffs, debuff and auras in World of Warcraft is "
 
 All Aura types are pre-programmed and can be attached to units via spell effects. A single aura generally does something very simple, such as "decrease armor by _x_" or "do _x_ amount of damage every _y_ seconds". If a spell is configured to be visible, all auras that its effects have attached will be shown as a single buff or debuff icon in their respective bars.
 
-![](demonskin.png)
-_ Demon Skin applies two auras (increase armor, increase healing done) and is shown as a single aura icon. The spell is configured to be positive (buff), to be visible, and have a duration of 30 minutes. _
+![](demonskin.png)  
+_Demon Skin applies two auras (increase armor, increase healing done) and is shown as a single aura icon. The spell is configured to be positive (buff), to be visible, and have a duration of 30 minutes._
 
 ## Death Bolt
 

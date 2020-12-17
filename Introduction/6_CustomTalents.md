@@ -1,5 +1,7 @@
 # Talents
 
+[Back to Table of Contents](README.md)
+
 This tutorial will teach you all you need to know about how to create talent trees and talents for your custom class. While talents are a fairly simple concept, this tutorial assumes you have already worked through the [Custom Spells](5_CustomSpells.md) exercises.
 
 ## Talent Trees
@@ -98,4 +100,4 @@ In this tutorial, you have learnt how to:
 - Create a custom talent spell that modifies another spell
 - Make one talent required for another
 
-In the next tutorial, we will create a [trainer](7_CustomTrainer.md) for our Necromancer.
+In the next tutorial, we will [create a trainer for our Necromancer](7_CustomTrainer.md)

@@ -80,7 +80,7 @@ DEATH_BOLT.Description.enGB.set('A bolt of death!');
 DEATH_BOLT.SkillLines.add(DEATH_SKILL.ID)
 ```
 
-Build your data scripts with `bdf` and enter the game with a necromancer character. To learn this spell, we need to know its spell id. To find this, we will use the ingame command `.lookup spell death bolt`.
+Build your data scripts with `build data` and enter the game with a necromancer character. To learn this spell, we need to know its spell id. To find this, we will use the ingame command `.lookup spell death bolt`.
 
 ![](find-deathbolt.png)
 
@@ -104,7 +104,7 @@ DEATH_BOLT.Visual.MissileModel.set(DEATH_COIL.Visual.MissileModel.get())
 DEATH_BOLT.Visual.Kits.Impact.cloneFrom(DEATH_COIL.Visual.Kits.Impact)
 ```
 
-Since we only modified visual information, we can rebuild using `bdc` and should see that we have indeed replaced the missile model and impact kit with that of Death Coil. We can also see that the casting animation and effect is still left from Shadow Bolt. This is because we did not replace or modify the `Cast` kit.
+Since we only modified visual information, we can rebuild using `build data client` and should see that we have indeed replaced the missile model and impact kit with that of Death Coil. We can also see that the casting animation and effect is still left from Shadow Bolt. This is because we did not replace or modify the `Cast` kit.
 
 ![](death-bolt-visual.png)
 
@@ -116,7 +116,7 @@ This spell is not instantly available when we create a warlock character, so to 
 
 ![](corruption.png)
 
-Now, we can try to add the following code to `DeathBolt.ts` and rebuild using `bdf`. 
+Now, we can try to add the following code to `DeathBolt.ts` and rebuild using `build data`. 
 
 ```ts
 const CORRUPTION = std.Spells.load(172)
@@ -296,7 +296,7 @@ SUMMON_ABOMINATION.Name.enGB.set('Summon Abomination');
 SUMMON_ABOMINATION.Effects.get(0).MiscValueA.set(8543);
 ```
 
-Ta-da! If we rebuild with `bdf` and again try our spell we see that we have successfully summoned an abomination:
+Ta-da! If we rebuild with `build data` and again try our spell we see that we have successfully summoned an abomination:
 
 ![](abomination.png)
 

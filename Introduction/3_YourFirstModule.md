@@ -43,9 +43,9 @@ WARRIOR_CLASS.Name.enGB.set('Adventurer');
 WARRIOR_CLASS.UI.description.set('Adventurers adventure the world!');
 ```
 
-Now that our data script actually does something, we can try it out with the `bdc` (short for "build data client") command. Since we are only changing a name, we only need to build client data to check it out. You should see output similar to the following:
+Now that our data script actually does something, we can try it out with the `build data client` command. Since we are only changing a name, we only need to build client data to check it out. You should see output similar to the following:
 ```
-bdc
+build data client
 Built SQL/DBC/MPQ data in 2.27s
 ```
 
@@ -75,7 +75,7 @@ WARRIOR_CLASS.UI.description.set('Adventurers adventure the world!');
 WARRIOR_CLASS.Stats.MeleeAttackPower.set("level*1337");
 ```
 
-For this change, it will not be sufficient to just rebuild the client because attack power is a serverside calculation. This is the case for any kind of change that is not just aesthetic. To rebuild both the client and server, you use the `bdf` command (short for "build data fast"). You should notice that both the client and server will restart. Log in as a warrior again and check your attack power: 
+For this change, it will not be sufficient to just rebuild the client because attack power is a serverside calculation. This is the case for any kind of change that is not just aesthetic. To rebuild both the client and server, you use the `build data` command. You should notice that both the client and server will restart. Log in as a warrior again and check your attack power: 
 
 ![](warrior-ap-level1.png)
 ![](warrior-ap-level2.png)

@@ -31,7 +31,7 @@ NECROMANCER_CLASS.addRaces(['HUMAN','ORC','BLOODELF']);
 NECROMANCER_CLASS.Name.enGB.set('Necromancer');
 ```
 
-This creates a new class with the identifier "Necromancer" based off the mage class. Run the `bdf` command and enter the character creation screen. You should see your new class added.
+This creates a new class with the identifier "Necromancer" based off the mage class. Run the `build data` command and enter the character creation screen. You should see your new class added.
 
 ![](necromancer-charcreate.png)
 

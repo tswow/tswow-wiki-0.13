@@ -16,7 +16,7 @@ export const NECROMANCY = std.TalentTrees.create('tswow-introduction','tswow',0,
 NECROMANCY.Name.enGB.set(`Necromancy`);
 ```
 
-If we rebuild our scripts with the `bdf` command and level up a necromancer to level 10 (`.levelup 9`), we can see that we have an empty talent tree called "Necromancy".
+If we rebuild our scripts with the `build data` command and level up a necromancer to level 10 (`.levelup 9`), we can see that we have an empty talent tree called "Necromancy".
 
 ![](necromancy-talents.png)
 
@@ -35,7 +35,7 @@ Add the following line to your `Necromancer.ts` file:
 NECROMANCY.addTalent('tswow-introduction','silly-talent',0,0,[133,686,6603,1752])
 ```
 
-Rebuild the code using `bdf`, level up a necromancer to 15 and look at your talent tree. You should see fire bolt as the talent icon.
+Rebuild the code using `build data`, level up a necromancer to 15 and look at your talent tree. You should see fire bolt as the talent icon.
 
 ![](fireball-talent.png)
 

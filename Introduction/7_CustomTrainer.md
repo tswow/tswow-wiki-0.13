@@ -26,7 +26,7 @@ NECROMANCY_TRAINER_HUMAN.Name.enGB.set('My Trainer');
 NECROMANCY_TRAINER_HUMAN.Title.enGB.set('Necromancy Trainer')
 ```
 
-Rebuild the code using `bdf` and log in as a human. We can find the ID of our new creature by using the ingame command `.lookup creature my trainer`. Then, we can spawn this creature at the players current location using `.npc add creatureid`. 
+Rebuild the code using `build data` and log in as a human. We can find the ID of our new creature by using the ingame command `.lookup creature my trainer`. Then, we can spawn this creature at the players current location using `.npc add creatureid`. 
 
 ### Adding Trainer Data
 
@@ -71,7 +71,7 @@ NECROMANCY_TRAINER_HUMAN
     .spawn('tswow-introduction','trainer-instance',Pos(0,-8898.656250,-130.632767,81.285889,1.766019))
 ```
 
-Rebuild the game using `.bdf` and log in again at this location. You should see your custom npc standing there, without needing to manually spawn it with `.npc add`.
+Rebuild the game using `build data` and log in again at this location. You should see your custom npc standing there, without needing to manually spawn it with `.npc add`.
 
 ## Summary
 In this tutorial, you have learnt the basics of how creatures work in World of Warcraft and created a simple trainer NPC. This concludes the first half of our TSWoW introduction, which dealt with classes and spells. The next half will continue to work with Creatures, and will also discuss Items, Quests and Scripting.

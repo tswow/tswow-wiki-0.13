@@ -1,17 +1,17 @@
 # Custom Spells
 
-Spells are probably the broadest topic in all of WoW modding. Almost every effect in the game is somehow related to spell programming, and while the basics are not too complex to grasp there will always be new things to learn about them. 
+[Back to Table of Contents](README.md)
 
-This tutorial is the most complex in the entire series, but we will walk you through the steps slowly and provide functional code examples for every step so you don't get lost. Once you're done with this there is very little left to scare you about WoW modding, and the other sections should be a breeze to get through.
+Spells are probably the broadest topic in all of WoW modding. Almost every effect in the game is somehow related to spell programming, and while simple modifications are not too difficult to understand there can be a surprising amount of depth behind them.
 
-With TSWoW, we try to make it easy to both create fairly standard spells, but also to provide better tools to investigate how more advanced spell effects can be achieved. In this tutorial we will go over the fundamental components of spells and create a few basic (but not trivial) examples, but we will also cover some methods we can use to troubleshoot and understand more advanced spell functions.
+We choose to have this topic early in the series because spells are such an important aspect that we want you to consider them while you're still fresh: If you master spells there is very little else left to scare you about WoW modding. With TSWoW, we try to make it easy to both create fairly standard spells, but also to provide better tools to investigate how more advanced spell effects can be achieved. In this tutorial we will go over the fundamental components of spells and create a few basic (but not trivial) examples, but we will also cover some methods we can use to troubleshoot and understand more advanced spell functions.
 
 The topics we will cover are: 
 
-1. [Basic Spell Theory]()
-2. [Death Bolt: Custom Shadow Bolt with a DoT effect]()
-4. [Abomination: Warlock-Style Summoning]()
-5. [Bone Shield: Changing Resource Types]()
+1. [Basic Spell Theory](#basic-spell-theory)
+2. [Death Bolt: Custom Shadow Bolt with a DoT effect](#death-bolt)
+4. [Abomination: Warlock-Style Summoning](#summon-abomination)
+5. [Bone Shield: Changing Resource Types](#bone-shield)
 
 ## Basic Spell Theory
 
@@ -110,7 +110,7 @@ Since we only modified visual information, we can rebuild using `bdc` and should
 
 ### Applying a DoT effect
 
-Now we want to apply a DoT effect on Death Bolt. Doing this manually seem scary, so we might want to try copying it from another spell just like we copied the visual data from death coil. Since we already deal with warlock spells, we could try to steal the effect from **Corruption**. 
+Now we want to apply a DoT effect on Death Bolt. Doing this manually seems scary, so we might want to try copying it from another spell just like we copied the visual data from death coil. Since we already deal with warlock spells, we could try to steal the effect from **Corruption**. 
 
 This spell is not instantly available when we create a warlock character, so to easily get access to it we can level up our character to 5 and learn all trainer spells with the commands `.levelup 5` and `.learn my trainer`. We learn that the spell ID of corruption is 172.
 
@@ -300,7 +300,7 @@ Ta-da! If we rebuild with `bdf` and again try our spell we see that we have succ
 
 ![](abomination.png)
 
-### Bone Shield
+## Bone Shield
 After all that troubleshooting, I think we need to finish with something simple. To make our necromancer look a bit more like the job, let's give them those bone shields that death knights have. Since death knights use runic power, we will need to change the resource type so it instead uses mana. 
 
 As usual, we create a death knight character to find this spell. Bone Shield is a talent in the unholy tree, but luckily it seems that our SpellID addon can identify the spell id directly from the talent tab. In the next tutorial, we will explain why this is, but for now it is enough that we get the ID.
@@ -309,7 +309,7 @@ As usual, we create a death knight character to find this spell. Bone Shield is 
 
 We can create this spell just like we have with the others, but as we start to look through the autocomplete options we might not find anything relating to mana or spell resources. Didn't we just promise no troubleshooting?
 
-It turns out that "spell resources" is called "Power" in World of Warcraft, and the following code will successfully change bone shields resource type to use mana instead:
+It turns out that "spell resources" is called "Power" in World of Warcraft (not to be confused with _Spell Power_), and the following code will successfully change bone shields resource type to use mana instead:
 
 ```ts
 import { std } from "tswow-stdlib";
@@ -332,6 +332,6 @@ Some things for you to try out yourself:
 
 ## Conclusion
 
-This has been a long tutorial with a lot of theory and troubleshooting. We choose to have this topic this early in the series because it is probably both the most complex and most important. TSWoW tries its best to make spell creation much easier than it used to be, but by their very nature spells are very complicated and it's impossible to make a single API that makes creating every kind of spell easy. Our aim is instead to teach you how to _think_ like a reverse engineer yourself, and to fill this wiki with plenty of code examples if you get stuck.
+This has been a long tutorial with a lot of theory and troubleshooting. TSWoW tries its best to make spell creation much easier than it used to be, but spells are just fundamentally complicated and it's impossible to make a single API that makes creating every kind of spell easy. Our aim is instead to teach you how to _think_ like a reverse engineer yourself, and to fill this wiki with plenty of code examples if you get stuck.
 
 [The next tutorial](6_CustomTalents.md) will be about Talents, which is a very simple concept to grasp if you already understand spells well.

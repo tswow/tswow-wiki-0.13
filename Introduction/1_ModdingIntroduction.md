@@ -1,28 +1,36 @@
-# TSWoW
+# Modding Introduction
 
-With TSWoW, you use the TypeScript programming language in the VSCodium/VSCode editor to modify the games data and behavior.
+[Back to Table of Contents](README.md)
+
+In this section, we will briefly explain how modding with TSWoW looks and feels like. There are no exercises here, just read it through and try to understand the basic concepts. When finished, you're not expected to understand **how** to create these types of mods, but simply know that they exist.
+
+With TSWoW, we use the TypeScript programming language in the VSCodium/VSCode editor to modify the games data and behavior. Below is how modding typically looks, we have a code window and a terminal open to compile our code, and to restart and communicate with the server and client.
 
 ![](tswow-layout.png)
 _A typical TSWoW development environment_
 
 ## Module Structure
-All TSWoW mods are structured as _modules_, which is a self-contained collection of scripts and game assets that modifies the game in some way. A module is a folder that lives in the `modules` subdirectory in your TSWoW installation.
+TSWoW mods are divided into _modules_. A module is a folder containing scripts and game assets that modifies the game in some way. All modules are placed in the `modules` subdirectory in your TSWoW installation.
 
-![](modules.png)
-**Modules directory with two modules installed**
+![](modules.png)  
+_Two modules installed_
 
-A module in TSWoW itself can contain three types of modifications, _data_, _live scripts_ and _assets_
-
-![](module-contents.png)
+![](module-contents.png)  
 _Contents of a typical TSWoW module_
 
 ![](module-vscodium.png)
 
 _Module as viewed from VSCodium_
 
-## Data Scripts (data)
 
-Data scripts are TypeScript code files that modify the World of Warcraft game data in some way, such as creating custom game entities (classes, items, quests etc.) or modifying existing ones. These files are run only during development to create data files for the server and client, and never when the game is actually running.
+## The Three Types of TSWoW Mods
+
+There are three types of mods that we can create with TSWoW: **Data Scripts**, **Live Scripts** and **Assets**. As you can see above, in each module we have a dedicated folder for each type. The **data** folder is for data scripts, the **scripts** folder is for live scripts and the **assets** folder is for assets. We will now briefly explain what each type of mod is used for.
+
+
+### Data Scripts (data)
+
+Data scripts are TypeScript code files that modify the World of Warcraft game data in some way, such as creating or modifying existing game entities, such as classes, items, quests, titles, and languages. These files are run only during development to create data files for the server and client, and never when the game is actually running. Below is an example of how a data script might look. 
 
 ```ts
 // Create a class with id "tswow:necromancer".
@@ -37,11 +45,13 @@ export const NECROMANCER = std.Classes.create('tswow','necromancer','NECROMANCER
 
 ![](custom-class.png)
 
-_ Code example of a fully working custom class made with a Data Script_
+_Code example of a fully working custom class made with a Data Script_
 
-## Live Scripts (scripts)
+### Live Scripts (scripts)
 
-Live scripts are scripts running in the server core itself to modify how it reacts to certain events, such as a creature taking damage or a player logging in. For modding veterans, this is analogous to C++ or Eluna scripting. Live scripts are transpiled into C++ by TSWoW and can be recompiled and reloaded by the server while it's running. The TypeScript you write with Live Scripts support only a subset of the language since it's later transformed into C++, and some quirks can be slightly annoying before you get used to them.
+Sometimes, we need extra custom behavior that data scripts cannot achieve, since all they do is modify or create static game data. For this, we use Live scripts, which allows us to run live code in the server when certain events happen, such as a creature taking damage, a player logging in or a guild being created. We write live scripts in TypeScript, and TSWoW transforms it into C++ that can be reloaded into the server without restarting it. For modding veterans, this is the TSWoW version of C++ scripts or Eluna lua scripts.  With live scripts, we get the best of both worlds since scripts are both easy to write thanks to autocompletion and highly performant thanks to the C++ transpiler. 
+
+However, because Live Scripts are transformed into C++ they only support a **subset** of TypeScript, and are intended to register event listeners in a specific way. You can not use npm packages, and there are generally a lot of restrictions on how you can write this code. We still believe this is a huge improvement in usability over both C++ scripts and Eluna.
 
 ```ts
 // The main entry point a module
@@ -55,19 +65,19 @@ export function Main(events: TSEventHandlers) {
 ```
 ![](live-script.png)
 
-_ Code example of a Live Script _
+_Code example of a Live Script_
 
 [For those interested, the above code when transpiled to C++]()
 
-## Assets
+### Assets
 
-Assets are simply resource files such as 3D models, textures and audio. These files will be automatically loaded into the client when you run your data scripts, and can both replace existing game assets and add new ones.
+Assets are simply resource files such as 3D models, textures and audio. These files will be automatically bundled to the client directory when you run your data scripts, and can both replace existing game assets and add new ones. Below is an example of using an asset replacement to change the texture of ivory boars.
 
-_Note to veterans: To modify DBC, LUA or XML files you use data scripts and not assets._
+_Note to veterans: To modify DBC, LUA or XML files you use data scripts, not assets._
 
 ![](boar-file.png)
-![](boar-ingame.png)
-_ Silly boar recoloring using an asset replacement _
+![](boar-ingame.png)  
+_Silly boar recoloring using an asset replacement_
 
 ## Summary
 

@@ -75,9 +75,9 @@ SUMMON_ABOMINATION.ClassMask.match(IMPROVED_FIREBALL.Effects.get(0))
 IMP_ABOMINATION.Effects.get(0).BasePoints.set(-9000)
 
 NECROMANCY.addTalent('tswow-introduction','imp-abomination-talent',0,1,[IMP_ABOMINATION.ID])
-```
 
-Learning this talent and trying to cast summon abomination now should convince you that the talent is indeed working as intended. ClassMasks are slightly more complex than we have shown here, but we think learning just exactly how they work is a little too out of scope for this tutorial. You will however most certainly encounter them again if you do anything involving talents.
+```
+Learning this talent and trying to cast summon abomination now should convince you that the talent is indeed working as intended. ClassMasks are slightly more complex than we have shown here, but we think learning just exactly how they work is a little too out of scope for this tutorial. You will however most certainly encounter them again if you do anything involving talents, and generally it is sufficient to use this method for them to work. 
 
 ## Talent Requirements
 

@@ -16,7 +16,7 @@ We will cover the following topics
 
 3. [Stats](#stats)
 
-4. [SkillLines](#skillines)
+4. [SkillLines](#skilllines)
 
 ## Class Definition
 Our first task will be to create the definition for our new custom class. Create a new file called `Necromancer.ts` in your `data` mod folder. Enter the following code: 

@@ -74,7 +74,7 @@ NECROMANCER_CLASS.Stats.MeleeCrit.set((x,level)=>1337*level)
 ```
 
 ## SkillLines
-Classes usually have some spell types associated with them, such as Fire for mages and Assassination for rogues. A SkillLine is **not** the same thing as a talent tree, and are instead used to classify and categorize spells. SkillLines are a fairly complex topic, but for this tutorial we will simply create two of them so that we can use them in the next tutorial about spells.
+Classes usually have some spell types associated with them, such as Fire for mages and Assassination for rogues. A SkillLine is **not** the same thing as a talent tree, and are instead used to classify and categorize spells. SkillLines are a fairly complex topic, but just using them for class skills luckily doesn't require much more than just creating them. We will create two for our Necromancer so we can use them in the next tutorial about spells.
 
 Add the following to the bottom of your `Necromancer.ts` to create two SkillLines for the Necromancer class:
 
@@ -83,11 +83,22 @@ export const NECROMANCY_SKILL = std.SkillLines
     .createClass('tswow-introduction','necromancy-skill',NECROMANCER_CLASS.ID)
 NECROMANCY_SKILL.Name.enGB.set(`Necromancy`)
 
-// Truly the epitome of creativity. Bravo
+// Truly the epitome of creativity
 export const DEATH_SKILL = std.SkillLines
     .createClass('tswow-introduction','death-skill',NECROMANCER_CLASS.ID)
 
 DEATH_SKILL.Name.enGB.set(`Death`)
 ```
 
-We won't use these for anything yet, so just leave them there until the next tutorial, where we will [create custom spells for our class](5_CustomSpells.md).
+We won't use these until the next tutorial, so you can just leave them like this for now.
+
+## Summary
+
+In this tutorial, we have:
+
+- Created a basic custom class
+- Modified the character selection screen
+- Modified the stats of our class
+- Created SkillLines that will be used to define what spells belongs to our class.
+
+In the next tutorial, we will [create custom spells for our new class](5_CustomSpells.md).

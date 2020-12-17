@@ -1,5 +1,7 @@
 # Windows Installation
 
+[Back to Table of Contents](README.md)
+
 This guide will explain how to set up a fully working TSWoW development environment with a working server that (optionally) other people can connect to and play on.
 
 ## Prerequisites

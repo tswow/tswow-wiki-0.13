@@ -1,5 +1,7 @@
 # Custom Class
 
+[Back to Table of Contents](README.md)
+
 This tutorial will demonstrate how to create a fully functional custom class with TSWoW. Custom classes have been a thing in WotLK for a long time, but used to be very tedious and error-prone to set up. As we will see in this tutorial, TSWoW makes creating custom classes very simple. In the next tutorials, we will also cover custom spells and trainers. 
 
 The class we will be creating is the very same necromancer class that was shown in the [promotional video]().
@@ -10,9 +12,11 @@ We will cover the following topics
 
 1. [Class Definition](#class-definition)
 
-2. [Character Creation UI](#character-creation-ui)
+2. [Character Creation UI](#ui-settings)
 
 3. [Stats](#stats)
+
+4. [SkillLines](#skillines)
 
 ## Class Definition
 Our first task will be to create the definition for our new custom class. Create a new file called `Necromancer.ts` in your `data` mod folder. Enter the following code: 

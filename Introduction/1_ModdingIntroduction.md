@@ -30,7 +30,7 @@ There are three types of mods that we can create with TSWoW: **Data Scripts**, *
 
 ### Data Scripts (data)
 
-Data scripts are TypeScript code files that modify the World of Warcraft game data in some way, such as creating or modifying existing game entities, such as classes, items, quests, titles, and languages. These files are run only during development to create data files for the server and client, and never when the game is actually running. Below is an example of how a data script might look. 
+Data scripts are TypeScript code files that modify the World of Warcraft game data in some way by creating or modifying existing game entities, such as classes, items, quests, titles, and languages. These files are run only during development to create data files for the server and client, and never when the game is actually running. Below is an example of how a data script might look. 
 
 ```ts
 // Create a class with id "tswow:necromancer".

@@ -12,7 +12,7 @@ This section aims to explain the basic concepts of TSWoW modding and help new us
 
 - Intro
     - [Modding Introduction](1_ModdingIntroduction.md)
-    - [Installation](2_Installation.md)
+    - [**Installation**](2_Installation.md)
     - [Your first mod](3_YourFirstModule.md)
 - Data Scripts
     - [(WoW) Classes](4_CustomClass.md)

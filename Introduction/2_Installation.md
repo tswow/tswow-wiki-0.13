@@ -14,9 +14,11 @@ You will need to install the following programs:
 - [VSCodium version 1.45](https://github.com/VSCodium/vscodium/releases/tag/1.45.1)
     - Later versions **should** work (including Microsofts VSCode), but I had general performance issues with 1.51 so I don't use it.
 
+
+
 ## Installation
 
-1. [Download the latest version of TSWoW from here]()
+1. [Download the latest version of TSWoW from here](https://github.com/tswow/tswow/releases)
 
 2. Extract the TSWoW archive. The installation folder should contain (roughly) the following files and folders:
 

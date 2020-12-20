@@ -39,9 +39,6 @@ NECROMANCY_TRAINER_HUMAN.Trainer.Greeting.enGB.set(`Blah blah blah necromancy bl
 // Set the trainer class to necromancer
 NECROMANCY_TRAINER_HUMAN.Trainer.Class.set(NECROMANCER_CLASS.ID);
 
-// Need to disable gossip text to make trainer work for our new class
-NECROMANCY_TRAINER_HUMAN.GossipID.set(0);
-
 // Because of how Trainers work, trainer data is not copied over from the last creature
 NECROMANCY_TRAINER_HUMAN.Trainer.addSpell(
     // The spell ID to learn

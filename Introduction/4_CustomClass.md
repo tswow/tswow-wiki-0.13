@@ -8,7 +8,7 @@ The class we will be creating is the very same necromancer class that was shown 
 
 _In these tutorials, you will be asked to start writing TSWoW code. It is highly recommended that you **type out** the code yourself into the editor instead of copypasting to get a feel for the autocompletion that VSCodium offers._
 
-We will cover the following topics
+**We will cover the following topics:**
 
 1. [Class Definition](#class-definition)
 

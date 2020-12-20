@@ -2,7 +2,7 @@
 
 [Back to Table of Contents](README.md)
 
-This tutorial will be a brief introduction to how Creatures and NPCs work in World of Warcraft, and we will create a trainer for the Necromancer spells we created earlier. Creature theory is much simpler than Spell theory, so this is a much easier section than the spell tutorial.
+This tutorial will be a brief introduction to how Creatures and NPCs work in World of Warcraft, and we will create a trainer for the Necromancer spells we created earlier. Creature theory is much simpler than Spell theory, so this is a much shorter section than the spell tutorial.
 
 ## Creatures
 

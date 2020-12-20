@@ -59,11 +59,12 @@ Our strategy will be the same as when we made other custom spells: find a spell 
 
 ![](imp-fireball.png)
 
-However, we must also figure out how to actually change the spell to affect our summoning spell instead of fireball. We know that this spell affects multiple other spells since there are multiple fireballs, but that it doesn't just affect every single spell in the game. To keep this section focused on talents, we will simply say that the spell effect that does the casttime reduction happens to use what is called a ClassMask. This classmask must match with the classmask of the spell we are trying to modify, and TSWoW has a very simple way of doing this.
+However, we must also figure out how to actually change the spell to affect our summoning spell instead of fireball. We know that this spell affects multiple other spells since there are multiple fireballs, but that it doesn't just affect every single spell in the game. To keep this section focused on talents, we will simply say that the spell effect that does the casttime reduction happens to use what is called a ClassMask. This classmask must match with the classmask of the spell we are trying to modify, and TSWoW has a fairly simple way of achieving this.
 
 Add the following code to your `Talents.ts` file, importing SUMMON_ABOMINATION by hovering it and pressing `ctrl+.`:
 
 ```ts
+// Load the Improved Fireball spell
 const IMPROVED_FIREBALL = std.Spells.load(11069)
 
 export const IMP_ABOMINATION = 
@@ -73,11 +74,11 @@ IMP_ABOMINATION.Name.enGB.set(`Improved Summon Abomination`);
 // Notice how we match a specific effect in the improved fireball spell
 SUMMON_ABOMINATION.ClassMask.match(IMPROVED_FIREBALL.Effects.get(0))
 
-// Change the casttime reduction to 9 seconds (9000ms)
+// This spell happens to store the casttime reduction in the effects "BasePoints" field
+// So we change this to -9000 for a 9 second cast-time reduction.
 IMP_ABOMINATION.Effects.get(0).BasePoints.set(-9000)
 
 NECROMANCY.addTalent('tswow-introduction','imp-abomination-talent',0,1,[IMP_ABOMINATION.ID])
-
 ```
 Learning this talent and trying to cast summon abomination now should convince you that the talent is indeed working as intended. ClassMasks are slightly more complex than we have shown here, but we think learning just exactly how they work is a little too out of scope for this tutorial. You will however most certainly encounter them again if you do anything involving talents, and generally it is sufficient to use this method for them to work. 
 
@@ -99,5 +100,31 @@ In this tutorial, you have learnt how to:
 - Create talents from existing spells
 - Create a custom talent spell that modifies another spell
 - Make one talent required for another
+
+Our final code in `Talents.ts` becomes:
+
+```ts
+import { std } from "tswow-stdlib";
+
+// Creates a new talent tree at index 0 (the first talent tree)
+export const NECROMANCY = std.TalentTrees.create('tswow-introduction','tswow',0,[NECROMANCER_CLASS.ID])
+NECROMANCY.Name.enGB.set(`Necromancy`);
+
+// Load the Improved Fireball spell
+const IMPROVED_FIREBALL = std.Spells.load(11069)
+
+export const IMP_ABOMINATION = 
+    std.Spells.create('tswow-introduction','imp-abomination-spell',11069)
+IMP_ABOMINATION.Name.enGB.set(`Improved Summon Abomination`);
+
+// Notice how we match a specific effect in the improved fireball spell
+SUMMON_ABOMINATION.ClassMask.match(IMPROVED_FIREBALL.Effects.get(0))
+
+// This spell happens to store the casttime reduction in the effects "BasePoints" field
+// So we change this to -9000 for a 9 second cast-time reduction.
+IMP_ABOMINATION.Effects.get(0).BasePoints.set(-9000)
+
+NECROMANCY.addTalent('tswow-introduction','imp-abomination-talent',0,1,[IMP_ABOMINATION.ID])
+```
 
 In the next tutorial, we will [create a trainer for our Necromancer](7_CustomTrainer.md)

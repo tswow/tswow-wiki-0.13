@@ -33,11 +33,11 @@ There are three types of mods that we can create with TSWoW: **Data Scripts**, *
 Data scripts are TypeScript code files that modify the World of Warcraft game data in some way by creating or modifying existing game entities, such as classes, items, quests, titles, and languages. These files are run only during development to create data files for the server and client, and never when the game is actually running. Below is an example of how a data script might look. 
 
 ```ts
-// Create a class with id "tswow:necromancer".
-export const NECROMANCER = std.Classes.create('tswow','necromancer','NECROMANCER',8)
-    .addRaces([1,2,3]) // Enable for humans, orcs and dwarves
-    .Name.set({enGB:"Necromancer"}) 
-    .Stats.SpellCrit.set((x)=>x*2) 
+// Create a class with id "tswow:necromancer", class id "NECROMANCER" and based on the Mage class.
+export const NECROMANCER = std.Classes.create('tswow','necromancer','NECROMANCER','MAGE')
+    .addRaces(['HUMAN','ORC','DWARF','UNDEAD','BLOOD_ELF']) // Enable this class for those races
+    .Name.set({enGB:"Necromancer"})
+    .Stats.SpellCrit.set((x)=>x*2)
     .Stats.MeleeAttackPower.set("1337*level") 
     .EquipSkills.Staves.setAuto() // Enable staves at level 1
     .EquipSkills.Cloth.setAuto() // Enable cloth at level 1
@@ -51,7 +51,7 @@ _Code example of a fully working custom class made with a Data Script_
 
 Sometimes, we need extra custom behavior that data scripts cannot achieve, since all they do is modify or create static game data. For this, we use Live scripts, which allows us to run live code in the server when certain events happen, such as a creature taking damage, a player logging in or a guild being created. We write live scripts in TypeScript, and TSWoW transforms it into C++ that can be reloaded into the server without restarting it. For modding veterans, this is the TSWoW version of C++ scripts or Eluna lua scripts.  With live scripts, we get the best of both worlds since scripts are both easy to write thanks to autocompletion and highly performant thanks to the C++ transpiler. 
 
-However, because Live Scripts are transformed into C++ they only support a **subset** of TypeScript, and are intended to register event listeners in a specific way. You can not use npm packages, and there are generally a lot of restrictions on how you can write this code. We still believe this is a huge improvement in usability over both C++ scripts and Eluna.
+However, because Live Scripts are transformed into C++ they only support a **subset** of TypeScript, and are intended to register event listeners in a specific way. You can not use npm packages, and there are generally a lot of restrictions on how you can write this code.
 
 ```ts
 // The main entry point a module
@@ -66,8 +66,6 @@ export function Main(events: TSEventHandlers) {
 ![](live-script.png)
 
 _Code example of a Live Script_
-
-[For those interested, the above code when transpiled to C++]()
 
 ### Assets
 

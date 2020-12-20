@@ -6,7 +6,7 @@ This tutorial will be a brief introduction to how Creatures and NPCs work in Wor
 
 ## Creatures
 
-In World of Warcraft, the things that you as a player can select (which shows a portrait when you do) are known as `Units`. Both Players and non-player characters are Units. Non-player characters are called `Creatures`, even if they are humanoid and friendly to the player. When we create custom Creatures, we define what we call a `Creature Template`, which is a common type that many specific creatures in the game can share. For example, all the wolves in Northshire Abbey share a single creature template. From the Creature Template we can then spawn `Creature Instances`, that correspond to the individual entities you see in the game.
+In World of Warcraft, the things that you as a player can select (which shows a portrait when you do) are known as `Units`. Both Players and non-player characters are Units. Non-player characters are called `Creatures`, even if they are humanoid and friendly to the player. When we create custom Creatures, we define what we call a `Creature Template`, which is a common type that many specific creatures in the game can share. For example, all the wolves outside Northshire Abbey share a single creature template. From the Creature Template we can then spawn `Creature Instances`, that correspond to the individual entities you see in the game.
 
 ### Creating a Trainer NPC
 

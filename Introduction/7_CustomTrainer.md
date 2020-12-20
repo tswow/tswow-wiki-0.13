@@ -43,7 +43,17 @@ NECROMANCY_TRAINER_HUMAN.Trainer.Class.set(NECROMANCER_CLASS.ID);
 NECROMANCY_TRAINER_HUMAN.GossipID.set(0);
 
 // Because of how Trainers work, trainer data is not copied over from the last creature
-NECROMANCY_TRAINER_HUMAN.Trainer.addSpell(DEATH_BOLT.ID,10,0,DEATH_SKILL.ID);
+NECROMANCY_TRAINER_HUMAN.Trainer.addSpell(
+    // The spell ID to learn
+    DEATH_BOLT.ID,
+    // Training cost in copper
+    10,
+    // Minimum level required
+    0,
+    // Required skill
+    DEATH_SKILL.ID
+);
+
 NECROMANCY_TRAINER_HUMAN.Trainer.addSpell(SUMMON_ABOMINATION.ID,10,5,NECROMANCY_SKILL.ID);
 NECROMANCY_TRAINER_HUMAN.Trainer.addSpell(BONE_SHIELD.ID,10,10,NECROMANCY_SKILL.ID);
 ```
@@ -74,4 +84,33 @@ NECROMANCY_TRAINER_HUMAN
 Rebuild the game using `build data` and log in again at this location. You should see your custom npc standing there, without needing to manually spawn it with `.npc add`.
 
 ## Summary
-In this tutorial, you have learnt the basics of how creatures work in World of Warcraft and created a simple trainer NPC. This concludes the first half of our TSWoW introduction, which dealt with classes and spells. The next half will continue to work with Creatures, and will also discuss Items, Quests and Scripting.
+In this tutorial, you have learnt the basics of how creatures work in World of Warcraft and created a simple trainer NPC. Our final code for `Trainer.ts` becomes:
+
+```ts
+import { std } from "tswow-stdlib";
+
+export const NECROMANCY_TRAINER_HUMAN = 
+    std.CreatureTemplates.create('tswow-introduction','necromancer-trainer',375)
+
+NECROMANCY_TRAINER_HUMAN.Name.enGB.set('My Trainer');
+NECROMANCY_TRAINER_HUMAN.Title.enGB.set('Necromancy Trainer')
+
+// The text displayed at the top of the trainer window
+NECROMANCY_TRAINER_HUMAN.Trainer.Greeting.enGB.set(`Blah blah blah necromancy blah blah`)
+
+// Set the trainer class to necromancer
+NECROMANCY_TRAINER_HUMAN.Trainer.Class.set(NECROMANCER_CLASS.ID);
+
+// Need to disable gossip text to make trainer work for our new class
+NECROMANCY_TRAINER_HUMAN.GossipID.set(0);
+
+// Because of how Trainers work, trainer data is not copied over from the last creature
+NECROMANCY_TRAINER_HUMAN.Trainer.addSpell(DEATH_BOLT.ID,10,0,DEATH_SKILL.ID);
+NECROMANCY_TRAINER_HUMAN.Trainer.addSpell(SUMMON_ABOMINATION.ID,10,5,NECROMANCY_SKILL.ID);
+NECROMANCY_TRAINER_HUMAN.Trainer.addSpell(BONE_SHIELD.ID,10,10,NECROMANCY_SKILL.ID);
+
+NECROMANCY_TRAINER_HUMAN
+    .spawn('tswow-introduction','trainer-instance',Pos(0,-8898.656250,-130.632767,81.285889,1.766019))
+```
+
+This concludes the first half of our TSWoW introduction, which dealt with classes and spells. The next half will continue to work with Creatures, and will also discuss Items, Quests and Scripting.

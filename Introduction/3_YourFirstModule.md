@@ -60,17 +60,6 @@ You should also notice that TSWoW restarted the client for you in the background
 Let's try to make a more meaningful change to the game by changing the attack power of a warrior. Add the following to your script file: 
 
 ```ts
-import { std } from 'tswow-stdlib';
-
-// Load the warrior class
-const WARRIOR_CLASS = std.Classes.load(1)
-
-// Change english name to "Adventurer"
-WARRIOR_CLASS.Name.enGB.set('Adventurer');
-
-// Change character creation description
-WARRIOR_CLASS.UI.description.set('Adventurers adventure the world!');
-
 // Change melee attack power
 WARRIOR_CLASS.Stats.MeleeAttackPower.set("level*1337");
 ```

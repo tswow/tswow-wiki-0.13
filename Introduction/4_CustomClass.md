@@ -25,13 +25,23 @@ Our first task will be to create the definition for our new custom class. Create
 import { std } from 'tswow-stdlib';
 
 export const NECROMANCER_CLASS = 
-    std.Classes.create('mymod','necromancer','NECROMANCER','MAGE');
+    std.Classes.create(
+        // Mod id
+        'myname-mymod',
+        // Entity id
+        'necromancer',
+        // Entity id in uppercase, used internally by World of Warcraft
+        'NECROMANCER',
+        // The parent name of our class.
+        'MAGE');
 
 NECROMANCER_CLASS.addRaces(['HUMAN','ORC','BLOODELF']);
+
+// Changes the english display name to "Necromancer"
 NECROMANCER_CLASS.Name.enGB.set('Necromancer');
 ```
 
-This creates a new class with the identifier "Necromancer" based off the mage class. Run the `build data` command and enter the character creation screen. You should see your new class added.
+This creates a new class with the name "Necromancer" based off the Mage class. Run the `build data` command and enter the character creation screen. You should see your new class added.
 
 ![](necromancer-charcreate.png)
 
@@ -44,14 +54,11 @@ Let's change the class UI color and add a proper description. Add the following 
 NECROMANCER_CLASS.UI.color.set(0xcc0077)
 
 // Add character creation description
-NECROMANCER_CLASS.UI.info.add('- Role: Damage, Tank')
-NECROMANCER_CLASS.UI.info.add('- Light Armor (Cloth)')
-NECROMANCER_CLASS.UI.info.add('- Controls multiple undead servants')
-NECROMANCER_CLASS.UI.info.add('- Uses mana as a resource')
-NECROMANCER_CLASS.UI.description
-    .set("Necromancers are pretty cool guys. " +
-        "Tehy raise the dead and doesn't afraid of anything.")
-        
+NECROMANCER_CLASS.UI.Info.add('- Role: Damage, Tank')
+NECROMANCER_CLASS.UI.Info.add('- Light Armor (Cloth)')
+NECROMANCER_CLASS.UI.Info.add('- Controls multiple undead servants')
+NECROMANCER_CLASS.UI.Info.add('- Uses mana as a resource')
+NECROMANCER_CLASS.UI.Description.set("Necromancers raise and control the undead.")
 ```
 
 ![](necromancer-description.png)
@@ -83,10 +90,8 @@ export const NECROMANCY_SKILL = std.SkillLines
     .createClass('tswow-introduction','necromancy-skill',NECROMANCER_CLASS.ID)
 NECROMANCY_SKILL.Name.enGB.set(`Necromancy`)
 
-// Truly the epitome of creativity
 export const DEATH_SKILL = std.SkillLines
     .createClass('tswow-introduction','death-skill',NECROMANCER_CLASS.ID)
-
 DEATH_SKILL.Name.enGB.set(`Death`)
 ```
 
@@ -100,5 +105,51 @@ In this tutorial, we have:
 - Modified the character selection screen
 - Modified the stats of our class
 - Created SkillLines that will be used to define what spells belongs to our class.
+
+Our final code for `Necromancer.ts` is as follows:
+```ts
+import { std } from 'tswow-stdlib';
+
+export const NECROMANCER_CLASS = 
+    std.Classes.create(
+        // Mod id
+        'myname-mymod',
+        // Entity id
+        'necromancer',
+        // Entity id in uppercase, used internally by World of Warcraft
+        'NECROMANCER',
+        // The parent name of our class.
+        'MAGE');
+
+NECROMANCER_CLASS.addRaces(['HUMAN','ORC','BLOODELF']);
+
+// Changes the english display name to "Necromancer"
+NECROMANCER_CLASS.Name.enGB.set('Necromancer');
+
+// Change display color
+NECROMANCER_CLASS.UI.color.set(0xcc0077)
+
+// Add character creation description
+NECROMANCER_CLASS.UI.Info.add('- Role: Damage, Tank')
+NECROMANCER_CLASS.UI.Info.add('- Light Armor (Cloth)')
+NECROMANCER_CLASS.UI.Info.add('- Controls multiple undead servants')
+NECROMANCER_CLASS.UI.Info.add('- Uses mana as a resource')
+NECROMANCER_CLASS.UI.Description.set("Necromancers raise and control the undead.")
+
+// Attack power = 1337*intellect
+NECROMANCER_CLASS.Stats.MeleeAttackPower.set('1337*int')
+// Spell Crit = 0.1*level
+NECROMANCER_CLASS.Stats.SpellCrit.set((x,level)=>1337*level)
+// Melee crit = 0.1*level
+NECROMANCER_CLASS.Stats.MeleeCrit.set((x,level)=>1337*level)
+
+export const NECROMANCY_SKILL = std.SkillLines
+    .createClass('tswow-introduction','necromancy-skill',NECROMANCER_CLASS.ID)
+NECROMANCY_SKILL.Name.enGB.set(`Necromancy`)
+
+export const DEATH_SKILL = std.SkillLines
+    .createClass('tswow-introduction','death-skill',NECROMANCER_CLASS.ID)
+DEATH_SKILL.Name.enGB.set(`Death`)
+```
 
 In the next tutorial, we will [create custom spells for our new class](5_CustomSpells.md).

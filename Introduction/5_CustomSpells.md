@@ -286,13 +286,9 @@ Now, we will again do what we did with Death Bolt when we weren't sure what to d
   ],
 ```
 
-Now, we would need another creature ID to try if we can replace it. Since you already learnt how to use the `.id` command, I will save you the hassle of finding an abomination to check and give you that creature ID 8543 is an abomination. We get the following code: 
+Now, we would need another creature ID to try if we can replace it. Since you already learnt how to use the `.id` command, I will save you the hassle of finding an abomination to check and give you that creature ID 8543 is an abomination. Add the following code to your `Abomination.ts` file.
 
 ```ts
-import { std } from 'tswow-stdlib';
-
-export const SUMMON_ABOMINATION = std.Spells.create('tswow-introduction','summon-abomination', 688)
-SUMMON_ABOMINATION.Name.enGB.set('Summon Abomination');
 SUMMON_ABOMINATION.Effects.get(0).MiscValueA.set(8543);
 ```
 

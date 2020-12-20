@@ -69,6 +69,49 @@ For this change, it will not be sufficient to just rebuild the client because at
 ![](warrior-ap-level1.png)
 ![](warrior-ap-level2.png)
 
+## Generated IDs and String Identifiers
+
+Every kind of entity in World of Warcraft, from items to quests to classes, has a numerical **ID** that makes it unique among its type. For example, Hogger has the numerical creature type ID 448, and no other creature has this ID. If anything else in the game has a reference to a creature type and the reference is to 448, that's a reference to Hogger. It is possible for IDs of different types to overlap, for example creature type id 36 is to "Harvest Golem", while item id 36 is to "worn mace". 
+
+Numerical IDs are tricky, because we have to manually make sure that they don't collide with each others. In TSWoW, we generate a lot of numerical IDs automatically without any additional input needed, but sometimes we need IDs to be **persistent** each time we build our module, since the numerical IDs are used by the server to keep track of things like the items a player has equipped, or how many times they have slain a particular creature. It wouldn't be nice to have your heroic purple sword be changed to a gray item just because the generated id changed.
+
+To solve this problem we use **string identifers** when we create entities to automatically generate a unique numerical ID that will stay persistent even if we build our module multiple times. To avoid collisions, we split string IDs into two parts, a "mod identifier" part, describing the module that created the entity, and an "entity identifier" part, that should uniquely identify the entity in our mod.
+
+For example, if we have a module called "tswow-tutorial", and an item called "Baseball", it would have the mod identifier "tswow-tutorial" and the entity identifier "baseball". We should write all our string identifiers in lowercase only, and use hyphens (-) between words, just like with module names. If another mod also had an item called "Baseball", it would not collide with our identifier, since they would have the full identifier "theirmod:baseball", while our would have "ourmod:baseball". 
+
+### Creating an entity
+
+To illustrate ID generation with string identifiers, we will create a simple sword based on Thunderfury (item id=19019). Create a file `Sword.ts` in your mods data directory and write the following code:
+
+```
+import { std } from 'tswow-stdlib'
+
+const THUNDERFURY_2 = std.Items
+    .create(
+        // The module id, replace with the name of your module
+        'my-module',
+        // The entity id, must be unique in 'my-module'
+        'thunderfury-2',
+        // Numerical ID for the original Thunderfury
+        19019
+    )
+THUNDERFURY_2.Name.set({enGB:'Thunderfury 2'});
+```
+
+Here, we supply the create functions with the arguments 'my-module','thunderfury-2', and 19019. If we follow the autocompletion, we can see that the parameter names are "mod", "id" and "parent", respectively. Whenever a function in TSWoW asks for a "mod" and an "id" parameter, you can be sure that it's asking you for your current module and a new **unique** entity id. The third argument in this example, parent, is the numerical ID of the item we want to copy. 
+
+### String Identifiers: Only used Once
+
+In TSWoW, we use the mod/id string identifiers **only** when we create an entity for the first time, and after that never again. Instead we use the numerical ID that was generated. To see what ID was generated for our new item, add the following code to the bottom of your `Sword.ts` file:
+
+```
+console.log(THUNDERFURY_2.ID);
+```
+
+When you build this script, you should see that it prints out a pretty large number. If we ever want to reference this sword anywhere else in our data scripts, we reference `THUNDERFURY_2.ID`. If we want to use this ID in another code file, we can simply change our declaration line to `export const THUNDERFURY_2 = std.Items` and import it from this file.
+
+To give yourself an item in-game, you can use the command `.additem id`, where id is the **numerical** ID of the item you want. Try to figure out how to give yourself Thunderfury 2.
+
 ## Conclusion
 
 In this tutorial, you have created a basic module for TSWoW and made some changes to existing game data. In the next tutorials, we will delve deeper into TSWoW data scripting by creating [our own custom class](4_CustomClass.md).

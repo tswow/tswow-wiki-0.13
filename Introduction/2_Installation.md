@@ -2,14 +2,14 @@
 
 [Back to Table of Contents](README.md)
 
-This guide will explain how to set up a fully working TSWoW development environment with a working server that (optionally) other people can connect to and play on.
+This guide will explain how to set up a fully working TSWoW development environment with a working server that you can connect to from your local computer.
 
 ## Prerequisites
 
 You will need to install the following programs:
 
 - World of Warcraft 3.3.5a client 
-    - Currently, I can only verify that the _enGB_ client works, please make an [issue](https://github.com/tswow/tswow/issues) if you use another locale and you face any problems.
+    - Currently, I can only verify that the _enGB_ and _enUS_ clients work, please make an [issue](https://github.com/tswow/tswow/issues) if you use another locale and you face any problems. 
 - [Node.js (version 12.19 or higher)](https://nodejs.org/dist/v14.15.1/node-v14.15.1-x64.msi)
 - [VSCodium version 1.45](https://github.com/VSCodium/vscodium/releases/tag/1.45.1)
     - Later versions **should** work (including Microsofts VSCode), but I had general performance issues with 1.51 so I don't use it.

@@ -111,3 +111,5 @@ NECROMANCY_TRAINER_HUMAN
 ```
 
 This concludes the first half of our TSWoW introduction, which dealt with classes and spells. The next half will continue to work with Creatures, and will also discuss Items, Quests and Scripting.
+
+The next tutorial will look at [Gossip Systems](8_Gossip.md).

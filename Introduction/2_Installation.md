@@ -14,6 +14,7 @@ You will need to install the following programs:
 - [VSCodium version 1.45](https://github.com/VSCodium/vscodium/releases/tag/1.45.1)
     - Later versions **should** work (including Microsofts VSCode), but I had general performance issues with 1.51 so I don't use it.
 
+- (Optional) To compile **live scripts**, you will also need [Visual Studio 2019 Community](https://visualstudio.microsoft.com/downloads/). The whole first part of this tutorial series will only be using data scripts, so you don't need to install this yet.
 
 
 ## Installation

@@ -20,7 +20,7 @@ This section aims to explain the basic concepts of TSWoW modding and help new us
     - [Talents](6_CustomTalents.md)
     - [Trainer](7_CustomTrainer.md)
     - [Gossip](8_Gossip.md)
-    - Enemy creatures (Not written yet)
+    - [Enemy Creatures](9_EnemyCreatures.md)
     - Scripting (Not written yet)
     - Items (Not written yet)
     - Quests (Not written yet)

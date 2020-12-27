@@ -6,7 +6,3 @@ This section is for documenting the 3.3.5 version of World of Warcraft itself. T
 - [The TSWoW Standard Library](https://github.com/tswow/tswow-stdlib) - For documenting how the stdlib classes works (code comments)
 - [wowdev wiki](https://wowdev.wiki/Main_Page) - For the WoW client
 - [TrinityCore.info](https://trinitycore.info/) - For the TrinityCore server emulator
-
-## Sections
-
-None yet

@@ -21,8 +21,8 @@ This section aims to explain the basic concepts of TSWoW modding and help new us
     - [Trainer](7_CustomTrainer.md)
     - [Gossip](8_Gossip.md)
     - [Enemy Creatures](9_EnemyCreatures.md)
-    - Scripting (Not written yet)
-    - Items (Not written yet)
-    - Quests (Not written yet)
+    - [Scripting](10_SmartScripts.md) (Barebones)
+    - [Quests](11_Quests.md) (Barebones)
+    - [Items](12_Items.md) (Barebones)
 
 - Live Scripts (Not written yet)

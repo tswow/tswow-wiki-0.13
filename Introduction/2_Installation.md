@@ -11,6 +11,12 @@ You will need to install the following programs:
 - World of Warcraft 3.3.5a client 
     - Currently, I can only verify that the _enGB_ and _enUS_ clients work, please make an [issue](https://github.com/tswow/tswow/issues) if you use another locale and you face any problems. 
 - [Node.js (version 12.19 or higher)](https://nodejs.org/dist/v14.15.1/node-v14.15.1-x64.msi)
+
+- **All** the following versions of VCRedist:
+    - [Latest x86](https://aka.ms/vs/16/release/vc_redist.x86.exe)
+    - [Latest x64](https://aka.ms/vs/16/release/vc_redist.x64.exe)
+    - [2013 x86+x64](https://www.microsoft.com/en-us/download/details.aspx?id=40784) (Select "English", then both x86 and x64)
+
 - [VSCodium version 1.45](https://github.com/VSCodium/vscodium/releases/tag/1.45.1)
     - Later versions **should** work (including Microsofts VSCode), but I had general performance issues with 1.51 so I don't use it.
 

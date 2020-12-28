@@ -305,4 +305,4 @@ for(const creature of creatures) {
 
 Trainers windows work very similar to vendors, and you can also have multiple. Your challenge for this section is to add one or multiple class trainers to this gossip system.
 
-In the next tutorial, we will start to look at [enemy creatures and creature ai]() (not written yet).
+In the next tutorial, we will start to look at [enemy creatures](9_EnemyCreatures.md).

@@ -4,12 +4,17 @@
 
 This guide will explain how to set up a fully working TSWoW development environment with a working server that you can connect to from your local computer.
 
+**Note: Currently, TSWoW doesn't like spaces in filepaths. Make sure your installation path and client files do not have spaces.**
+
 ## Prerequisites
 
 You will need to install the following programs:
 
 - World of Warcraft 3.3.5a client 
     - Currently, I can only verify that the _enGB_ and _enUS_ clients work, please make an [issue](https://github.com/tswow/tswow/issues) if you use another locale and you face any problems. 
+
+- [7-zip](https://www.7-zip.org/a/7z1900-x64.exe)
+
 - [Node.js (version 12.19 or higher)](https://nodejs.org/dist/v14.15.1/node-v14.15.1-x64.msi)
 
 - **All** the following versions of VCRedist:

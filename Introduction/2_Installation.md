@@ -6,6 +6,8 @@ This guide will explain how to set up a fully working TSWoW development environm
 
 **Note: Currently, TSWoW doesn't like spaces in filepaths. Make sure your installation path and client files do not have spaces.**
 
+[Video Version of this Tutorial](https://youtu.be/OApiAnrTJ78)
+
 ## Prerequisites
 
 You will need to install the following programs:

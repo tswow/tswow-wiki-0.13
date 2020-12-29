@@ -128,4 +128,4 @@ In this tutorial, we have learnt:
 - How to attach conditions to a smart script
 - How to chain multiple smart scripts together
 
-[In the next tutorial](11_Quests.ts), we will learn about Quests, and how we can use smart scripting for scripted quests.
+[In the next tutorial](11_Quests.md), we will learn about Quests, and how we can use smart scripting for scripted quests.

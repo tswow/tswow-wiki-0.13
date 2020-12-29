@@ -10,6 +10,8 @@ TSWoW itself is distributed through our [main repository](https://github.com/tsw
 2. Place the `.7z` file in your TSWoW installation directory, and rename it `update.7z`.
 3. Start TSWoW, the update will be applied and TSWoW will then start normally. Note that you have to rebuild all live scripts if you update TSWoW.
 
+Updating this way only replaces files in your `node_modules` and `bin` directories and keeps your configuration, modules and coredata.
+
 ## Updating Modules
 
 To update a module to the latest version, follow these steps:

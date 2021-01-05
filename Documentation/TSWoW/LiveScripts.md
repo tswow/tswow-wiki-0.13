@@ -10,16 +10,31 @@ The main file for all live scripts in a module is `module-name/scripts/module_na
 
 ```ts
 export function Main(events: TSEventHandlers) {
+    events.Player.OnSay((player,type,lang,msg)=>{
+        player.SendBroadcastMessage('You said'+msg.get())
+    });
 }
 ```
 
-TSEventHandlers can then be accessed inside that function to register event handlers. 
+TSEventHandlers can then be accessed inside that function to register event handlers. We can also send it on to functions in other files if we want to spread out our module, but you should not store it to access it from within any event callbacks.
 
-## Lifetime
+## Lifetime 
  
 The `Main` function is called during server startup or when the script is reloaded. During reload, all previous event handlers are removed and any memory should be cleaned up automatically.
 
-## TypeScript Differences
+## Memory Management
+
+Live scripts do their best to abstract away the manual memory management in C++ by using smart pointers and stack objects where possible. However, there are a few concerns you will have to consider.
+
+### TS* callback arguments (TSPlayer, TSUnit, TSGroup etc.)
+
+The types we receive from event callbacks are special pointer types. These should never be _stored_ anywhere in a live script, store their GUIDs instead (using `.GetGUID`). These types are owned by the server core, and there is no way to know if the memory they point at remain valid after the event has finished executing.
+
+### Circular References
+
+If two objects in TSWoW refer to each others and form a cycle, they will not be automatically cleaned up if all other references to them are lost, since C++ does not have a (built-in) garbage collector. If we use circular data types, we need to make sure that those cycles are broken when the data should be removed.
+
+## Syntax differences
 
 Since live scripts are transpiled to C++, they have a few caveats, but also a few improvements over normal TypeScript and JavaScript. This section should document all such caveats or changes that we can identify.
 
@@ -37,7 +52,7 @@ let globalCtr: uint32 = 0;
 export function Main(events: TSEventHandlers) {
     let localCtr: uint32 = 0;
 
-    let localArr: TSArray<uint32>[1,2,3];
+    let localArr: TSArray<uint32> = [1,2,3];
     localArr.forEach((k,v)=>{
         
     });
@@ -47,7 +62,7 @@ export function Main(events: TSEventHandlers) {
         if(globalCtr>10) {} // <-- works!
 
         let innerCtr: uint32 = 0;
-        let arr : TSArray<uint32>[1,2,3];
+        let arr : TSArray<uint32> = [1,2,3];
         arr.forEach((v,i)=>{
             if(localCtr>10) {} // <-- does not work, will never work
             if(innerCtr>10) {} // <-- does not work, will likely add support later 
@@ -89,6 +104,7 @@ const arr : TSArray<uint32> = [1,2,3];
 
 // Write
 arr.set(0,10)            // <-- works
+arr.push(10)             // <-- works
 arr[0] = 10              // <-- does not work
 
 // Read
@@ -147,7 +163,7 @@ const myDictionary = { // <-- does not work (No call to MakeDictionary)
     1: "value"
 }
 
-const myDictionary = MakeDictionary<uint64,string>({ // <-- works!
+const myDictionary : TSDictionary<uint64,string> = MakeDictionary<uint64,string>({ // <-- works!
     1: "value1",
     8: "value8"
 });
@@ -159,7 +175,7 @@ const myDictionary = MakeDictionary<uint64,string>({ // <-- works!
 Just like arrays, maps are accessed with get/set methods instead of []:
 
 ```ts
-const myDictionary = MakeDictionary<uint64,string>({
+const myDictionary : TSDictionary<uint64,string> = MakeDictionary<uint64,string>({
     1: "value1",
     8: "value8"
 });
@@ -173,7 +189,7 @@ console.log(myDictionary.get(8));
 Maps can currently only be iterated using callback functions:
 
 ```ts
-const myDict = MakeDictionary<uint64,string>({
+const myDict : TSDictionary<uint64,string> = MakeDictionary<uint64,string>({
     1: "value1",
     2: "value2"
 });
@@ -192,6 +208,39 @@ const keys = myDict.keys(); // <-- returns an array
 for(let i=0;i<keys.length;++i) {
     const key = keys.get(i);
     const value = myDict.get(key);
+}
+```
+
+## Classes
+
+Classes work mostly as usual. If a class does not extend anything else, they should extend `TSClass`:
+
+```ts
+class InnerClass extends TSClass {
+    innerValue: int;
+
+    constructor(innerValue: int) {
+        super();
+        this.innerValue = innerValue;
+    }
+
+}
+
+class TestClass extends TSClass {
+    a: int = 25;
+
+    inner: InnerClass;
+
+    constructor(innerValue: int) {
+        super();
+        this.inner = new InnerClass(innerValue);
+    }
+}
+
+function Main(events: TSEventHandlers) {
+    const cls = new TestClass(100);
+    // We can print a class using its stringify method
+    console.log(cls.stringify());
 }
 ```
 
@@ -222,37 +271,40 @@ TSWoW has support for automatic object-relational mapping in live scripts. This 
 ```ts
 // Specifies the data table is in the characters database
 @CharactersTable  
-
-// Gives us save/delete methods
-class PlayerCounter extends DBTable { 
+class PlayerCounter extends DBTable { // <-- Gives us save/delete methods
 
     // Specifies this field is part of this rows unique identifier ("Primary Key")
     @PrimaryKey
-    playerId: uint64;
+    playerId: uint64 = 0;
 
     // We can have multiple primary keys.
     @PrimaryKey
-    sample: uint8
+    sample: uint8 = 0;
 
     // Specified this field should be saved to the database, but is not a primary key.
     @Field 
-    counter: uint32;
+    counter: uint32 = 0;
 
     // This field is not saved to the database.
     temp: uint8 = 0;
 
     constructor(playerId: uint64, counter: uint32) {
+        super();
         this.playerId = playerId;
         this.counter = counter;
     }
 }
 
-function Main(events: TSEventHandlers) {
-    events.Players.OnSay((player,type,lang,msg)=>{
-        let rows = LoadRow(PlayerCounter,`playerId = ${player.GetGUID()}`);
+export function Main(events: TSEventHandlers) {
+    events.Player.OnSay((player,type,lang,msg)=>{
+        let rows = LoadRows(PlayerCounter,`playerId = ${player.GetGUID()}`);
         let row = rows.length > 0 ? rows.get(0) : new PlayerCounter(player.GetGUID(),0);
         row.counter++;
         row.save();
+    });
+
+    events.Player.OnSay((player,type,lang,msg)=>{
+        player.SendBroadcastMessage('You said'+msg.get())
     });
 }
 ```

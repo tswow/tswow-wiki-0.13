@@ -11,6 +11,8 @@ Make sure you have installed Visual Studio according to the [installation instru
 Live Scripts are stored in the `scripts` subdirectory of a module. There should always be a file named inside `modulename_scripts.ts`. Inside of this file, we always have the following function:
 
 ```ts
+export function Main(events: TSEventHandlers) {
+}
 ```
 
 This function is the "main" entry point for all data scripts, and is called when the script is loaded (either when it's reloaded or when the server starts). All the code we write for the following sections should be entered into this main functions, or a function that it calls.

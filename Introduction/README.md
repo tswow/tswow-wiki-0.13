@@ -24,5 +24,7 @@ This section aims to explain the basic concepts of TSWoW modding and help new us
     - [Scripting](10_SmartScripts.md) (Barebones)
     - [Quests](11_Quests.md) (Barebones)
     - [Items](12_Items.md) (Barebones)
-
-- Live Scripts (Not written yet)
+- Live Scripts
+    - [Live Scripting](13_LiveScripting.md)
+    - [Spells/Creatures](14_SpellCreature.md)
+    - [Documentation](../Documentation/TSWoW/LiveScripts.md)

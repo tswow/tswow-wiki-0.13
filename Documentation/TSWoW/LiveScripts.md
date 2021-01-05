@@ -297,9 +297,16 @@ class PlayerCounter extends DBTable { // <-- Gives us save/delete methods
 
 export function Main(events: TSEventHandlers) {
     events.Player.OnSay((player,type,lang,msg)=>{
+        // Load all rows matching this query (SQL 'where' clause)
         let rows = LoadRows(PlayerCounter,`playerId = ${player.GetGUID()}`);
+
+        // Select first row or create a new one
         let row = rows.length > 0 ? rows.get(0) : new PlayerCounter(player.GetGUID(),0);
+
+        // Update the counter
         row.counter++;
+
+        // Save the row back to the database
         row.save();
     });
 
@@ -308,3 +315,22 @@ export function Main(events: TSEventHandlers) {
     });
 }
 ```
+
+#### Field types
+
+Only primitive types (ints, floats, strings) can be used as @Fields or @PrimaryKeys (strings can currently NOT be used as primary keys). The table below shows all valid field types:
+
+| **Type** | **@Field** | **@PrimaryKey** |
+|----------|------------|-----------------|
+| string   | Yes        | **No**          |
+| float    | Yes        | **No**          |
+| double   | Yes        | **No**          |
+| int      | Yes        | Yes             |
+| int8     | Yes        | Yes             |
+| int16    | Yes        | Yes             |
+| int32    | Yes        | Yes             |
+| int64    | Yes        | Yes             |
+| uint8    | Yes        | Yes             |
+| uint16   | Yes        | Yes             |
+| uint32   | Yes        | Yes             |
+| uint64   | Yes        | Yes             |

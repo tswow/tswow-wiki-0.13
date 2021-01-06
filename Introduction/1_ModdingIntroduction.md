@@ -35,7 +35,7 @@ Data scripts are TypeScript code files that modify the World of Warcraft game da
 ```ts
 // Create a class with id "tswow:necromancer", class id "NECROMANCER" and based on the Mage class.
 export const NECROMANCER = std.Classes.create('tswow','necromancer','NECROMANCER','MAGE')
-    .addRaces(['HUMAN','ORC','DWARF','UNDEAD','BLOOD_ELF']) // Enable this class for those races
+    .addRaces(['HUMAN','ORC','DWARF','UNDEAD','BLOODELF']) // Enable this class for those races
     .Name.set({enGB:"Necromancer"})
     .Stats.SpellCrit.set((x)=>x*2)
     .Stats.MeleeAttackPower.set("1337*level") 

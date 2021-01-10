@@ -143,17 +143,17 @@ const positions = [
 // Iterate over each position, and spawn a zombie based on it.
 for(let i=0;i<positions.length;++i) {
     const spawn = ZOMBIE.spawn('mymod',`zombie-spawn-${i}`,positions[i]);
+
+    // Sets the creature to walk randomly
+    spawn.MovementType.setRandomMovement();
+    // Sets the wander distance to 10 yards
+    spawn.WanderDistance.set(10);
+
+    // Sets the creature to walk randomly
+    spawn.MovementType.setRandomMovement();
+    // Sets the wander distance to 10 yards
+    spawn.WanderDistance.set(10);
 }
-
-// Sets the creature to walk randomly
-spawn.MovementType.setRandomMovement();
-// Sets the wander distance to 10 yards
-spawn.WanderDistance.set(10);
-
-// Sets the creature to walk randomly
-spawn.MovementType.setRandomMovement();
-// Sets the wander distance to 10 yards
-spawn.WanderDistance.set(10);
 
 ZOMBIE.Level.set(4,6)
 ZOMBIE.UnitClass.setMage()

@@ -15,6 +15,8 @@ You will need to install the following programs:
 - World of Warcraft 3.3.5a client 
     - Currently, I can only verify that the _enGB_ and _enUS_ clients work, please make an [issue](https://github.com/tswow/tswow/issues) if you use another locale and you face any problems. 
 
+- [Git](https://github.com/git-for-windows/git/releases/download/v2.30.0.windows.1/Git-2.30.0-64-bit.exe)
+
 - [7-zip](https://www.7-zip.org/a/7z1900-x64.exe)
 
 - [Node.js (version 12.19 or higher)](https://nodejs.org/dist/v14.15.1/node-v14.15.1-x64.msi)

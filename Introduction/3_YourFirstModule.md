@@ -36,11 +36,11 @@ import { std } from 'tswow-stdlib';
 // Load the warrior class
 const WARRIOR_CLASS = std.Classes.load(1)
 
-// Change english name to "Adventurer"
+// Change english name to "Adventurer" (even enUS clients uses enGB)
 WARRIOR_CLASS.Name.enGB.set('Adventurer');
 
 // Change character creation description
-WARRIOR_CLASS.UI.description.set('Adventurers adventure the world!');
+WARRIOR_CLASS.UI.Description.set('Adventurers adventure the world!');
 ```
 
 Now that our data script actually does something, we can try it out with the `build data client` command. Since we are only changing a name, we only need to build client data to check it out. You should see output similar to the following:

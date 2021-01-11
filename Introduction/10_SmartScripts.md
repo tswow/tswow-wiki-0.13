@@ -57,7 +57,7 @@ The first un-indented row is an event, and this event appears to be called "Rang
 Now, we can attempt to copy this to our zombie. Add the following code to your `EnemyCreature.ts` file:
 
 ```ts
-import { ZOMBIE } from './EnemyCreature.ts'
+import { ZOMBIE } from './EnemyCreature'
 
 // We create a script to respond to the "onRange" event.
 // We choose our arguments to try and match what we saw in the print

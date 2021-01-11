@@ -86,6 +86,8 @@ ESCORT_PATH.add([
 Now that we have the quest and waypoints in place, all we need to do is create the creature script itself. 
 
 ```ts
+const dane_winslow = std.CreatureTemplates.load(6373)
+
 // Start walking when the player accepts the quest
 const startWalk = dane_winslow.Scripts.onAcceptedQuest(escortQuest.ID)
 startWalk.Action.setQuestWalk(

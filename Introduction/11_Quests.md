@@ -178,6 +178,8 @@ ESCORT_PATH.add([
     Pos(0,-9103.708984,-180.140427,71.236916,3.010472),
 ]);
 
+const dane_winslow = std.CreatureTemplates.load(6373)
+
 // Start walking when the player accepts the quest
 const startWalk = dane_winslow.Scripts.onAcceptedQuest(escortQuest.ID)
 startWalk.Action.setQuestWalk(

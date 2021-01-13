@@ -6,6 +6,8 @@ It is now time to discuss live scripting, the type of scripts that run directly 
 
 Make sure you have installed Visual Studio according to the [installation instructions](2_Installation.md). No further setup is required, and TSWoW comes bundled with all the other tools to compile your scripts.
 
+_Live Scripts are **completely separate** from data scripts. You can **not** import data scripts into live scripts or vice versa._
+
 ## Our first Live Script
 
 Live Scripts are stored in the `scripts` subdirectory of a module. There should always be a file named inside `modulename_scripts.ts`. Inside of this file, we always have the following function:

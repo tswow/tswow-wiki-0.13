@@ -63,6 +63,11 @@ export function Main(events: TSEventHandlers) {
 
 For creature scripts, the registered creature itself is **always** the first argument.
 
+## Custom IDs
+If we want to use our own custom IDs in live scripts, we cannot import files from the data scripts. Instead, we use the auto-generated `IDs.ts` file. For IDs to show up correctly in `IDs.ts`, you need to use the correct modid for all entities you register. For example, the mod `my-mod` must register spells (for example) by `std.Spells.create('my-mod','some-id',...)`. The important part is `'my-mod'`.
+
+TODO: Write example here.
+
 ## Global Events
 
 Both creature and spell events can also be applied globally to all creatures or spells. Instead of using CreatureID/SpellID, we use Creatures/Spells:

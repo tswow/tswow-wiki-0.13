@@ -2,6 +2,8 @@
 
 Welcome to the Wiki for TSWoW, hosted as a GitHub repository. Via pull-requests, **anyone** is welcome to contribute to this wiki. We currently have to manually review all edits, but in the future we will set this up so the process is automatic for most edits.
 
+If you're having problems with TSWoW, check out the [Troubleshooting](Documentation/TSWoW/Troubleshooting.md) document.
+
 [Watch this guide for how to edit this Wiki](https://youtu.be/sp18c6DL7Ro)
 
 ## Guidelines

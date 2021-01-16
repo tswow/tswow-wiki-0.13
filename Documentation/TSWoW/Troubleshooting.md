@@ -67,10 +67,10 @@ _Explanation: Sometimes, the MySQL data directory becomes corrupt because of how
 
 ### Data Script problems
 
-**Problem**: Client crashes on character creation screen
+**Problem**: Client crashes on character creation screen  
 
-**Possible solution 1**: Back up and remove `config/ids.txt`. (Optionally, manually delete any missing class-related entries from it)
+**Possible solution 1**: Back up and remove `config/ids.txt`. (Optionally, manually delete any missing class-related entries from it)  
 _Explanation: This often happens if you create a custom class, then delete it or change its registry name. This causes a gap in the present class ids, which is not permitted in the character creation screen._
 
-**Unfixable**: You have defined over 100 class/race pairs, including the ones from the base game.
+**Unfixable**: You have defined over 100 class/race pairs, including the ones from the base game.  
 _Explanation: TODO but tldr it seems to be a programming error when defining 100+ rows in CharBaseInfo.dbc AND at least one row references a custom class._

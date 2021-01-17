@@ -309,10 +309,6 @@ export function Main(events: TSEventHandlers) {
         // Save the row back to the database
         row.save();
     });
-
-    events.Player.OnSay((player,type,lang,msg)=>{
-        player.SendBroadcastMessage('You said'+msg.get())
-    });
 }
 ```
 

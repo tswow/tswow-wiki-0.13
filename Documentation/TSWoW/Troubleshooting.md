@@ -78,12 +78,54 @@ _Explanation: TODO but tldr it seems to be a programming error when defining 100
 ### Update Issues
 **Problem**: Errors after updating tswow from an `update.7z`
 
-**Possible solution 1**: Manually apply the update. Delete the `bin` directory in your tswow installation folder, and then manually extract the `bin` directory from the 7z file you downloaded. 
+**Possible solution 1**: Manually apply the update. Delete the `bin` directory in your tswow installation folder, and then manually extract the `bin` directory from the 7z file you downloaded.  
 _Explanation: Sometimes, updating fails or is interrupted._
 
-**Possible solution 2**: Run `clean datascripts` from inside tswow.
+**Possible solution 2**: Run `clean datascripts` from inside tswow.  
 _Explanation: Updating tswow may rarely break some data script dependencies, running this script attempts to fix all those._
 
 **Warning: Applying this solution WILL wipe clean ALL your tswow databases**
-**Possible solution 3**: Delete/backup `coredata/mysql` and `coredata/mysql_plain`, then restart tswow. 
+**Possible solution 3**: Delete/backup `coredata/mysql` and `coredata/mysql_plain`, then restart tswow.  
 _Explanation: When tswow updates, it will rebuild the world database. If this process is interrupted or fails, you might end up with a corrupt world database._
+
+### Live Script problems
+
+### Can't import data scripts from live scripts
+
+**Problem**: Trying to import data scripts from live scripts gives compiler errors
+**Unfixable**: You should not import data scripts from live scripts. If you need IDs you have created, you can use the auto-generated `scripts/IDs.ts` file as long as you register entities with the same `modid` as the name of your mod.
+
+#### Ids not showing up in `IDs.ts`
+**Problem:** Ids registered by data scripts doesn't show up in `IDs.ts` in the live scripting folder.
+
+**Possible solution 1**: Make sure you executed data scripts with the ID at least once.
+
+**Possible solution 2**: Make sure your `modid` is the same as the name of your module.  
+_Explanation: For now, only your own mods entries are added to `IDs.ts`. This will likely change in the future._
+
+#### Strange compiler errors
+
+**Problem**: Code that should be valid gives compiler errors.
+
+**Possible solution 1:** Check our [Live Scripting documentation](LiveScripts.md)  
+_Explanation: Not all valid TypeScript is valid for Live Scripts, since it's transpiled from TypeScript to C++._
+
+**Possible solution 2**: [Check in with us on discord](https://discord.gg/M89n6TZh9x)  
+_Explanation: We may have missed something in our documentation, so it's good to tell us if you've found something that **should** work._
+
+**Possible solution 3**: Check the transpiled C++ in the `modules/mymodule/scripts/build` directory. If you understand C++, this may explain why what you're trying to do won't work.
+
+### Assets problems
+
+#### Textures not showing in-game
+
+**Problem**: Textures in `assets` are not visible in the game.
+
+**Possible solution 1**: Convert your textures using the `assets blp` command, then run `build data` again.  
+_Explanation: WoW doesn't use png files, so you need to convert them to blp first for them to work._
+
+**Possible solution 2**: If you're replacing existing textures, double-check the path name against the blizzard path using something like [mpqeditor](http://www.zezula.net/en/mpq/download.html).  
+_Explanation: This is the issue 99% of the time where solution 1 doesn't apply._
+
+**Possible solution 3**: Double-check the MPQ folder in your client to verify the texture has been successfully moved after a build.  
+_Explanation: Very rarely asset files may fail to copy to the client directory. If you find this is the case, please report it to us._

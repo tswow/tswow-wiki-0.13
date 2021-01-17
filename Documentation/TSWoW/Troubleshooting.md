@@ -74,3 +74,16 @@ _Explanation: This often happens if you create a custom class, then delete it or
 
 **Unfixable**: You have defined over 100 class/race pairs, including the ones from the base game.  
 _Explanation: TODO but tldr it seems to be a programming error when defining 100+ rows in CharBaseInfo.dbc AND at least one row references a custom class._
+
+### Update Issues
+**Problem**: Errors after updating tswow from an `update.7z`
+
+**Possible solution 1**: Manually apply the update. Delete the `bin` directory in your tswow installation folder, and then manually extract the `bin` directory from the 7z file you downloaded. 
+_Explanation: Sometimes, updating fails or is interrupted._
+
+**Possible solution 2**: Run `clean datascripts` from inside tswow.
+_Explanation: Updating tswow may rarely break some data script dependencies, running this script attempts to fix all those._
+
+**Warning: Applying this solution WILL wipe clean ALL your tswow databases**
+**Possible solution 3**: Delete/backup `coredata/mysql` and `coredata/mysql_plain`, then restart tswow. 
+_Explanation: When tswow updates, it will rebuild the world database. If this process is interrupted or fails, you might end up with a corrupt world database._

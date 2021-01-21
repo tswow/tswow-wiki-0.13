@@ -63,3 +63,7 @@ The source, build and install directories should all be **separate**. Do not pla
     - To build only TrinityCore, you can use the command `build trinitycore-release`
 
 8. You should now be able to start TSWoW from the new installation folder.
+
+## Known Issues
+
+- `build release` doesn't work with a normal `install` directory. To build a release, you must run turn off the build script, change the install directory to an empty/non-existing directory in `source/build.yaml` and start the build script again.

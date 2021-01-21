@@ -41,6 +41,8 @@ The source, build and install directories should all be **separate**. Do not pla
     - It's not recommended to try and override this, we do it automatically because the versions matter a lot.
 
 5. Install dependencies (TSWoW expects these to be in the `build` directory, so you need most even if you normally compile TrinityCore
+    - [Install a TDB](https://github.com/TrinityCore/TrinityCore/releases)
+        - Place the 7z (don't extract it) at `build/tdb.7z`
     - [Install Boost](https://sourceforge.net/projects/boost/files/boost-binaries/1.72.0/boost_1_72_0-msvc-14.2-64.exe/download)
         - The typical path to install this to is `C:\local\boost_1_72_0`
         - Open an elevated command prompt and type this command: `"setx BOOST_ROOT C:/local/boost_1_72_0" /M` (replacing the path with your boost path)

@@ -52,6 +52,12 @@ Possible Solution 1: Delete `coredata/maps`, `coredata/vmaps`, `coredata/mmaps` 
 _Explanation: Usually, this means the tswow process was stopped while it was extracting client files. 
 TSWoW will only check if those directories exist at all to decide if it should generate them, and not if they were fully populated._
 
+### Worldserver crashes at "Loading Player Create Level HP/Mana Data..."
+Problem: The worldserver crashes, and the last message in `coredata/Server.log` is that it's "Loading Player Create Level HP/Mana data..."
+Possible Solution 1: Run `build data`
+_Explanation: This sometimes happens after updating TSWoW and you have created any custom classes._
+
+
 ### MySQL problems
 **Problem**: MySQL errors during startup
 

@@ -61,6 +61,49 @@ export function Main(events: TSEventHandlers) {
 }
 ```
 
+## Persistent Data
+
+We can create persistent data by combining data tags with ORM character tables:
+
+```ts
+const STATS_FIELD = "extended_stats";
+
+@CharactersTable
+class PlayerStatsExtended extends DBTable {
+    constructor(player: uint32) {
+        super();
+        this.player = player;
+    }
+    
+    @PrimaryKey
+    player: uint32 = 0;
+
+    @Field
+    messageCount: int32 = 0;
+}
+
+export function Main(events: TSEventHandlers) {
+    events.Player.OnLogin((player,first)=>{
+        const guid = player.GetGUIDLow()
+        const rows = LoadRows(PlayerStatsExtended,`player = ${guid}`)
+        const stats = rows.length > 0 ? rows.get(0) : new PlayerStatsExtended(guid);
+        player.GetData().SetObject(ModID(),STATS_FIELD,stats);
+    });
+
+    events.Player.OnSay((p,t,l,msg)=>{
+        const messageCount = p.GetData().GetObject<PlayerStatsExtended>
+            (ModID(),STATS_FIELD).messageCount++
+        p.SendBroadcastMessage("Your message count is "+messageCount);
+    });
+
+    events.Player.OnSave((player)=>{
+        player.GetData().GetObject<PlayerStatsExtended>
+            (ModID(),STATS_FIELD).save();
+    });
+}
+```
+
+
 # Collisions
 
 **Note: Collisions change between v0.9 and v0.9.1. The old version had an extra "distance" argument (fourth) in the collision callback.**

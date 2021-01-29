@@ -4,7 +4,7 @@ TSWoW allows us to attach data tags, timers and collision checkers to `WorldObje
 
 ## ModID()
 
-The following sections all use function calls where the first argument is `ModID()`. You should **not** change this, if this code shows the first argument as a call to ModID, it should **always** be a call to ModID. Not following this will crash your worldserver if you reload scripts.
+The following sections all use function calls where the first argument is `ModID()`. You should **not** change this, if this code shows the first argument as a call to ModID, it should **always** be a call to ModID. Not following this will crash your worldserver if you reload scripts. All of the following constructs are destroyed if the entity that owns it is unloaded from memory.
 
 ## Tasks
 

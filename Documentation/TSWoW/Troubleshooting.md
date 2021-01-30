@@ -1,19 +1,26 @@
 # Troubleshooting
 
-The purpose of this document is to be an extensive resource for troubleshooting common issues with TSWoW. 
+The purpose of this document is to be an extensive resource for troubleshooting common issues with TSWoW. Try `ctrl+f` on this page for any problems you may have.
 
 ## Most Common Problems
 
 This section lists the most common problems with TSWoW that almost everyone gets sometimes. 
 
-- A lot of problems with TSWoW are related to **file handles** and the VSCodium/VSCode editor. These are almost always fixed by either:
-  - Re-running a build script if that caused it.
-  - Restart the entire VSCode/VSCodium process. 
-  - In extreme circumstances, restarting your computer or manually closing broken node.exe processes may be necessary. In 3 months of heavy development, this happened exactly once.
-  
-- Scripts and/or the editor can't import `tswow-stdlib`
-  - In the editor: Press F1 -> Type in and select `Restart TS Sserver` 
-  - When building scripts: Use the tswow command `clean scripts`.
+### Broken file handles
+**Problem**: EPERM errors, anything just not working for unknown reasons  
+**Possible solution 1**: If you just ran a build script, run it again at least once.  
+**Possible solution 2**: Restart the entire VSCode/VSCodium process.  
+**Possible solution 3**: In extreme circumstances, restarting your computer or manually closing broken node.exe processes may be necessary. In 3 months of heavy development,   this happened exactly once.  
+
+### Cannot import tswow-stdlib
+**Problem**: The editor or your scripts complain that they cannot find `tswow-stdlib`  
+**Possible solution 1**: If the problem is in the editor, press F1, then type in and select `Restart TS Server`  
+**Possible solution 2**: If the problem is when building scripts (or the above did not work): Run the tswow command `clean scripts`.  
+
+### "Your database structure is not up to date"
+**Problem**: Your worldserver crashes with "your database structure is not up to date"  
+**Possible solution 1**: If using the ORM system: Double check the name of parameters to your `LoadRows` function, they have to exactly match the fields in your ORM class.  
+**Possible solution 2**: Try rebuilding your databases, or manually remove `coredata/mysql` and `coredata/mysql_plain`.  
 
 ## Cleaning and Reinstalling
 

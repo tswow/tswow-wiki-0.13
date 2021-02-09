@@ -6,6 +6,11 @@ and the differences from normal addon development.
 
 _Please note: The sources TSWoW has used to generate type definitions come from very poorly structured web pages and may not be entirely accurate. An exact specification of the Blizzard API for 3.3.5 is very hard to come by, so we appreciate reports on any inaccuracies._
 
+## Important Notes
+
+- There is no way to force players to use your addons, it's just as easy to disable in the Addon manager on the Character Selection screen as any other addon.
+- While TSWoW itself is released under a GPLv3 license, all our client libraries are exceptions to this and instead released under MIT, meaning servers have no obligation to keep their addons open source. TSWoW is server-friendly, even with addons.
+
 ## Files
 
 A single module can contain at most a single addon, which is located at `modulename/addons`. Users can generate this directory using the command `addon create modulename`.

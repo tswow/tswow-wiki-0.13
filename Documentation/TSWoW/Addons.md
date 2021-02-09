@@ -43,6 +43,7 @@ For any other file to be executed, it must be imported by this file or any file 
 The type declarations allow users to write code that's usually very similar to the way normal lua addon development works:
 
 ```ts
+// The Blizzard API is available globally without importing anything
 let myframe = CreateFrame('Frame');
 myframe.SetSize(10,10);
 myframe.Show();

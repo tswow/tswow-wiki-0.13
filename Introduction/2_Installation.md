@@ -22,6 +22,8 @@ You will need to install the following programs:
 
 - [Node.js (version 12.19 or higher)](https://nodejs.org/dist/v14.15.1/node-v14.15.1-x64.msi)
 
+- [Python 2.7](https://www.python.org/ftp/python/2.7.2/python-2.7.2.amd64.msi) (or any of 3.5, 3.6, 3.7, 3.8)
+
 - **All** the following versions of VCRedist:
     - [Latest x86](https://aka.ms/vs/16/release/vc_redist.x86.exe)
     - [Latest x64](https://aka.ms/vs/16/release/vc_redist.x64.exe)

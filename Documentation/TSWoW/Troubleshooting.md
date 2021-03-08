@@ -130,6 +130,12 @@ _Explanation: We may have missed something in our documentation, so it's good to
 
 ### Assets problems
 
+### Addon problems
+**Problem**: Addon events not working, or addon messages not received by the client
+
+**Possible solution 1:** Make sure you create the frame with a **unique** name: `const frame = CreateFrame('Frame','SomeGloballyUniqueName');`.
+
+
 #### Textures not showing in-game
 
 **Problem**: Textures in `assets` are not visible in the game.

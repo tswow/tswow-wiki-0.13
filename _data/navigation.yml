@@ -3,7 +3,7 @@ main:
   - title: "Home"
     url: /home
   - title: "Getting Started"
-    url: /introduction/1-modding-introduction
+    url: /introduction/01-modding-introduction
   - title: "Documentation"
     url: /documentation/
   - title: "Examples"

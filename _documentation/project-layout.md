@@ -1,4 +1,6 @@
-# Project Layout
+---
+title: Project Layout
+---
 
 This document should outline the various sub-projects of TSWoW and their components.
 

@@ -1,4 +1,6 @@
-# Dangers
+---
+title: Dangers
+---
 
 This file should attempt to list all the dangerous things users and developers should avoid before they happen. 
 See the [troubleshooting document](Troubleshooting.md) for how to fix errors once they appear.

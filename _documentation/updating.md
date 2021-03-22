@@ -1,4 +1,6 @@
-# Updating
+---
+title: Updating
+---
 
 There are two things you may want to update in TSWoW, modules and TSWoW itself. This guide will outline how to do both.
 

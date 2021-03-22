@@ -1,4 +1,6 @@
-# Live Scripts
+---
+title: Live Scripts
+---
 
 _Note: As TSWoW develops, some caveats listed on this page might disappear._
 

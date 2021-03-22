@@ -1,4 +1,6 @@
-# Commands
+---
+title: Commands
+---
 
 There are types of commands in TSWoW: **ingame commands**, **terminal commands** and **startup commands**.
 

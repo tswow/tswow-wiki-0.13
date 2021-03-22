@@ -1,4 +1,6 @@
-# Compiling
+---
+title: Compiling
+---
 
 **TODO: Not finished**
 

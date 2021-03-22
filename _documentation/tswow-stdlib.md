@@ -1,4 +1,6 @@
-# Standard Library
+---
+title: tswow-stdlib
+---
 
 [Project Root](https://github.com/tswow/tswow-stdlib)
 

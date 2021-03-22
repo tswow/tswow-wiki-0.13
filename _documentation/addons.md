@@ -1,4 +1,6 @@
-# Addons
+---
+title: Addons
+---
 
 TSWoW supports creating addons using the TypeScript programming language, and to write special message classes that allow high-level communication between addons and Live scripts.
 When an addon is built, the code is transpiled into lua and automatically installed at the configured client path. The purpose of this document is to explain how addon development works

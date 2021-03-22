@@ -1,4 +1,6 @@
-# Troubleshooting
+---
+title: Troubleshooting
+---
 
 The purpose of this document is to be an extensive resource for troubleshooting common issues with TSWoW. Try `ctrl+f` on this page for any problems you may have.
 

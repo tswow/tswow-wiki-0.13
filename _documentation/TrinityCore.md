@@ -1,4 +1,6 @@
-# TrinityCore / TSCore
+---
+title: TrinityCore
+---
 
 [Project Root](https://github.com/tswow/TrinityCore/tree/tswow)
 

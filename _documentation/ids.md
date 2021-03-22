@@ -1,4 +1,6 @@
-# ID Generation
+---
+title: Id Generation
+---
 
 In World of Warcraft, most static and dynamic entities have domain-local numeric IDs, meaning ID numbers can collide between tables but must be unique within them.
 

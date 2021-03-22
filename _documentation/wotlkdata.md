@@ -1,4 +1,6 @@
-# WotlkData
+---
+title: wotlkdata 
+---
 
 [Project Root](https://github.com/tswow/tswow/tree/master/tswow-scripts/wotlkdata)
 

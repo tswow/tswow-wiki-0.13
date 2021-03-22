@@ -1,4 +1,6 @@
-# Cell-oriented Programming
+---
+title: Cell-oriented Programming
+---
 
 One the most fundamental features of the WotlkData modding framework are the modules that enable what we call "Cell-oriented programming". 
 

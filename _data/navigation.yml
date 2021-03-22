@@ -13,9 +13,37 @@ main:
 
 # The left navigation panel in the introductions
 introduction:
-  - title: "Introduction"
+  - title: "Getting Started"
     children:
-    - title: "Overview"
-      url: /introduction/01-overview/
-    - title: "Windows Installation"
-      url: /introduction/02-windows-installation/
+    - title: "1. Introduction"
+      url: /introduction/01-modding-introduction/
+    - title: "2. Installation"
+      url: /introduction/02-installation/
+    - title: "3. Your First Module"
+      url: /introduction/03-your-first-module/
+  - title: "Data Scripts"
+    children:
+    - title: "4. Custom Class"
+      url: /introduction/04-custom-class/
+    - title: "5. Custom Spell"
+      url: /introduction/05-custom-spell/
+    - title: "6. Custom Talents"
+      url: /introduction/06-custom-talents/
+    - title: "7. Custom Trainer"
+      url: /introduction/07-custom-trainer/
+    - title: "8. Gossip"
+      url: /introduction/08-gossip/
+    - title: "9. Enemy Creatures"
+      url: /introduction/09-enemy-creatures/
+    - title: "10. Smart Scripts"
+      url: /introduction/10-smart-scripts/
+    - title: "11. Quests"
+      url: /introduction/11-quests/
+    - title: "12. Items"
+      url: /introduction/12-items/
+  - title: "Live Scripting"
+    children:
+    - title: "13. Live Scripting"
+      url: /introduction/13-live-scripting/
+    - title: "14. Spells and Creatures"
+      url: /introduction/14-spell-creature/

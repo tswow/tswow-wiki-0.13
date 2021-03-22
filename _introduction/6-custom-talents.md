@@ -18,7 +18,9 @@ NECROMANCY.Name.enGB.set(`Necromancy`);
 
 If we rebuild our scripts with the `build data` command and level up a necromancer to level 10 (`.levelup 9`), we can see that we have an empty talent tree called "Necromancy".
 
-![](necromancy-talents.png)
+{:refdef: style="text-align: center;"}
+![](../necromancy-talents.png)
+{:refdef}
 
 ## Talents
 As you might remember from the last tutorial, we were able to find a spell ID by looking directly into our talent tab. The simple reason for that is that there is no difference between a talent and a spell. Talents are just spells that have been added to a talent tree. If a talent slot has five ranks in it, that just means there were five separate spells added to that slot. The spells added to a slot does **not** have to be ranks of the same spell, as we will soon see.
@@ -37,17 +39,23 @@ NECROMANCY.addTalent('tswow-introduction','silly-talent',0,0,[133,686,6603,1752]
 
 Rebuild the code using `build data`, level up a necromancer to 15 and look at your talent tree. You should see fire bolt as the talent icon.
 
-![](fireball-talent.png)
+{:refdef: style="text-align: center;"}
+![](../fireball-talent.png)
+{:refdef}
 
 If we click it once, it will state that we have now learnt Fireball and that the icon stays the same. If we click it again to learn the second rank something happens, however. 
 
-![](shadowbolt-talent.png)
+{:refdef: style="text-align: center;"}
+![](../shadowbolt-talent.png)
+{:refdef}
 
 The icon has changed to shadow bolt, and if we open our spell book we can see that we have unlearnt fireball and instead learnt shadow bolt. If we click it again it will likewise change to auto attack, and we have unlearnt shadow bolt.
 
 Clicking the talent one last time changes the icon to Sinister strike, and if we open our spell book we can see that we have **unlearnt auto-attack**, despite that we already knew it from before. 
 
-![](no-autoattack.png)
+{:refdef: style="text-align: center;"}
+![](../no-autoattack.png)
+{:refdef}
 
 ## Creating a real custom Talent
 
@@ -57,7 +65,9 @@ We have shown that talents are just normal spells and we could really stick just
 
 Our strategy will be the same as when we made other custom spells: find a spell that resembles what we're trying to create. Mages has a talent that reduces the cast-time of their Fireball, so perhaps we can somehow repurpose that to affect Summon Abomination instead?
 
-![](imp-fireball.png)
+{:refdef: style="text-align: center;"}
+![](../imp-fireball.png)
+{:refdef}
 
 However, we must also figure out how to actually change the spell to affect our summoning spell instead of fireball. We know that this spell affects multiple other spells since there are multiple fireballs, but that it doesn't just affect every single spell in the game. To keep this section focused on talents, we will simply say that the spell effect that does the casttime reduction happens to use what is called a ClassMask. This classmask must match with the classmask of the spell we are trying to modify, and TSWoW has a fairly simple way of achieving this.
 
@@ -126,5 +136,3 @@ IMP_ABOMINATION.Effects.get(0).BasePoints.set(-9000)
 
 NECROMANCY.addTalent('tswow-introduction','imp-abomination-talent',0,1,[IMP_ABOMINATION.ID])
 ```
-
-In the next tutorial, we will [create a trainer for our Necromancer](7_CustomTrainer.md)

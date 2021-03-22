@@ -14,7 +14,9 @@ We will create:
 
 Before we start, you probably want to install an addon to display ingame ItemIDs from [here](https://www.curseforge.com/wow/addons/project-3985/download/371119). It's for 3.2.0, but if you enable loading out of date addons it works fine. 
 
-![](shortsword.png)
+{:refdef: style="text-align: center;"}
+![](../shortsword.png)
+{:refdef}
 
 We can use the following code to create a new sword based on the one above. There isn't very much to explain here, simply write the code yourself and check out what the autocompletion API offers. Most fields should be self-explanatory at this point.
 
@@ -35,7 +37,9 @@ RUBBER_SWORD.Delay.set(10);
 
 We can find our item by searching for its english name with the ingame command `.lookup item rubber`. We can then give ourselves this item with the command `.additem itemid`.
 
-![](rubber-sword.png)
+{:refdef: style="text-align: center;"}
+![](../rubber-sword.png)
+{:refdef}
 
 Notice how the delay of 10ms is displayed as a speed of 0.01. 10 milliseconds is 0.01 seconds.
 
@@ -43,7 +47,9 @@ Notice how the delay of 10ms is displayed as a speed of 0.01. 10 milliseconds is
 
 We can easily replace the items model by copying its visual information, similar to how we can copy _spell_ visual information. To show there is very little magical about item visuals, we will use the visual from a completely different held item: the Ancient Amani Longbow.
 
-![](amani-longbow.png)
+{:refdef: style="text-align: center;"}
+![](../amani-longbow.png)
+{:refdef}
 
 From here, it's just two lines of code to copy the visual information:
 
@@ -62,7 +68,9 @@ Drop quests aren't created much differently from a kill quest, but requires more
 
 Eagan Peltskinner has the first drop quest in the human starting area, [Wolves Across the Border], so we can start it and find that the dropped item is called "Diseased Wolf Pelt". If we use the ingame command `.lookup item diseased wolf` we only get a single result showing us the item id this item uses:
 
-![](diseased-wolf-pelt.png)
+{:refdef: style="text-align: center;"}
+![](../diseased-wolf-pelt.png)
+{:refdef}
 
 To create a clone of this item, we can use the following code:
 

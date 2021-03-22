@@ -36,7 +36,9 @@ You will need to install the following programs:
 
     - When installing Visual Studio, you will be asked to choose what packages to install in a window similar to the following. The **only** package that is necessary for building Live Scripts is `Desktop development with C++`, as shown below. The only toggle you need to select is in the red square, everything else can use default settings.
 
-![](vs-installer.png)
+{:refdef: style="text-align: center;"}
+![](../vs-installer.png)
+{:refdef}
 
 ## Installation
 
@@ -73,5 +75,3 @@ You will need to install the following programs:
 6. To create a gm account, type the following commands (**remember the ws prefix**) into the terminal:
     - `ws account create myuser mypassword`
     - `ws account set gmlevel myuser 3 -1`
-
-7. Installation complete! You can now move on and [create your first module](3_YourFirstModule.md)

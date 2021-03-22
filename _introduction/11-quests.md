@@ -10,7 +10,9 @@ Kill quests are perhaps the simplest quests in the game: Slay a specific type of
 
 For the questgiver, I've chosen this NPC standing in the Northshire graveyard besides the Warlock trainer:
 
-![](questgiver.png)
+{:refdef: style="text-align: center;"}
+![](../questgiver.png)
+{:refdef}
 
 For the creatures, we can just use the zombies we created in the last tutorial. To create our quest, we can use the following code in a new file `Quests.ts`:
 
@@ -213,5 +215,3 @@ const finalSay = endWalk.then()
 finalSay.Action.setTalk({enGB:'Well... you come up with what happens from here!'},10,0)
 
 ```
-
-In the [next tutorial](12_Items.md), we will learn how to create items and loot tables.

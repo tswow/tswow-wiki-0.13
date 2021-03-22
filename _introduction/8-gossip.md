@@ -18,7 +18,9 @@ A gossip menu has a few different parts, and we will briefly explain those here.
 
 **Option Action**: An option action is what a gossip option does to the menu, such as opening a completely new gossip page, open a trainer window, vendor window, bank and so on. Some actions have separate menus associated with them, while others do not.
 
-![](gossip-parts.png)
+{:refdef: style="text-align: center;"}
+![](../gossip-parts.png)
+{:refdef}
 
 ## Creating your first Gossip
 
@@ -55,7 +57,9 @@ MAIN_GOSSIP.Text.add({enGB:'Hi world from Gossip window'});
 
 This is all we need to create a basic gossip window. Rebuild and check your creature again, this time you should be able to interact and you should see any the above texts in your gossip window. If you click the NPC enough times you should see both messages appear randomly.
 
-![](gossip-simple.png)
+{:refdef: style="text-align: center;"}
+![](../gossip-simple.png)
+{:refdef}
 
 ### Gossip Options
 
@@ -69,7 +73,9 @@ BANK_OPTION.Icon.set('MONEY_BAG')
 BANK_OPTION.Text.set({enGB:'Please open my bank for me'});
 ```
 
-![](gossip-bank.png)
+{:refdef: style="text-align: center;"}
+![](../gossip-bank.png)
+{:refdef}
 
 When you rebuild and talk to the NPC, you will notice that the bank opens automatically. This is because, in WotLK, gossips will automatically open many common options automatically if it's the only option available. 
 
@@ -85,7 +91,9 @@ INNKEEPER_OPTION.Text.set({enGB:'Can I stay here?'});
 
 You should now see that you get both the gossip options you created when you click on the NPC. You should also be able to verify that both options work as intended, and you can both access your bank and set this location as an inn.
 
-![](gossip-innkeeper.png)
+{:refdef: style="text-align: center;"}
+![](../gossip-innkeeper.png)
+{:refdef}
 
 ## Creating Sub-menus
 
@@ -103,9 +111,13 @@ SUBMENU.Text.add({enGB:'Hello world from sub-menu'});
 SUBMENU_OPTION.Text.set({enGB: 'Go to sub-menu'})
 ```
 
-![](gossip-submenu-option.png)
+{:refdef: style="text-align: center;"}
+![](../gossip-submenu-option.png)
+{:refdef}
 
-![](gossip-submenu.png)
+{:refdef: style="text-align: center;"}
+![](../gossip-submenu.png)
+{:refdef}
 
 Now, when you click the third option in your main gossip window, you should see that it leads you to the sub-menu. Now, let's add a link back to the main window:
 
@@ -117,7 +129,9 @@ BACK_LINK.Action.setGossipLinkID(MAIN_GOSSIP.ID)
 
 You should now see that your sub-menu links back to the main menu, and you can toggle between them indefinitely.
 
-![](gossip-link.png)
+{:refdef: style="text-align: center;"}
+![](../gossip-link.png)
+{:refdef}
 
 ## Creating Vendors
 
@@ -139,9 +153,13 @@ VENDOR.addItem(35);
 
 You should now be able to open your vendor and purchase a Bent staff for 95 copper. 
 
-![](vendor-option.png)
+{:refdef: style="text-align: center;"}
+![](../vendor-option.png)
+{:refdef}
 
-![](vendor-screen.png)
+{:refdef: style="text-align: center;"}
+![](../vendor-screen.png)
+{:refdef}
 
 Price informations is stored in items themselves, and we will learn more about creating items in a future tutorial. However, if you want to, you can add the following code to manipulate the price of that particular item:
 
@@ -163,7 +181,9 @@ const VENDOR_2 = VENDOR_2_OPTION.Action.setMultivendor()
 VENDOR_2.addItem(25)
 ```
 
-![](gossip-multivendor-option.png)
+{:refdef: style="text-align: center;"}
+![](../gossip-multivendor-option.png)
+{:refdef}
 
 ## Same Gossip for Multiple Creatures
 
@@ -304,5 +324,3 @@ for(const creature of creatures) {
 ```
 
 Trainers windows work very similar to vendors, and you can also have multiple. Your challenge for this section is to add one or multiple class trainers to this gossip system.
-
-In the next tutorial, we will start to look at [enemy creatures](9_EnemyCreatures.md).

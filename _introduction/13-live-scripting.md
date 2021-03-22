@@ -35,4 +35,4 @@ export function Main(events: TSEventHandlers) {
 }
 ```
 
-To rebuild a live script, all we have to do is use the command `build scripts`, optionally followed by the name of a specific module we want to rebuild. As opposed to data scripts, we do not need to restart the server when we do, and we can even keep the client loaded. Try typing a message into the ingame chat, and you should receive the yellow message "Hello world!". In the [next tutorial](14_SpellCreature.md), we will look at how to create scripts for specific spells and creatures.
+To rebuild a live script, all we have to do is use the command `build scripts`, optionally followed by the name of a specific module we want to rebuild. As opposed to data scripts, we do not need to restart the server when we do, and we can even keep the client loaded. Try typing a message into the ingame chat, and you should receive the yellow message "Hello world!".

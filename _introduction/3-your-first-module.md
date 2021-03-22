@@ -12,7 +12,9 @@ Start up your VSCodium editor in the TSWoW directory and start TSWoW from the te
 
 Once TSWoW has started, type the command `module create mymodule`. This will create a new directory called _mymodule_ in your modules folder.
 
+{:refdef: style="text-align: center;"}
 ![](newmodule-vscodium.png)
+{:refdef}
 
 ## Building Data Scripts
 
@@ -51,9 +53,13 @@ Built SQL/DBC/MPQ data in 2.27s
 
 You should also notice that TSWoW restarted the client for you in the background. If we enter the character creation screen, we can see that we have indeed changed the name of Warrior to Adventurer. 
 
-![](adventurer-charcreation.png)
+{:refdef: style="text-align: center;"}
+![](../adventurer-charcreation.png)
+{:refdef}
 
-![](adventurer-wholist.png)
+{:refdef: style="text-align: center;"}
+![](../adventurer-wholist.png)
+{:refdef}
 
 ## Server build
 
@@ -66,8 +72,13 @@ WARRIOR_CLASS.Stats.MeleeAttackPower.set("level*1337");
 
 For this change, it will not be sufficient to just rebuild the client because attack power is a serverside calculation. This is the case for any kind of change that is not just aesthetic. To rebuild both the client and server, you use the `build data` command. You should notice that both the client and server will restart. Log in as a warrior again and check your attack power: 
 
-![](warrior-ap-level1.png)
-![](warrior-ap-level2.png)
+{:refdef: style="text-align: center;"}
+![](../warrior-ap-level1.png)
+{:refdef}
+
+{:refdef: style="text-align: center;"}
+![](../warrior-ap-level2.png)
+{:refdef}
 
 ## Generated IDs and String Identifiers
 
@@ -114,4 +125,4 @@ To give yourself an item in-game, you can use the command `.additem id`, where i
 
 ## Conclusion
 
-In this tutorial, you have created a basic module for TSWoW and made some changes to existing game data. In the next tutorials, we will delve deeper into TSWoW data scripting by creating [our own custom class](4_CustomClass.md).
+In this tutorial, you have created a basic module for TSWoW and made some changes to existing game data.

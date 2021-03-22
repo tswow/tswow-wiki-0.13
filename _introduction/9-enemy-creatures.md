@@ -39,7 +39,9 @@ for(let i=0;i<positions.length;++i) {
 
 Storing the positions in an array makes it easier to copypaste directly from the positions.txt file, and leads to slightly less code to write. To get these positions, I just ran around the area behind Northshire abbey and used the `.at` ingame command at random locations. If we log in, we should now see a bunch of zombies standing around.
 
-![](zombies.png)
+{:refdef: style="text-align: center;"}
+![](../zombies.png)
+{:refdef}
 
 ## Random Movement
 
@@ -81,7 +83,9 @@ ZOMBIE.Stats.ManaMod.set(0.25)
 
 If we enter the world, we should see that zombies now have mana and don't do very much melee damage at all.
 
-![](zombie-mage.png)
+{:refdef: style="text-align: center;"}
+![](../zombie-mage.png)
+{:refdef}
 
 ## Making our mob Aggressive
 
@@ -91,7 +95,9 @@ We will use the same old strategy we always use: we find a unit that already is 
 
 I just went outside of Northshire, took the first hostile mob I could find and used the ingame `.id` command to print its ID: 
 
-![](hostile-mob.png)
+{:refdef: style="text-align: center;"}
+![](../hostile-mob.png)
+{:refdef}
 
 Now, we can load this creature into TSWoW and copy its faction to our zombie:
 
@@ -105,7 +111,9 @@ ZOMBIE.FactionTemplate.set(DEFIAS_CUTPURSE.FactionTemplate.get())
 
 Rebuild, and should now see that the zombies are indeed hostile to players. (_If you have GM mode on, you need to turn it off with `.gm off` to for creatures to be hostile at all_)
 
-![](hostile.png)
+{:refdef: style="text-align: center;"}
+![](../hostile.png)
+{:refdef}
 
 ## Summary
 
@@ -170,5 +178,3 @@ const DEFIAS_CUTPURSE = std.CreatureTemplates.load(94)
 // Future tutorials will further explain the meaning of this name.
 ZOMBIE.FactionTemplate.set(DEFIAS_CUTPURSE.FactionTemplate.get())
 ```
-
-In the next tutorial, we will learn how to script basic creature behaviors inside data scripts using [smart scripting](10_SmartScripts.md).

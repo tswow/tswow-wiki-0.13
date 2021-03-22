@@ -22,7 +22,9 @@ If an event fires and the correct conditions are met, the script can cause an **
 
 A smart script has a single event, zero or more conditions and a single action. However, to make a single event cause multiple actions we can **chain together** multiple smart scripts, where one smart script is the event causing the next. TSWoW makes this chaining very simple, as we will see at the end of this tutorial.
 
-![](smart-script.png)
+{:refdef: style="text-align: center;"}
+![](../smart-script.png)
+{:refdef}
 
 _An example of smart script chaining, the "Gain aggro" event fires the first smart script, which itself fires the second._
 
@@ -36,7 +38,9 @@ Creatures do not "learn" spells like players do, as they can just cast any spell
 
 First, let's find a boar and grab its ID:
 
-![](boar-id.png)
+{:refdef: style="text-align: center;"}
+![](../boar-id.png)
+{:refdef}
 
 Now, we create a new file `EnemyScripts.ts` and add the following line of code:
 
@@ -70,7 +74,9 @@ script.Action.setCast(3385,0,0)
 
 An indeed, if we rebuild and enter our zombie glade as a warrior, we can immediately see multiple zombies charging at us:
 
-![](zombie-charge.png)
+{:refdef: style="text-align: center;"}
+![](../zombie-charge.png)
+{:refdef}
 
 However, this raises a few questions. It looks like the event we just used does some kind of range check, but the arguments we gave it says that the **minimum** range to trigger the event is 0. Furthermore, the target of the spell is "self" and there doesn't seem to be anything mentioning that we have to be in aggro for it to work.
 
@@ -78,7 +84,9 @@ For situations like these, we might want to look at the [official TrinityCore do
 
 Indeed, if we try to `ctrl+f` the page for "range", we find a row in a table that looks like it describes our event:
 
-![](trinitycore-docs.png)
+{:refdef: style="text-align: center;"}
+![](../trinitycore-docs.png)
+{:refdef}
 
 It looks like the event has an implicit concept of a "target", and since creatures can only have targets in combat, that probably explains why this event can only fire when the creature enters combat. 
 
@@ -127,5 +135,3 @@ In this tutorial, we have learnt:
 - How to create a basic smart script
 - How to attach conditions to a smart script
 - How to chain multiple smart scripts together
-
-[In the next tutorial](11_Quests.md), we will learn about Quests, and how we can use smart scripting for scripted quests.

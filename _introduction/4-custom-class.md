@@ -46,7 +46,9 @@ NECROMANCER_CLASS.Name.enGB.set('Necromancer');
 
 This creates a new class with the name "Necromancer" based off the Mage class. Run the `build data` command and enter the character creation screen. You should see your new class added.
 
-![](necromancer-charcreate.png)
+{:refdef: style="text-align: center;"}
+![](../necromancer-charcreate.png)
+{:refdef}
 
 ## UI Settings
 
@@ -64,11 +66,17 @@ NECROMANCER_CLASS.UI.Info.add('- Uses mana as a resource')
 NECROMANCER_CLASS.UI.Description.set("Necromancers raise and control the undead.")
 ```
 
-![](necromancer-description.png)
+{:refdef: style="text-align: center;"}
+![](../necromancer-description.png)
+<br/><br/>
 _Class descriptions added_
+{:refdef}
 
-![](necromancer-classcolor.png)
+{:refdef: style="text-align: center;"}
+![](../necromancer-classcolor.png)
+<br/><br/>
 _Class color modified_
+{:refdef}
 
 ## Stats
 
@@ -154,5 +162,3 @@ export const DEATH_SKILL = std.SkillLines
     .createClass('tswow-introduction','death-skill',NECROMANCER_CLASS.ID)
 DEATH_SKILL.Name.enGB.set(`Death`)
 ```
-
-In the next tutorial, we will [create custom spells for our new class](5_CustomSpells.md).

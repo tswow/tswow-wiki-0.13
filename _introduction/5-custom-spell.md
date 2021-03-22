@@ -20,9 +20,11 @@ This section will explain the basic components of a spell in World of Warcraft. 
 ### Spell
 The first building block of all spells is the spell itself. A spell is the "thing" that characters and creatures can learn and are kept in their spellbooks (but sometimes they are invisible!). Spells have a name and a numerical ID, as you can see in the screenshot below.
 
-![](spellbook.png)
-
+{:refdef: style="text-align: center;"}
+![](../spellbook.png)
+<br/><br/>
 _Spells in a spellbook. Even Auto Attack is a spell, and has Spell ID 6603._
+{:refdef}
 
 Not all spells are visible in the spellbook, and not all spells can be cast. Different **ranks** of a spell are actually just separate spells with "Rank x" as their rank names and a serverside relation that states they are ranks of another spell.
 
@@ -39,13 +41,17 @@ Spells have very many properties related with them, and learning about all of th
 
 To actually do something, a spell can have up to three **spell effects**. Each effect has additional individual properties, such as the _Effect Type_, damage/points applied and what type of target it has. Even though a spell can have only one type of target, its spell effects can have completely separate _implicit_ targets. For example, a spell with an AoE target can have an effect that targets the **caster** instead.
 
-![](effects.png)
+{:refdef: style="text-align: center;"}
+![](../effects.png)
+{:refdef}
 
 ### Spell Visual
 
 To decide how a spell looks, they have a single "Visual" component. This component is itself split up into what's called "Spell Kits". A Spell kit decides what type of models, sounds or effects should be spawned on different parts of a spell, such as the caster, target, target ground or spell missile. There are a total of **12** different spell kits, but not all spells have all kits attached. For example, a non-channeling spell wouldn't have any use for the `Channel` visual kit.
 
-![](visualkits.png)
+{:refdef: style="text-align: center;"}
+![](../visualkits.png)
+{:refdef}
 
 
 ### Auras/Buffs
@@ -54,8 +60,11 @@ The technical/general name for buffs, debuff and auras in World of Warcraft is "
 
 All Aura types are pre-programmed and can be attached to units via spell effects. A single aura generally does something very simple, such as "decrease armor by _x_" or "do _x_ amount of damage every _y_ seconds". If a spell is configured to be visible, all auras that its effects have attached will be shown as a single buff or debuff icon in their respective bars.
 
-![](demonskin.png)  
+{:refdef: style="text-align: center;"}
+![](../demonskin.png)  
+</br></br>
 _Demon Skin applies two auras (increase armor, increase healing done) and is shown as a single aura icon. The spell is configured to be positive (buff), to be visible, and have a duration of 30 minutes._
+{:refdef}
 
 ## Death Bolt
 
@@ -64,7 +73,9 @@ Now that we understand the basics of spell programming, we will create our first
 ### Creating the spell
 Before we can do anything else, we will want to figure out the Spell ID of Shadow bolt. For this, we will simply create a new Warlock and check its ID. TSWoW comes bundled with an Addon that displays Spell IDs for us. 
 
-![](shadowbolt.png)
+{:refdef: style="text-align: center;"}
+![](../shadowbolt.png)
+{:refdef}
 
 Shadow bolt has the spell ID 686, and we will use that as our "parent" spell similarly to how we used the mage class as the parent for our necromancer. Create a new file called "DeathBolt.ts" and type out the following code:
 
@@ -82,7 +93,9 @@ DEATH_BOLT.SkillLines.add(DEATH_SKILL.ID)
 
 Build your data scripts with `build data` and enter the game with a necromancer character. To learn this spell, we need to know its spell id. To find this, we will use the ingame command `.lookup spell death bolt`.
 
-![](find-deathbolt.png)
+{:refdef: style="text-align: center;"}
+![](../find-deathbolt.png)
+{:refdef}
 
 It turns out the ID of the new spell is 200000. To learn this spell, we can simply type `.learn 2000000`. Death Bolt should now show up in your spellbook under the Death tab, and if you cast it on a mob you will see that it behaves just like shadow bolt does.
 
@@ -92,7 +105,9 @@ We'd like our spell to look a little more distinct, so let's modify its spell vi
 
 First, we then need to figure out the spell ID of Death Coil. The simplest way is to create a Death Knight character and check it just like we did with Shadow Bolt.
 
-![](death-coil.png)
+{:refdef: style="text-align: center;"}
+![](../death-coil.png)
+{:refdef}
 
 Its spell ID is 47541, which is all we need to steal its models and special effects. Add the following to `DeathBolt.ts`: 
 
@@ -106,7 +121,9 @@ DEATH_BOLT.Visual.Kits.Impact.cloneFrom(DEATH_COIL.Visual.Kits.Impact)
 
 Since we only modified visual information, we can rebuild using `build data client` and should see that we have indeed replaced the missile model and impact kit with that of Death Coil. We can also see that the casting animation and effect is still left from Shadow Bolt. This is because we did not replace or modify the `Cast` kit.
 
-![](death-bolt-visual.png)
+{:refdef: style="text-align: center;"}
+![](../death-bolt-visual.png)
+{:refdef}
 
 ### Applying a DoT effect
 
@@ -114,7 +131,9 @@ Now we want to apply a DoT effect on Death Bolt. Doing this manually seems scary
 
 This spell is not instantly available when we create a warlock character, so to easily get access to it we can level up our character to 5 and learn all trainer spells with the commands `.levelup 5` and `.learn my trainer`. We learn that the spell ID of corruption is 172.
 
-![](corruption.png)
+{:refdef: style="text-align: center;"}
+![](../corruption.png)
+{:refdef}
 
 Now, we can try to add the following code to `DeathBolt.ts` and rebuild using `build data`. 
 
@@ -184,7 +203,9 @@ DEATH_BOLT.Duration.set(12000,0,12000)
 
 Rebuild the script and bingo, that was it! When we cast death bolt we now see a debuff icon showing up on our target, and we can see that it also deals periodic damage!
 
-![](deathbolt-dot.png)
+{:refdef: style="text-align: center;"}
+![](../deathbolt-dot.png)
+{:refdef}
 
 To add a description to the buff Icon, we can (with the help of autocomplete), find that there exists a property called `AuraDescription` on the spell that works just like a normal description. Our final program for the Death Bolt spell becomes: 
 
@@ -241,7 +262,9 @@ Some additional suggestions for what you can try to modify with Death Bolt yours
 
 Our next task is to make a spell to summon an abomination. Like we have now learnt, the first step in creating almost any type of spell is to find the most similar spell and just clone it. Let's use the warlocks summon imp spell, which has ID 688.
 
-![](summon-imp.png)
+{:refdef: style="text-align: center;"}
+![](../summon-imp.png)
+{:refdef}
 
 
 Create a new file called `SummonAbomination.ts` and type the following code:
@@ -256,7 +279,9 @@ SUMMON_ABOMINATION.Name.enGB.set('Summon Abomination');
 
 If we rebuild, learn the new spell and cast it (`.lookup spell summon abomination`, then `.learn` the ID we find), we should see that we successfully summon an imp despite that we're not a warlock. But an imp was not what we wanted to summon, so we need to figure out how to change the creature that is summoned. While our imp is summoned, we can target it and use the `.id` ingame command to learn its creature ID (416): 
 
-![](imp-creature-id.png)
+{:refdef: style="text-align: center;"}
+![](../imp-creature-id.png)
+{:refdef}
 
 Now, we will again do what we did with Death Bolt when we weren't sure what to do: we `objectify()` it and see what we can find. If there is any reference to 416 that's probably something we want to try. Indeed, our first and only spell effect has the following:
 
@@ -294,14 +319,18 @@ SUMMON_ABOMINATION.Effects.get(0).MiscValueA.set(8543);
 
 Ta-da! If we rebuild with `build data` and again try our spell we see that we have successfully summoned an abomination:
 
-![](abomination.png)
+{:refdef: style="text-align: center;"}
+![](../abomination.png)
+{:refdef}
 
 ## Bone Shield
 After all that troubleshooting, I think we need to finish with something simple. To make our necromancer look a bit more like the job, let's give them those bone shields that death knights have. Since death knights use runic power, we will need to change the resource type so it instead uses mana. 
 
 As usual, we create a death knight character to find this spell. Bone Shield is a talent in the unholy tree, but luckily it seems that our SpellID addon can identify the spell id directly from the talent tab. In the next tutorial, we will explain why this is, but for now it is enough that we get the ID.
 
-![](bone-shield.png)
+{:refdef: style="text-align: center;"}
+![](../bone-shield.png)
+{:refdef}
 
 We can create this spell just like we have with the others, but as we start to look through the autocomplete options we might not find anything relating to mana or spell resources. Didn't we just promise no troubleshooting?
 
@@ -315,7 +344,9 @@ export const BONE_SHIELD =
 BONE_SHIELD.Power.setMana(1337);
 ```
 
-![](bone-shield-necromancer.png)
+{:refdef: style="text-align: center;"}
+![](../bone-shield-necromancer.png)
+{:refdef}
 
 Some things for you to try out yourself:
 
@@ -329,5 +360,3 @@ Some things for you to try out yourself:
 ## Conclusion
 
 This has been a long tutorial with a lot of theory and troubleshooting. TSWoW tries its best to make spell creation easier than it used to be, but spells are just fundamentally complicated and it's impossible to make a single API that makes creating every kind of spell easy. Our aim is instead to teach you how to _think_ like a reverse engineer yourself, and to fill this wiki with plenty of code examples if you get stuck.
-
-In the next tutorial, we will [create Talents for our class and spells](6_CustomTalents.md)

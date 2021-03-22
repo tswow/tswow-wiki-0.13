@@ -12,7 +12,9 @@ In World of Warcraft, the things that you as a player can select (which shows a 
 
 The first step of creating a creature is the exact same as when creating a spell: find the thing that most closely resembles what you're trying to create and clone it. We want a type of trainer, so let's use the priest trainer in Northshire Abbey for our necromancer trainer: 
 
-![](creature-id.png)
+{:refdef: style="text-align: center;"}
+![](../creature-id.png)
+{:refdef}
 
 To create a new creature, create a new file `Trainer.ts` and type the following code:
 
@@ -57,7 +59,9 @@ NECROMANCY_TRAINER_HUMAN.Trainer.addSpell(BONE_SHIELD.ID,10,10,NECROMANCY_SKILL.
 
 Opening this trainer as the necromancer class should show that we have successfully added all the spells to it.
 
-![](creature-trainer.png)
+{:refdef: style="text-align: center;"}
+![](../creature-trainer.png)
+{:refdef}
 
 ### Spawning creatures from a script
 
@@ -67,7 +71,9 @@ To add our creature from a script, we need a way to figure out **where** to plac
 
 Find a suitable location for your npc (use `.npc delete` on the old one if you want to re-use their location), make sure your character is facing the way you want the npc to, and then type the ingame command `.at`. You should see output similar to the following:
 
-![](at-command.png)
+{:refdef: style="text-align: center;"}
+![](../at-command.png)
+{:refdef}
 
 Instead of copying this manually, TSWoW has created a special file called `positions.txt` in the installation folder. To easily open it inside VSCodium, press `Ctrl+p` and type "positions.txt", then select the file and open it.
 
@@ -111,5 +117,3 @@ NECROMANCY_TRAINER_HUMAN
 ```
 
 This concludes the first half of our TSWoW introduction, which dealt with classes and spells. The next half will continue to work with Creatures, and will also discuss Items, Quests and Scripting.
-
-The next tutorial will look at [Gossip Systems](8_Gossip.md).

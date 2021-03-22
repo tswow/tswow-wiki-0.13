@@ -6,22 +6,28 @@ In this section, we will briefly explain how modding with TSWoW looks and feels 
 
 With TSWoW, we use the TypeScript programming language in the VSCodium/VSCode editor to modify the games data and behavior. Below is how modding typically looks, we have a code window and a terminal open to compile our code, and to restart and communicate with the server and client.
 
-![](tswow-layout.png)
+{:refdef: style="text-align: center;"}
+![](../tswow-layout.png)
 _A typical TSWoW development environment_
+{: refdef}
 
 ## Module Structure
 TSWoW mods are divided into _modules_. A module is a folder containing scripts and game assets that modifies the game in some way. All modules are placed in the `modules` subdirectory in your TSWoW installation.
 
-![](modules.png)  
+{:refdef: style="text-align: center;"}
+![](../modules.png)  
 _Two modules installed_
+{: refdef}
 
-![](module-contents.png)  
+{:refdef: style="text-align: center;"}
+![](../module-contents.png)  
 _Contents of a typical TSWoW module_
+{: refdef}
 
-![](module-vscodium.png)
-
+{:refdef: style="text-align: center;"}
+![](../module-vscodium.png)
 _Module as viewed from VSCodium_
-
+{: refdef}
 
 ## The Three Types of TSWoW Mods
 
@@ -43,9 +49,10 @@ export const NECROMANCER = std.Classes.create('tswow','necromancer','NECROMANCER
     .EquipSkills.Cloth.setAuto() // Enable cloth at level 1
 ```
 
-![](custom-class.png)
-
+{:refdef: style="text-align: center;"}
+![](../custom-class.png)
 _Code example of a fully working custom class made with a Data Script_
+{: refdef}
 
 ### Live Scripts (scripts)
 
@@ -63,9 +70,11 @@ export function Main(events: TSEventHandlers) {
     });
 }
 ```
-![](live-script.png)
-
+{:refdef: style="text-align: center;"}
+![](../live-script.png)
+<br/><br/>
 _Code example of a Live Script_
+{:refdef}
 
 ### Assets
 
@@ -73,9 +82,11 @@ Assets are simply resource files such as 3D models, textures and audio. These fi
 
 _Note to veterans: To modify DBC, LUA or XML files you use data scripts, not assets._
 
-![](boar-file.png)
-![](boar-ingame.png)  
+{:refdef: style="text-align: center;"}
+![](../boar-file.png)
+![](../boar-ingame.png)  
 _Silly boar recoloring using an asset replacement_
+{:refdef}
 
 ## Summary
 
@@ -83,5 +94,3 @@ You have now learnt the three things you can do with TSWoW:
 - Use Data Scripts to modify **game data**
 - Use Assets to replace **resource files and game assets**
 - Use Live scripts to **script the server**
-
-You should now be ready to get started and [install TSWoW](2_Installation.md)

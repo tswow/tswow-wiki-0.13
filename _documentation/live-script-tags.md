@@ -1,4 +1,6 @@
-# Live Script Entity Tags
+---
+title: Live Script Tags
+---
 
 TSWoW allows us to attach data tags, timers and collision checkers to `WorldObjects` and `Maps`. This document will explain the purpose of each and how to use them.
 

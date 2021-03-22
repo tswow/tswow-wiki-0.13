@@ -1,5 +1,5 @@
 ---
-permalink: /Home/
+permalink: /tswow-wiki/home/
 title: "TSWoW Wiki"
 ---
 

@@ -1,3 +1,6 @@
+---
+title: Barebones Class
+---
 The following is a brief code example for creating a custom class, give it some spells, a talent and a trainer.
 
 ```ts

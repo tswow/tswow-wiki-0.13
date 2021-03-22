@@ -1,4 +1,6 @@
-# Items and Loot
+---
+title: Items and Loot
+---
 
 This section will be a very brief demonstration on how to create a few common item types with TSWoW and make them droppable by a creature. Creating items is typically very easy, because it's often very easy to find barebones variants you can clone from.
 

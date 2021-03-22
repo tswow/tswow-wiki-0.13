@@ -1,6 +1,6 @@
-# Modding Introduction
-
-[Back to Table of Contents](README.md)
+---
+title: Modding Introduction
+---
 
 In this section, we will briefly explain how modding with TSWoW looks and feels like. There are no exercises here, just read it through and try to understand the basic concepts. When finished, you're not expected to understand **how** to create these types of mods, but simply know that they exist.
 

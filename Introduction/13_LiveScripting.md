@@ -1,4 +1,6 @@
-# Live Scripting
+---
+title: Live Scripting
+---
 
 It is now time to discuss live scripting, the type of scripts that run directly on the server to modify its behavior in real-time. Live Scripting is generally considered more advanced than data scripting, however since it's mostly up to you as a scripter to decide yourself what they do, there will generally be a little less to explain about them. We encourage you to play around with them, crash the server a few times and get a hang of what you can and cannot do with them. Remember to let the autocompletion guide you, and you should easily find what you're looking for in most situations.
 

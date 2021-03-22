@@ -1,4 +1,6 @@
-# Quests
+---
+title: Quests
+---
 
 In this section we will see how to create quests using TSWoW. We will first create a "kill", and then a scripted escort quest that requires the first one to be completed.
 

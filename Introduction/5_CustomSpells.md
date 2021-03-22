@@ -1,6 +1,6 @@
-# Custom Spells
-
-[Back to Table of Contents](README.md)
+---
+title: Custom Spells
+---
 
 Spells are probably the broadest topic in all of WoW modding. Almost every effect in the game is somehow related to spell programming, and while simple modifications are not too difficult to understand there can be a surprising amount of depth behind them.
 

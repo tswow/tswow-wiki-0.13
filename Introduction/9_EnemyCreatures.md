@@ -1,6 +1,6 @@
-# Enemy Creatures
-
-[Back to Table of Contents](README.md)
+---
+title: Enemy Creatures
+---
 
 This section will be a brief introduction to how to create enemy creatures. We will look at spawning, random movement, combat stats and factions.
 

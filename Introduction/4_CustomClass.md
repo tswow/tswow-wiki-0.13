@@ -1,6 +1,6 @@
-# Custom Class
-
-[Back to Table of Contents](README.md)
+---
+title: Custom Class
+---
 
 This tutorial will demonstrate how to create a fully functional custom class with TSWoW. Custom classes have been a thing in WotLK for a long time, but used to be very tedious and error-prone to set up. As we will see in this tutorial, TSWoW makes creating custom classes very simple. In the next tutorials, we will also cover custom spells and trainers. 
 

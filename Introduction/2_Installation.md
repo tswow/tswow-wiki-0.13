@@ -1,6 +1,6 @@
-# Windows Installation
-
-[Back to Table of Contents](README.md)
+---
+title: Windows Installation
+---
 
 This guide will explain how to set up a fully working TSWoW development environment with a working server that you can connect to from your local computer.
 

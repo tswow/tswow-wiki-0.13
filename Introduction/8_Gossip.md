@@ -1,6 +1,6 @@
-# Gossip
-
-[Back to Table of Contents](README.md)
+---
+title: Gossip
+---
 
 This tutorial will be an introduction to Gossip systems. Gossip in World of Warcraft. A gossip is the chat window you see with NPCs in the world. As we have seen previously, some gossip windows are automatically generated for us when we create NPCs such as trainers, but by explicitly creating gossip windows we can fully customize how these menus act and behave.
 

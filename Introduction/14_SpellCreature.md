@@ -1,4 +1,6 @@
-# Spell and Creature Scripts
+---
+title: Spells and Creature scripts
+---
 
 Some live scripts can be hooked to only fire on events that happens to a specific Spell or Creature. This section will briefly demonstrate how to create such events.
 

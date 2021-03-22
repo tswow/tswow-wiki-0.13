@@ -1,6 +1,6 @@
-# Your First Module
-
-[Back to Table of Contents](README.md)
+---
+title: Your First Module
+---
 
 In this section, we will create a basic TSWoW module and add a data script that we will compile. The purpose of this tutorial is to give you a feeling for how modding with TSWoW is like, so don't worry too much if you do not entirely understand the scripts you are asked to write yet.
 

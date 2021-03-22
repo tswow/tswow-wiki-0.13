@@ -1,6 +1,6 @@
-# Talents
-
-[Back to Table of Contents](README.md)
+---
+title: Custom Talents
+---
 
 This tutorial will teach you all you need to know about how to create talent trees and talents for your custom class. While talents are a fairly simple concept, this tutorial assumes you have already worked through the [Custom Spells](5_CustomSpells.md) exercises.
 

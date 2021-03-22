@@ -1,6 +1,6 @@
-# Smart Scripts
-
-[Back to Table of Contents](README.md)
+---
+title: Smart Scripts
+---
 
 We have learnt that there are two types of scripts in TSWoW, **data scripts**, that are used to create static game data and **live scripts**, that is used to program real-time responses to events. 
 

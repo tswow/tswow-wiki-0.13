@@ -1,0 +1,21 @@
+# The top navigation panel on every page
+main:
+  - title: "Home"
+    url: /home
+  - title: "Getting Started"
+    url: /introduction/01-introduction
+  - title: "Documentation"
+    url: /documentation/
+  - title: "Examples"
+    url: /examples/
+  - title: "Create a page"
+    url: /createpage/
+
+# The left navigation panel in the introductions
+introduction:
+  - title: "Introduction"
+    children:
+    - title: "Overview"
+      url: /introduction/01-overview/
+    - title: "Windows Installation"
+      url: /introduction/02-windows-installation/

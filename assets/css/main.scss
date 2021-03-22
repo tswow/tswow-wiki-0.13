@@ -1,0 +1,27 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+
+@charset "utf-8";
+
+/* === CUSTOM SETTINGS BELOW THIS LINE === */
+
+// Turn off animations
+$intro-transition  : none;
+$global-transition : none;
+
+// Change font sizes
+$type-size-1 : .8em;
+$type-size-2 : .8em;
+$type-size-3 : .8em;
+$type-size-4 : .8em;
+$type-size-5 : .8em;
+$type-size-6 : .8em;
+$type-size-7 : 0.8em; // page navigation
+$type-size-8 : 1.0em;
+$type-size-9: 0.8em; // main text
+
+/* === CUSTOM SETTINGS ABOVE THIS LINE === */
+
+@import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
+@import "minimal-mistakes"; // main partials

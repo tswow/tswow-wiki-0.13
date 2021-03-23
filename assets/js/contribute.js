@@ -17,7 +17,6 @@
         return;
     }
 
-    console.log("The filename is ",filename);
     const content = document.getElementsByClassName('page__content')[0];
     if(content===undefined) {
         return;

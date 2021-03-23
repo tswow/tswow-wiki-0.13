@@ -2,7 +2,7 @@
 title: TrinityCore
 ---
 
-[Project Root](https://github.com/tswow/TrinityCore/tree/tswow)
+[tswow/TrinityCore on GitHub](https://github.com/tswow/TrinityCore/tree/tswow)
 
 TSWoW uses a slightly modified version of TrinityCore that tries to stay close to the upstream. While we haven't renamed any projects yet, we sometimes call this fork "TSCore".
 

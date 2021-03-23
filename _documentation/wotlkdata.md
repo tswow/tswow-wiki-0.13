@@ -2,7 +2,7 @@
 title: wotlkdata 
 ---
 
-[Project Root](https://github.com/tswow/tswow/tree/master/tswow-scripts/wotlkdata)
+[wotlkdata on GitHub](https://github.com/tswow/tswow/tree/master/tswow-scripts/wotlkdata)
 
 WotlkData lives in `tswow/tswow-scrips/wotlkdata`. It was originally a standalone module that could read and patch all WotlK DBC files and SQL tables for various cores, however this has now been limited to TrinityCore database tables only.
 

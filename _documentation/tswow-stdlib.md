@@ -2,7 +2,7 @@
 title: tswow-stdlib
 ---
 
-[Project Root](https://github.com/tswow/tswow-stdlib)
+[tswow-stdlib on GitHub](https://github.com/tswow/tswow-stdlib)
 
 The TSWoW standard library is a TSWoW module that comes pre-packaged with TSWoW releases. It is intended to complete the [WotlkData](WotlkData.md) data script framework with easy-to-use entity builders and more experimental features.
 

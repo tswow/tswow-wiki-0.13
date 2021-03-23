@@ -121,3 +121,8 @@ collections:
   examples:
     output: true
     permalink: /:collection/:path/
+
+  # hack to display homepage on github pages
+  home:
+    output: true
+    permalink: /:collection/:path/

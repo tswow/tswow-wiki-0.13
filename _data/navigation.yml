@@ -1,7 +1,7 @@
 # The top navigation panel on every page
 main:
   - title: "Home"
-    url: /home
+    url: /home/
   - title: "Getting Started"
     url: /introduction/01-modding-introduction
   - title: "Documentation"

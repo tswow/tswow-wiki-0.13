@@ -18,3 +18,5 @@ Some notes for testing and developing this wiki locally:
 - The homepage redirect does not work when hosted locally, but you can still access the homepage by clicking the `Home` button.
 
 - We use the GitHub API to query author data from the browser, and since this is rate-limited to 60 requests per hour and IP we cache that information in `localStorage` for 24 hours per page.
+
+- Changes to `_config.yml` requires you to restart the server process, it does not reload like the other files.

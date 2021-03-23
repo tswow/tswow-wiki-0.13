@@ -126,6 +126,7 @@ finalSay.Action.setTalk({enGB:'Well... you come up with what happens from here!'
 In this section, we have learnt:
 
 - How to create a basic kill quest
+
 - How to create a scripted escort quest
 
 Our final code in `Quest.ts` becomes:

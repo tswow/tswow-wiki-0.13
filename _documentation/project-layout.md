@@ -4,19 +4,19 @@ title: Project Layout
 
 This document should outline the various sub-projects of TSWoW and their components.
 
-## [WotlkData](WotlkData.md)
+## [wotlkdata](../wotlkdata.md)
 
 [Project Root](https://github.com/tswow/tswow/tree/master/tswow-scripts/wotlkdata)
 
 WotlkData is a TypeScript Object-Relational-Mapping framework that contains mappings for every DBC file for the 3.3.5a version of the game and every SQL table available for the current revision of TrinityCore that we use, and also contains some crude tools to modify client Lua/XML files. This project is the basis for all TSWoW _data scripts_ and the TSWoW standard library.
 
-## [Standard Library](StandardLibrary.md)
+## [tswow-stdlib](../tswow-stdlib.md)
 
 [Project Root](https://github.com/tswow/tswow-stdlib)
 
 The TSWoW standard library is a TSWoW module that comes pre-packaged with the TSWoW release. It contains an API for data scripts that wraps around the raw DBC/SQL files WotlkData provides into coherent **entities** that can be more easily edited by users, such as _Items_, _Classes_, _Quests_ and _Creatures_.
 
-## [TrinityCore](TrinityCore.md)
+## [TrinityCore](../trinitycore.md)
 
 [Project Root](https://github.com/tswow/TrinityCore/tree/tswow)
 
@@ -53,4 +53,5 @@ Its files are located in `tswow/mpqbuilder`.
 These are the external modules used with little to no modification by TSWoW:
 
 - BLPConverter: Used to mass-convert blp and png images back and forth with the `png` and `blp` commands.
+
 - StormLib: The MPQ library used by [MPQBuilder](#MPQBuilder)

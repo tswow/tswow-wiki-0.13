@@ -9,9 +9,13 @@ WotlkData lives in `tswow/tswow-scrips/wotlkdata`. It was originally a standalon
 The purpose of this module is to provide:
 
 - Object-relational models for all 3.3.5 DBC files and TrinityCore SQL tables.
+
 - Data-script loading and patch building
+
 - Persistent [ID generation](Ids.md)
+
 - Multi-user Lua/XML file text patching
+
 - Base classes for [cell-oriented programming](CellOrientedProgramming.md)
 
 The aim for WotlkData is to be as minimal, unchanging and objective as possible. Code that does not fit in WotlkData should instead be added to the [standard library](StandardLibrary.md).
@@ -51,11 +55,17 @@ TSWoW does have a way to completely rebuild the destination world database in me
 First, when we have initially built the world database, we shut down MySQL and create **two** copies of the clean database directory (written to `coredata/mysql_plain/world_plain_1` and `coredata/mysql_plain/world_plain_2`).
 
 Then, when we want to rebuild the database:
+
 1. Shut down MySQL and the world server
+
 2. Remove the world database folder
+
 3. Synchronously **move** `world_plain_1` to the world database location
+
 4. Asynchronously **copy** `world_plain_2` to `world_plain_1`.
+
 5. Restart MySQL and the world server without waiting for the above copy.
+
 6. Wait for the copy before allowing another rebuild.
 
 This copies the clean version of the destination database without even waiting for the filesystem copy before restarting the database. 

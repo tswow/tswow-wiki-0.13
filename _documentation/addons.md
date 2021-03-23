@@ -8,10 +8,7 @@ and the differences from normal addon development.
 
 _Please note: The sources TSWoW has used to generate type definitions come from very poorly structured web pages and may not be entirely accurate. An exact specification of the Blizzard API for 3.3.5 is very hard to come by, so we appreciate reports on any inaccuracies._
 
-## Important Notes
-
-- There is no way to force players to use your addons, it's just as easy to disable in the Addon manager on the Character Selection screen as any other addon.
-- While TSWoW itself is released under a GPLv3 license, all our client libraries are exceptions to this and instead released under MIT, meaning servers have no obligation to keep their addons open source. TSWoW is server-friendly, even with addons.
+- <span>While TSWoW itself is released under a GPLv3 license, all our client libraries are exceptions to this and instead released under MIT, meaning servers have no obligation to keep their addons open source. TSWoW is server-friendly, even with addons.</span>
 
 ## Files
 
@@ -25,9 +22,13 @@ Addons can also access files in the `modulename/shared` directory. Since the `sh
 When an addon is generated, the following necessary files are automatically created in the new addons directory. Users should not remove these files.
 
 - `modulename.toc`: Allows users to specify addon metadata. Do **not** add filenames to this file manually.
+
 - `global.d.ts`: Contains type definitions for all Blizzard functions and types accessible from lua.
+
 - `events.ts`: Contains TSWoWs custom addon event and communications systems.
+
 - `modulename-addon.ts`: Is always the first real entrypoint of your addon. It is the only transpiled file that is automatically executed.
+
 - `BinReader.ts`: Contains functions for writing binary data for client/server communications, mostly just used internally by .
 
 #### The .toc File
@@ -35,9 +36,13 @@ When an addon is generated, the following necessary files are automatically crea
 When an addon is generated with the `addon create modulename` command, a file called `addons/modulename.toc` is generated with it. Here, users can configure the following fields:
 
 - Interface Version (Should always be 30300, do not change!)
+
 - Title (Displayed name of the addon)
+
 - Version
+
 - Notes (Longer description when the addon is hovered on the Addon screen
+
 - Author
 
 Nothing else should be manually entered into this file. Filenames will be automatically added when the addon is built.
@@ -164,12 +169,19 @@ export function Main(events: TSEventHandlers) {
 ```
 
 ### Notes
+
 - When changing anything about message classes, you must both `build addon && build scripts` for changes to apply both on the server and the client.
+
 - When a message class is compiled, a special opcode is automatically generated and stored in `config/ids.txt`.
+
 - Received data may be malicious or corrupt, but is harmless on its own and protected from buffer overflows.
+
 - Players can still very easily forge any valid message, so remember to never trust data sent from players as authoritative
+
 - All messages have a fixed size, and arrays will be automatically padded to fill the expected size. If the server receives any message that does not match the expected size exactly, the message will be discarded.
+
 - The maximum size of a single message is ~180 bytes, and the compiler will give an error if you try to exceed this. 
+
 - String values received may not be valid strings, even in non-malicious packets (multi-byte characters etc).
 
 ## XML

@@ -107,8 +107,11 @@ This makes Improved Abomination require at least 3 points in the silly talent to
 In this tutorial, you have learnt how to:
 
 - Create a talent tree
+
 - Create talents from existing spells
+
 - Create a custom talent spell that modifies another spell
+
 - Make one talent required for another
 
 Our final code in `Talents.ts` becomes:

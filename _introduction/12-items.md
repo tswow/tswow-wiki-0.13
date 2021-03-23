@@ -7,7 +7,9 @@ This section will be a very brief demonstration on how to create a few common it
 We will create:
 
 - A custom sword
+
 - Custom food (not written yet!)
+
 - A drop quest
 
 ## Sword

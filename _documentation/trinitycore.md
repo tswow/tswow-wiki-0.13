@@ -17,7 +17,9 @@ We have merged code from some popular core modifications into our fork, such as 
 We have currently merged the following external modules into our core:
 
 - Rochet2/Multivendor
+
 - Rochet2/Multitrainer
+
 - Rochet2/Transmogrification
 
 ## Live Scripting

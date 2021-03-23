@@ -130,8 +130,13 @@ Now, if we log in as a warrior the zombies should charge and mumble about brains
 In this tutorial, we have learnt:
 
 - What a smart script is and how we can use it in data scripts
+
 - The different parts of a smart script
+
 - How to find information about smart scripts attached to an existing creature
+
 - How to create a basic smart script
+
 - How to attach conditions to a smart script
+
 - How to chain multiple smart scripts together

@@ -6,13 +6,6 @@ Spells are probably the broadest topic in all of WoW modding. Almost every effec
 
 We choose to have this topic early in the series because spells are such an important aspect that we want you to consider them while you're still fresh: If you master spells there is very little else left to scare you about WoW modding. With TSWoW, we try to make it easy to both create fairly standard spells, but also to provide better tools to investigate how more advanced spell effects can be achieved. In this tutorial we will go over the fundamental components of spells and create a few basic (but not trivial) examples, but we will also cover some methods we can use to troubleshoot and understand more advanced spell functions.
 
-The topics we will cover are: 
-
-1. [Basic Spell Theory](#basic-spell-theory)
-2. [Death Bolt: Custom Shadow Bolt with a DoT effect](#death-bolt)
-4. [Abomination: Warlock-Style Summoning](#summon-abomination)
-5. [Bone Shield: Changing Resource Types](#bone-shield)
-
 ## Basic Spell Theory
 
 This section will explain the basic components of a spell in World of Warcraft. Afterwards, our example spells will illustrate each concept in detail.
@@ -31,10 +24,15 @@ Not all spells are visible in the spellbook, and not all spells can be cast. Dif
 Spells have very many properties related with them, and learning about all of them will take some time even with TSWoW. A few examples include:
 
 - Resource/mana type and cost
+
 - Name, description, rank name
+
 - Reagent costs
+
 - Special flags, whether the spell is castable/passive etc.
+
 - Icons
+
 - Basic target type (none, ground, unit, item etc.)
 
 ### Spell Effect
@@ -244,9 +242,13 @@ DEATH_BOLT.AuraDescription.enGB.set('Deals periodic damage.');
 
 In this section, we have learnt:
 - How to create a spell based on another spell
+
 - That we can borrow visual effects from other spells
+
 - That we can borrow spell effects from other spells
+
 - That we can use VSCodiums autocomplete to find out what fields we can change.
+
 - That if we get stuck, we can try to `objectify()` and print our data objects to see if there is something we might have missed.
 
 These methods go a long way to let you create many of the standard spell effects in WoW. However, sometimes even this is not enough. Some spells have such bizarre settings that it's almost impossible to understand them, some spell effects are just impossible to combine, and as we mentioned before even some aren't even possible to implement without serverside `live scripting`. Luckily for us, TSWoW has live scripting implemented, but that is out of scope of this basic tutorial. 
@@ -254,8 +256,11 @@ These methods go a long way to let you create many of the standard spell effects
 Some additional suggestions for what you can try to modify with Death Bolt yourself, using autocomplete to navigate the data structure:
 
 - Change the icon
+
 - Change the amount of direct damage from the bolt
+
 - Change the amount of damage done by the DoT
+
 - Add yet another DoT effect that targets the caster instead (Advanced)
 
 ## Summon Abomination

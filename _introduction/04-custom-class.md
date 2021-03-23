@@ -8,16 +8,6 @@ The class we will be creating is the very same necromancer class that was shown 
 
 _In these tutorials, you will be asked to start writing TSWoW code. It is highly recommended that you **type out** the code yourself into the editor instead of copypasting to get a feel for the autocompletion that VSCodium offers._
 
-**We will cover the following topics:**
-
-1. [Class Definition](#class-definition)
-
-2. [Character Creation UI](#ui-settings)
-
-3. [Stats](#stats)
-
-4. [SkillLines](#skilllines)
-
 ## Class Definition
 
 _Note: If you create a class and later remove it (or change the modid:entityid), you need to **remove** the `config/ids.txt` file, as the current generation algorithm does not work with holes in the class IDs (your client will crash)._
@@ -113,8 +103,11 @@ We won't use these until the next tutorial, so you can just leave them like this
 In this tutorial, we have:
 
 - Created a basic custom class
+
 - Modified the character selection screen
+
 - Modified the stats of our class
+
 - Created SkillLines that will be used to define what spells belongs to our class.
 
 Our final code for `Necromancer.ts` is as follows:

@@ -12,8 +12,10 @@ This guide will explain how to set up a fully working TSWoW development environm
 
 You will need to install the following programs:
 
-- World of Warcraft 3.3.5a client 
-    - Currently, I can only verify that the _enGB_ and _enUS_ clients work, please make an [issue](https://github.com/tswow/tswow/issues) if you use another locale and you face any problems. 
+- World of Warcraft 3.3.5a client
+
+    - Currently, I can only verify that the _enGB_ and _enUS_ clients work, please make an [issue](https://github.com/tswow/tswow/issues) if you use another locale and you face any problems.
+
     - Please make sure there are **no spaces** anywhere in the pathname to your WoW client.
 
 - [Git](https://github.com/git-for-windows/git/releases/download/v2.30.0.windows.1/Git-2.30.0-64-bit.exe)
@@ -25,16 +27,21 @@ You will need to install the following programs:
 - [Python 2.7](https://www.python.org/ftp/python/2.7.2/python-2.7.2.amd64.msi) (or any of 3.5, 3.6, 3.7, 3.8)
 
 - **All** the following versions of VCRedist:
+
     - [Latest x86](https://aka.ms/vs/16/release/vc_redist.x86.exe)
+
     - [Latest x64](https://aka.ms/vs/16/release/vc_redist.x64.exe)
+
     - [2013 x86+x64](https://www.microsoft.com/en-us/download/details.aspx?id=40784) (Select "English", then both x86 and x64)
 
 - [VSCodium version 1.45](https://github.com/VSCodium/vscodium/releases/tag/1.45.1)
-    - Later versions **should** work (including Microsofts VSCode), but I had general performance issues with 1.51 so I don't use it.
+
+    - <span>Later versions **should** work (including Microsofts VSCode), but I had general performance issues with 1.51 so I don't use it.</span>
+
 
 - (Optional) To compile **live scripts**, you will also need [Visual Studio 2019 Community](https://visualstudio.microsoft.com/downloads/). The whole first part of this tutorial series will only be using data scripts, so you don't need to install this yet.
 
-    - When installing Visual Studio, you will be asked to choose what packages to install in a window similar to the following. The **only** package that is necessary for building Live Scripts is `Desktop development with C++`, as shown below. The only toggle you need to select is in the red square, everything else can use default settings.
+    - <span>When installing Visual Studio, you will be asked to choose what packages to install in a window similar to the following. The **only** package that is necessary for building Live Scripts is `Desktop development with C++`, as shown below. The only toggle you need to select is in the red square, everything else can use default settings.</span>
 
 {:refdef: style="text-align: center;"}
 ![](../vs-installer.png)
@@ -68,10 +75,13 @@ You will need to install the following programs:
 3. Run the command `npm run start`. This will start the automatic installation and then start the server.
 
 4. Wait for the automatic installation, which can take a while depending on your machine. For me, it's about 10 minutes to set everything up.
-    - If you get any errors, double check you wrote the correct client path in `config/tswow.yaml`, otherwise [submit an issue](https://github.com/tswow/tswow/issues) and include the log file (log.txt in your installation directory). 
+
+    - <span>If you get any errors, double check you wrote the correct client path in `config/tswow.yaml`, otherwise [submit an issue](https://github.com/tswow/tswow/issues) and include the log file (log.txt in your installation directory). </span>
 
 5. When the installation is done, it will make a bell sound and you will see a message similar to ```Initialized tswow in 67.70s``` in the terminal.
 
 6. To create a gm account, type the following commands (**remember the ws prefix**) into the terminal:
+
     - `ws account create myuser mypassword`
+
     - `ws account set gmlevel myuser 3 -1`

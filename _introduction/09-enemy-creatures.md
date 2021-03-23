@@ -61,9 +61,13 @@ If we rebuild, we should see that all our zombies now walk around.
 Creature stats work differently from players, and are much simpler.
 
 Creatures belongs to one of four classes, which decides how much health and mana they have (depending on their level):
+
 - **Warrior**: Has only health, identical to rogue
+
 - **Rogue**: Has only health, identical to warrior
+
 - **Mage**: Has mana and health, less health than paladins but more mana
+
 - **Paladin**: Has mana and health. More health than mages, but less mana.
 
 The amount of damage a creature deals also depends on their level, but can be scaled as we will see below.
@@ -120,9 +124,13 @@ Rebuild, and should now see that the zombies are indeed hostile to players. (_If
 In this tutorial, we have learnt:
 
 - How to create a simple hostile enemy mob
+
 - How to easily spawn multiple mobs in an area using the `.at` ingame command and `positions.txt`
+
 - How to enable random movement
+
 - How to manipulate creature classes and stats
+
 - How to change the faction and aggressiveness of creatures
 
 Our completed code for `EnemyCreature.ts` becomes:

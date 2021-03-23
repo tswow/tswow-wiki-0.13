@@ -6,15 +6,19 @@ There are two things you may want to update in TSWoW, modules and TSWoW itself. 
 
 ## Updating TSWoW
 
+_Note: TSWoW version 0.11 made some fundamental changes to the project structure, you must follow some [additional instructions](todo) for migrating from older versions._ 
+
 TSWoW itself is distributed through our [main repository](https://github.com/tswow/tswow/releases). If you wish to change your version of TSWoW, all you need to do is:
 
 1. Download your desired version 
 
-2. Place the `.7z` file in your TSWoW installation directory, and rename it `update.7z`.
+2. Thoroughly shut down TSWoW and vscodium. 
 
-3. Start TSWoW, the update will be applied and TSWoW will then start normally. Note that you have to rebuild all live scripts if you update TSWoW.
+3. Extract `bin`, `node_modules` and `package.json` from the archive, and replace all those files in your installation.
 
-Updating this way only replaces files in your `node_modules` and `bin` directories and keeps your configuration, modules and coredata.
+4. Run `npm i` in the installation directory once.
+
+5. Start TSWoW normally.
 
 ## Updating Modules
 

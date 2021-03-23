@@ -1,21 +1,20 @@
 # TSWoW Wiki
 
-Welcome to the Wiki for TSWoW, hosted as a GitHub repository. Via pull-requests, **anyone** is welcome to contribute to this wiki. We currently have to manually review all edits, but in the future we will set this up so the process is automatic for most edits.
+This is code backing the Wiki for TSWoW, hosted through GitHub pages. You can [view the wiki here](https://tswow.github.io/tswow-wiki).
 
-- If you're having problems with TSWoW, check out the [Troubleshooting](Documentation/TSWoW/Troubleshooting.md) document.
+## Development
 
-- [Watch this guide for how to edit this Wiki](https://youtu.be/sp18c6DL7Ro)
+This wiki uses the [minimal-mistakes](https://github.com/mmistakes/minimal-mistakes) jekyll theme, 
+you can see their [documentation](https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/) for how the project is structured. 
+We use some custom css in `_sass`, a redirect at `_layouts/home.html` and some custom javascript to render edit/author links, 
+but otherwise this is a fairly standard installation.
 
-## Guidelines
+Some notes for testing and developing this wiki locally:
 
-- Documents should be written as markdown (.md) files and placed in the appropriate directory.
+- Check out [GitHubs guide for previewing Jekyll sites](https://docs.github.com/en/github/working-with-github-pages/testing-your-github-pages-site-locally-with-jekyll)
 
-- The root of each subdirectory should contain a README.md that explains what content should go in that folder.
+- Many paths are currently hardcoded to the tswow wiki url specifically, especially for editing and author data.
 
-- For now, we keep images in the folder that use them but we should probably change this if the wiki becomes larger.
+- The homepage redirect does not work when hosted locally, but you can still access the homepage by clicking the `Home` button.
 
-- Try to keep directory hierarchies as shallow as possible.
-
-- Just try to use common sense and keep documents similar in style.
-
-- Be aware that by pushing to this repository, you agree to release  all content under the [GNU General Public License, version 3](LICENSE).
+- We use the GitHub API to query author data from the browser, and since this is rate-limited to 60 requests per hour and IP we cache that information in `localStorage` for 24 hours per page.

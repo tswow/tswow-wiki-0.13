@@ -22,10 +22,7 @@ function createpage_click(type) {
         alert('You need to enter a filename to create a page!');
         return;
     }
-    if(value.includes(' ') || value.includes('_')) {
-        alert('Filenames may not include spaces or underscores');
-        return;
-    }
+    value = value.split(' ').join('-').split('_').join('-').toLowerCase();
     location.href = `https://github.com/tswow/tswow-wiki/new/main?path=_${type}&filename=${value}.md`;
 }
 </script>

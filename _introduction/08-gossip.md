@@ -224,8 +224,11 @@ Generally, cloning data is the preferred way to do most TSWoW modding as it dras
 This concludes our introduction to Gossips in TSWoW. You have learnt:
 
 - How to create a simple one-page Gossip menu
+
 - How to add gossip options for banks, innkeepers and vendors.
+
 - How to create sub-menus and links to other gossip menus.
+
 - How to apply identical gossip menus to multiple creatures using for-loops.
 
 Our final `Gossip.ts` becomes: 

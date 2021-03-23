@@ -8,6 +8,7 @@ With TSWoW, we use the TypeScript programming language in the VSCodium/VSCode ed
 
 {:refdef: style="text-align: center;"}
 ![](../tswow-layout.png)
+<br/><br/>
 _A typical TSWoW development environment_
 {: refdef}
 
@@ -26,6 +27,7 @@ _Contents of a typical TSWoW module_
 
 {:refdef: style="text-align: center;"}
 ![](../module-vscodium.png)
+<br/><br/>
 _Module as viewed from VSCodium_
 {: refdef}
 
@@ -51,6 +53,7 @@ export const NECROMANCER = std.Classes.create('tswow','necromancer','NECROMANCER
 
 {:refdef: style="text-align: center;"}
 ![](../custom-class.png)
+<br/><br/>
 _Code example of a fully working custom class made with a Data Script_
 {: refdef}
 

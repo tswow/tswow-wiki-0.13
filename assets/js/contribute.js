@@ -49,7 +49,7 @@
             }
         } catch(err) {}
         authors = Object.values(authors);
-        content.innerHTML = `<div style="font-family: consolas; font-size: 0.8em;"> 
+        content.innerHTML = `<div style="font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace!important; font-size: 0.8em;">
         ${authors.length===0?`<a href=${file_path}>View authors</a>`:
         `Authors:${
             authors.map(x=>`

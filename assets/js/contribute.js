@@ -1,6 +1,8 @@
 // "Edit page" header
 (function() {
-    const url = window.location.toString();
+    let url = window.location.toString();
+    if(url.includes('#')) url = url.split('#')[0];
+
     let filename = undefined;
     const editable_urls = ['introduction/','examples/','documentation/'];
     for(const editable of editable_urls) {

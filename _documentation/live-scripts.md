@@ -257,7 +257,7 @@ We can create SQL commands as such:
 ```ts
 
 // There is also QueryAuth and QueryCharacters.
-const res = QueryWorld('SELECT name FROM item_template WHERE id=25;');
+const res = QueryWorld('SELECT name FROM item_template WHERE entry=25;');
 
 // Iterate on each row
 while(res.GetRow()) {

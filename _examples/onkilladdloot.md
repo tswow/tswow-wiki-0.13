@@ -1,8 +1,8 @@
 ---
-title: MyTitle
+title: Adding Loot to Kills
 ---
 
-```TypeScript
+```ts
 
 export function manaSystem(events: TSEventHandlers) {
     events.Player.OnCreatureKill((killer,killed)=>{

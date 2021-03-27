@@ -1,8 +1,8 @@
 ---
-title: MyTitle
+title: Levelup Messages + Item/Gold Rewards
 ---
 
-```TypeScript
+```ts
 export function onLevel(events: TSEventHandlers) {
 	events.Player.OnLevelChanged((player,oldLevel)=>{
 		player.SendAreaTriggerMessage("Congrats on leveling up to "+player.GetLevel()+"!")

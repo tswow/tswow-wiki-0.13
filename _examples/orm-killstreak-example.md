@@ -1,8 +1,8 @@
 ---
-title: MyTitle
+title: ORM Killstreak Example
 ---
 
-```TypeScript
+```ts
 const TABLE_NAME_KILLSTREAK = "playerkillstreak";
 
 @CharactersTable

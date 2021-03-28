@@ -94,6 +94,9 @@ _Silly boar recoloring using an asset replacement_
 ## Summary
 
 You have now learnt the three things you can do with TSWoW:
+
 - Use Data Scripts to modify **game data**
+
 - Use Assets to replace **resource files and game assets**
+
 - Use Live scripts to **script the server**

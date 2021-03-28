@@ -42,7 +42,7 @@ This creates a new class with the name "Necromancer" based off the Mage class. R
 
 ### A note about WoW crashing when creating/deleting classes
 
-In World of Warcraft, numeric class IDs must be strictly increasing with no gaps in them (going from 10, 11, 12 etc.), or the client will crash when you start up the game. TSWoW generates numeric IDs automatically when you create classes, and stores the result in your `config/ids.txt` file. This will cause issues if you create a class with one mod/identifier pair and then either change it, or remove it and create another one.
+In World of Warcraft, numeric class IDs must be strictly increasing with no gaps in them (going from 10, 11, 12 etc.), or the client will crash when you start up the game. TSWoW generates numeric IDs automatically when you create classes, and stores the result in your `config/ids.txt` file. This will cause issues if you create a class with one mod/identifier pair and then either change the mod/identifer, or remove the class and create another one with a different identifier pair.
 
 To solve this problem in development, you can simply delete your `config/ids.txt` any time you remove an old class in your code before you rebuild. In production, however, you must decide yourself how to handle the effect of removing a class entirely from the game, since many players will likely have characters of that class. You may therefore wish to manually edit the `ids.txt` file.
 

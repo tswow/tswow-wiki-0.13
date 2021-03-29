@@ -1,9 +1,6 @@
 ---
 title: Compiling
 ---
-
-**TODO: Not finished**
-
 The purpose of this document is to:
 
 1. Walk users through how to build TSWoW from source

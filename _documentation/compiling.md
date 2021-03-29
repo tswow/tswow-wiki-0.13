@@ -1,17 +1,16 @@
 ---
-title: Compiling
+title: Compiling on Windows
 ---
+
+[Linux Guide](../compiling-linux/)
+
 The purpose of this document is to:
 
 1. Walk users through how to build TSWoW from source
 
 2. Document important details and common issues
 
-## Windows Compilation Guide
-
-This guide will walk you through every step in compiling TSWoW from source.
-
-### Prerequisites
+## Prerequisites
 
 - [Git](https://github.com/git-for-windows/git/releases/download/v2.30.0.windows.2/Git-2.30.0.2-64-bit.exe)
 

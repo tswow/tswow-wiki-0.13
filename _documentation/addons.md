@@ -195,7 +195,7 @@ export function SharedFunction() {
       <!-- This code itself is Lua, rather than TypeScript, even though it calls a TypeScript function. -->
       <OnLoad>
         require('addon.some-file').ExampleFunction()
-        require('addon.some-shared-file').SharedFunction()
+        require('shared.some-shared-file').SharedFunction()
       </OnLoad>
       </Scripts>
    	  <Anchors>

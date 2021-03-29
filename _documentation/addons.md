@@ -169,10 +169,17 @@ export function Main(events: TSEventHandlers) {
 ## XML
 XML works more or less identical to how they work in normal addon development, but the way they call scripts is slightly different:
 
-**some-file.ts**
+**addon/some-file.ts**
 ```ts
 export function ExampleFunction() {
   console.log("Hello from ExampleFunction!");
+}
+```
+
+**shared/some-shared-file.ts**
+```ts
+export function SharedFunction() {
+  console.log("Hello from SharedFunction!");
 }
 ```
 
@@ -186,7 +193,10 @@ export function ExampleFunction() {
       <!-- We must "require" the library file.   -->
       <!-- This does not work for functions in "modulename-addon.ts" -->
       <!-- This code itself is Lua, rather than TypeScript, even though it calls a TypeScript function. -->
-      <OnLoad>require('some-file').ExampleFunction()</OnLoad>
+      <OnLoad>
+        require('addon.some-file').ExampleFunction()
+        require('addon.some-shared-file').SharedFunction()
+      </OnLoad>
       </Scripts>
    	  <Anchors>
     <Anchor point="CENTER"/>

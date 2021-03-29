@@ -19,33 +19,15 @@ Addons can also access files in the `modulename/shared` directory. Since the `sh
 
 ### Special Files
 
-When an addon is generated, the following necessary files are automatically created in the new addons directory. Users should not remove these files.
-
-- `modulename.toc`: Allows users to specify addon metadata. Do **not** add filenames to this file manually.
+When an addon is generated, the following necessary files are automatically created in the new addons directory. Users should **not** remove these files.
 
 - `global.d.ts`: Contains type definitions for all Blizzard functions and types accessible from lua.
 
-- `events.ts`: Contains TSWoWs custom addon event and communications systems.
+- `lib/Events.ts`: Contains TSWoWs custom addon event and communications systems.
+
+- `lib/BinReader.ts`: Contains functions for writing binary data for client/server communications, mostly just used internally by .
 
 - `modulename-addon.ts`: Is always the first real entrypoint of your addon. It is the only transpiled file that is automatically executed.
-
-- `BinReader.ts`: Contains functions for writing binary data for client/server communications, mostly just used internally by .
-
-#### The .toc File
-
-When an addon is generated with the `addon create modulename` command, a file called `addons/modulename.toc` is generated with it. Here, users can configure the following fields:
-
-- Interface Version (Should always be 30300, do not change!)
-
-- Title (Displayed name of the addon)
-
-- Version
-
-- Notes (Longer description when the addon is hovered on the Addon screen
-
-- Author
-
-Nothing else should be manually entered into this file. Filenames will be automatically added when the addon is built.
 
 ## TypeScript
 
@@ -87,7 +69,7 @@ Events.ChatInfo.OnChatMsgSay(frame,(text)=>{
 });
 ```
 
-Internally, the Events interface uses `frame.SetScript('OnEvent',...)` to listen for events, meaning users cannot use both the Events API and manually apply an OnEvent listener to the same frame.
+Internally, the Events interface uses `frame.SetScript('OnEvent',...)` to listen for events, meaning users **cannot** use both the Events API and manually apply an OnEvent listener to the same frame.
 
 ### Client/Server communication
 

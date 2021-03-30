@@ -13,13 +13,15 @@ There may have been things we've missed here, so please contact us on [Discord](
 
 ## Modules
 
-### AddOns
-
 - The `addons` directory in modules are now called `addon`, you need to rename yours manually.
 
-- `BinReader.ts` is now `lib/BinReader.ts`, and `events.ts` is `lib/Events.ts`. You must remove the old files, rebuild, and update your references.
+- The `data` directory in modules are now called `datascripts`, you need to rename yours manually.
 
-- AddOns are no longer implemented as FrameXML instead of AddOns, you need to remove the old `client/Interface/AddOns/my-addon` files.
+- The `scripts` directory in modules are now called `livescripts`, you need to rename yours manually.
+
+- `addons/BinReader.ts` is now `addon/lib/BinReader.ts`, and `addons/events.ts` is `addon/lib/Events.ts`. You must remove the old files, rebuild, and update your references.
+
+- AddOns are now rendered to FrameXML inside the built MPQ instead of AddOns, you need to remove the old `client/Interface/AddOns/my-addon` files.
 
 ### Server files (dbc,luaxml,map,vmaps etc.)
 

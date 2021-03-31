@@ -21,6 +21,8 @@ There may have been things we've missed here, so please contact us on [Discord](
 
 - `addons/BinReader.ts` is now `addon/lib/BinReader.ts`, and `addons/events.ts` is `addon/lib/Events.ts`. You must remove the old files, rebuild, and update your references.
 
+- `scripts/my_module_scripts.ts` is now `livescripts/my-module-scripts.ts`. Dashes can and should now be used in livescript filenames instead of underscores.
+
 - AddOns are now rendered to FrameXML inside the built MPQ instead of AddOns, you need to remove the old `client/Interface/AddOns/my-addon` files.
 
 ### Server files (dbc,luaxml,map,vmaps etc.)

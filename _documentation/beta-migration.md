@@ -36,5 +36,7 @@ and place it at `coredata/datasets/default/luaxml_source/Interface/FrameXML/Fram
 ### ID files
 
 - If you wish to keep your old ID mappings, you must go through your `config/ids.txt` file and:
+
   - Move any rows not relating to addon messages to `coredata/datasets/default/ids.txt`
+
   - Move any rows relating to addon messages to `ids.txt` in the new installation root.

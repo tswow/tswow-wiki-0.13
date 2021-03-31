@@ -16,7 +16,7 @@ You will need to install the following programs:
 
     - Currently, I can only verify that the _enGB_ and _enUS_ clients work, please make an [issue](https://github.com/tswow/tswow/issues) if you use another locale and you face any problems.
 
-    - Please make sure there are **no spaces** anywhere in the pathname to your WoW client.
+    - Please make sure there are **no spaces** anywhere in the pathname to your WoW client **or the TSWoW installation**.
 
 - [Git](https://github.com/git-for-windows/git/releases/download/v2.30.0.windows.1/Git-2.30.0-64-bit.exe)
 

@@ -91,6 +91,10 @@ _Note to veterans: To modify DBC, LUA or XML files you use data scripts, not ass
 _Silly boar recoloring using an asset replacement_
 {:refdef}
 
+### The Fourth Mod Type
+
+Since version 0.10, there is a new type of TSWoW mod: [AddOns](../documentation/addons/) which allows you to create clientside AddOns that can communicate with the server. Just like every other type of mod, AddOns can be written in TypeScript instead of lua. This type of mod is a more advanced feature of TSWoW and won't be covered in the introductory tutorial.
+
 ## Summary
 
 You have now learnt the three things you can do with TSWoW:

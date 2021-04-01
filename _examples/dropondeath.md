@@ -1,7 +1,7 @@
 ---
 title: Drop All Loot On Death
 ---
-```TypeScript
+```ts
 class itemDef {
 		itemEntry: uint32 = 0
 		itemCount: uint32 = 0

@@ -89,11 +89,7 @@ The source, build and install directories should all be **separate**. Do not pla
   
 3. In the `source` directory, run the command `npm i`
 
-4. In the `source` directory, run the command `npm run build`.
-
-    - This will start automatic installation of some additional dependencies.
-
-    - It's not recommended to try and override this, we do it automatically because the versions matter a lot.
+4. In the `source` directory, run the command `npm run build-interactive` (for building everything with a single command, just run `npm run build`).
 
 6. You should now have entered the main TSWoW build program. You can now build any components you want
 

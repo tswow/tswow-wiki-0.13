@@ -42,11 +42,7 @@ The source, build and install directories should all be **separate**. Do not pla
   
 3. In the `source` directory, run the command `npm i`
 
-4. In the `source` directory, run the command `npm run build`.
-
-    - This will start automatic installation of some additional dependencies.
-
-    - It's not recommended to try and override this, we do it automatically because the versions matter a lot.
+4. In the `source` directory, run the command `npm run build-interactive` (to build everything without an interactive prompt, use `npm run build`).
 
 5. Install dependencies (TSWoW expects these to be in the `build` directory, so you need most even if you normally compile TrinityCore
 

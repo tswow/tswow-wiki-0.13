@@ -18,6 +18,12 @@ This section lists the most common problems with TSWoW that almost everyone gets
 
 - **Possible solution 3**: In extreme circumstances, restarting your computer or manually closing broken node.exe processes may be necessary. In 3 months of heavy development,   this happened exactly once.  
 
+### Installation errors relating to Canvas/Cairo
+
+**Problem**: Getting compiler errors relating to canvas/cairo when installing TSWoW.
+
+- **Possible solution 1**: Try downloading canvas manually and place it inside your `tswow-installation/node_modules`. We have binaries for [Node 14](https://www.dropbox.com/s/cmbw9563d7n0yxt/canvas-node14.zip?dl=1) and [Node 15](https://www.dropbox.com/s/pz8os7ib9vcv0ig/canvas-node15.zip?dl=1), please [contact us](https://discord.gg/M89n6TZh9x) if this does not work or you need another version.
+
 ### Cannot import tswow-stdlib
 **Problem**: The editor or your scripts complain that they cannot find `tswow-stdlib`  
 
@@ -30,7 +36,7 @@ This section lists the most common problems with TSWoW that almost everyone gets
 
 - **Possible solution 1**: If using the ORM system: Double check the name of parameters to your `LoadRows` function, they have to exactly match the fields in your ORM class.  
 
-- **Possible solution 2**: Try rebuilding your databases, or manually remove `coredata/mysql` and `coredata/mysql_plain`.  
+- **Possible solution 2**: Try rebuilding your databases, or manually remove `coredata/database`.  
 
 ## Cleaning and Reinstalling
 

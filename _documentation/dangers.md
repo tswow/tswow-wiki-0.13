@@ -3,7 +3,7 @@ title: Dangers
 ---
 
 This file should attempt to list all the dangerous things users and developers should avoid before they happen. 
-See the [troubleshooting document](../Troubleshooting/) for how to fix errors once they appear.
+See the [troubleshooting document](../troubleshooting/) for how to fix errors once they appear.
 
 ### Do not parallelize data/live/addon builds
 

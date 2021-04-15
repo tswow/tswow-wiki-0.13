@@ -6,7 +6,7 @@ TSWoW supports creating addons using the TypeScript programming language, and to
 When an addon is built, the code is transpiled into lua and automatically installed at the configured client path. The purpose of this document is to explain how addon development works
 and the differences from normal addon development.
 
-_Please note: The sources TSWoW has used to generate type definitions come from very poorly structured web pages and may not be entirely accurate. An exact specification of the Blizzard API for 3.3.5 is very hard to come by, so we appreciate reports on any inaccuracies._
+_Please note: The sources TSWoW has used to generate type definitions come from very poorly structured web pages and may not be entirely accurate. An exact specification of the Blizzard API for 3.3.5 is very hard to come by, [so we appreciate reports on any inaccuracies](https://github.com/tswow/tswow/issues/120)._
 
 - <span>While TSWoW itself is released under a GPLv3 license, all our client libraries are exceptions to this and instead released under MIT, meaning servers have no obligation to keep their addons open source. TSWoW is server-friendly, even with addons.</span>
 

@@ -89,7 +89,7 @@ INNKEEPER_OPTION.Icon.set('CHAT')
 INNKEEPER_OPTION.Text.set({enGB:'Can I stay here?'});
 ```
 
-You should now see that you get both the gossip options you created when you click on the NPC. You should also be able to verify that both options work as intended, and you can both access your bank and set this location as an inn.
+You should now see that you get both the gossip options you created when you click on the NPC. You should also be able to verify that both options work as intended, and you can both access your bank and set this location as an inn (_note: You cannot set your inn location if GM mode is activated_).
 
 {:refdef: style="text-align: center;"}
 ![](../gossip-innkeeper.png)

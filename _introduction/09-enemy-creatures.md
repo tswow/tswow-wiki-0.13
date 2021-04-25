@@ -136,6 +136,9 @@ In this tutorial, we have learnt:
 Our completed code for `EnemyCreature.ts` becomes:
 
 ```ts
+import { std } from "tswow-stdlib";
+import { Pos } from "tswow-stdlib/Misc/Position";
+
 // Create a mob based on the zombies in Deathknell. 
 const ZOMBIE = std.CreatureTemplates
     .create('mymod','zombie',1501)

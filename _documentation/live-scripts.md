@@ -203,16 +203,6 @@ myDict.filter((key,value)=>true); // <-- works
 myDict.forEach((key,value)=>{}); // <-- works
 ```
 
-Since callback functions cannot access scoped variables, the following workaround allows us to iterate without a callback function:
-
-```ts
-const keys = myDict.keys(); // <-- returns an array
-for(let i=0;i<keys.length;++i) {
-    const key = keys.get(i);
-    const value = myDict.get(key);
-}
-```
-
 ## Classes
 
 Classes work mostly as usual. If a class does not extend anything else, they should extend `TSClass`:

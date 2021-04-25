@@ -110,11 +110,13 @@ First, we then need to figure out the spell ID of Death Coil. The simplest way i
 Its spell ID is 47541, which is all we need to steal its models and special effects. Add the following to `DeathBolt.ts`: 
 
 ```ts
+const DEATH_COIL = std.Spells.load(47541)
+
 // Copy the missile model
-DEATH_BOLT.Visual.MissileModel.set(DEATH_COIL.Visual.MissileModel.get())
+DEATH_BOLT.MissileModel.setID(DEATH_COIL.MissileModel.ID)
 
 // Copy the impact visual kit
-DEATH_BOLT.Visual.Kits.Impact.cloneFrom(DEATH_COIL.Visual.Kits.Impact)
+DEATH_BOLT.ImpactKit.cloneFrom(DEATH_COIL.ImpactKit)
 ```
 
 Since we only modified visual information, we can rebuild using `build data client` and should see that we have indeed replaced the missile model and impact kit with that of Death Coil. We can also see that the casting animation and effect is still left from Shadow Bolt. This is because we did not replace or modify the `Cast` kit.

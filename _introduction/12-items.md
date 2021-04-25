@@ -59,7 +59,7 @@ From here, it's just two lines of code to copy the visual information:
 // Load the amani longbow
 const AMANI_LONGBOW = std.Items.load(33474)
 // Copy all item visual information
-RUBBER_SWORD.Visual.copyFrom(AMANI_LONGBOW);
+RUBBER_SWORD.DisplayInfo.copyFrom(AMANI_LONGBOW.DisplayInfo.ID);
 ```
 
 All other weapon and armor types work more or less identical to this example, so we will not cover them further here. Of course, copying visual information from a non-held and a held equip will have nonsensical results.

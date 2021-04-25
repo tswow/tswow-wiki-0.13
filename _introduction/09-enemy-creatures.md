@@ -12,7 +12,7 @@ Let's create a basic zombie entity and spawn a few of them. Create a new file ca
 
 ```ts
 // Create a mob based on the zombies in Deathknell. 
-const ZOMBIE = std.CreatureTemplates
+export const ZOMBIE = std.CreatureTemplates
     .create('mymod','zombie',1501)
 
 // Random positions behind northshire abbey, between the sawmill and river.
@@ -140,7 +140,7 @@ import { std } from "tswow-stdlib";
 import { Pos } from "tswow-stdlib/Misc/Position";
 
 // Create a mob based on the zombies in Deathknell. 
-const ZOMBIE = std.CreatureTemplates
+export const ZOMBIE = std.CreatureTemplates
     .create('mymod','zombie',1501)
 
 // Random positions behind northshire abbey, between the sawmill and river.

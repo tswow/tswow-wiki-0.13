@@ -97,23 +97,6 @@ const arr : TSArray<uint32> = []; // <-- works!
 const arr2 : TSArray<uint32> = [1,2,3]; // <-- works!
 ```
 
-#### Access
-
-Reading/Writing arrays uses the functions get/set instead of accessing with [index]:
-
-```ts
-const arr : TSArray<uint32> = [1,2,3];
-
-// Write
-arr.set(0,10)            // <-- works
-arr.push(10)             // <-- works
-arr[0] = 10              // <-- does not work
-
-// Read
-console.log(arr.get(0)); // <-- works
-console.log(arr[0]);     // <-- does not work
-```
-
 #### Iteration
 
 Looping with for...in or for...of is currently disabled, but you can still loop by index:
@@ -152,7 +135,7 @@ const arr: TSArray<uint32> = [1,2,3];
 
 const target: TSArray<uint32> = [];
 for(let i=0;i<arr.length;++i) {
-    target.push(arr.get(i)*2);
+    target.push(arr[i]*2);
 }
 ```
 
@@ -182,8 +165,8 @@ const myDictionary : TSDictionary<uint64,string> = MakeDictionary<uint64,string>
     8: "value8"
 });
 
-myDictionary.set(3,"value3");
-console.log(myDictionary.get(8));
+myDictionary[3] = "value3"
+console.log(myDictionary[8]);
 ```
 
 ### Iteration

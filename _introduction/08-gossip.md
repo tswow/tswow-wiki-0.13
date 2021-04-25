@@ -69,7 +69,7 @@ Let's create a few basic gossip options we can click on. Add the following code:
 // Creates a new option to open a bank
 const BANK_OPTION = MAIN_GOSSIP.Options.add()
 BANK_OPTION.Action.setBanker();
-BANK_OPTION.Icon.set('MONEY_BAG')
+BANK_OPTION.Icon.setMoneyBag();
 BANK_OPTION.Text.set({enGB:'Please open my bank for me'});
 ```
 
@@ -85,7 +85,7 @@ Let's add another option so we can again see our gossip window:
 // Creates a new option to an innkeeper.
 const INNKEEPER_OPTION = MAIN_GOSSIP.Options.add()
 INNKEEPER_OPTION.Action.setInnkeeper();
-INNKEEPER_OPTION.Icon.set('CHAT')
+INNKEEPER_OPTION.Icon.setChat()
 INNKEEPER_OPTION.Text.set({enGB:'Can I stay here?'});
 ```
 
@@ -102,7 +102,7 @@ We have now shown how to add basic gossip options, so let's try and make sub-men
 ```ts
 // First, we create the sub-menu option
 const SUBMENU_OPTION = MAIN_GOSSIP.Options.add()
-SUBMENU_OPTION.Icon.set('COGWHEEL');
+SUBMENU_OPTION.Icon.setCogwheel();
 SUBMENU_OPTION.Text.set({enGB: ''})
 
 // Now, we create the submenu itself from the option action
@@ -145,6 +145,10 @@ Add the following code:
 // Creates a vendor stored on our own Creature ID. 
 // The first vendor we create for a creature MUST
 // use "ownVendor".
+const VENDOR_OPTION = MAIN_GOSSIP.Options.add()
+VENDOR_OPTION.Icon.setVendor()
+VENDOR_OPTION.Text.set({enGB: 'Text'})
+
 const VENDOR = VENDOR_OPTION.Action.setOwnVendor();
 
 // Adds item id 35 to the shop (Bent staff)
@@ -172,7 +176,7 @@ To create multiple vendors in a single creature, we will use the second vendor f
 
 ```ts
 const VENDOR_2_OPTION = MAIN_GOSSIP.Options.add()
-VENDOR_2_OPTION.Icon.set('CROSSED_SWORDS')
+VENDOR_2_OPTION.Icon.setCrossedSwords();
 VENDOR_2_OPTION.Text.set({enGB:'Let me see your swords'})
 
 const VENDOR_2 = VENDOR_2_OPTION.Action.setMultivendor()
@@ -258,18 +262,18 @@ MAIN_GOSSIP.Text.add({enGB:'Hi world from Gossip window'});
 // Creates a new option to open a bank
 const BANK_OPTION = MAIN_GOSSIP.Options.add()
 BANK_OPTION.Action.setBanker();
-BANK_OPTION.Icon.set('MONEY_BAG')
+BANK_OPTION.Icon.setMoneyBag();
 BANK_OPTION.Text.set({enGB:'Please open my bank for me'});
 
 // Creates a new option to an innkeeper.
 const INNKEEPER_OPTION = MAIN_GOSSIP.Options.add()
 INNKEEPER_OPTION.Action.setInnkeeper();
-INNKEEPER_OPTION.Icon.set('CHAT')
+INNKEEPER_OPTION.Icon.setChat();
 INNKEEPER_OPTION.Text.set({enGB:'Can I stay here?'});
 
 // First, we create the sub-menu option
 const SUBMENU_OPTION = MAIN_GOSSIP.Options.add()
-SUBMENU_OPTION.Icon.set('COGWHEEL');
+SUBMENU_OPTION.Icon.setCogwheel();
 SUBMENU_OPTION.Text.set({enGB: ''})
 
 // Now, we create the submenu itself from the option action
@@ -284,6 +288,10 @@ BACK_LINK.Action.setGossipLinkID(MAIN_GOSSIP.ID)
 // Creates a vendor stored on our own Creature ID. 
 // The first vendor we create for a creature MUST
 // use "ownVendor".
+const VENDOR_OPTION = MAIN_GOSSIP.Options.add()
+VENDOR_OPTION.Icon.setVendor()
+VENDOR_OPTION.Text.set({enGB: 'Text'})
+
 const VENDOR = VENDOR_OPTION.Action.setOwnVendor();
 
 // Adds item id 35 to the shop (Bent staff)
@@ -293,7 +301,7 @@ VENDOR.addItem(35);
 std.Items.load(35).Price.set(50,100);
 
 const VENDOR_2_OPTION = MAIN_GOSSIP.Options.add()
-VENDOR_2_OPTION.Icon.set('CROSSED_SWORDS')
+VENDOR_2_OPTION.Icon.setCrossedSwords();
 VENDOR_2_OPTION.Text.set({enGB:'Let me see your swords'})
 
 const VENDOR_2 = VENDOR_2_OPTION.Action.setMultivendor()

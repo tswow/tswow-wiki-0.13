@@ -25,7 +25,7 @@ export const NECROMANCY_TRAINER_HUMAN =
     std.CreatureTemplates.create('tswow-introduction','necromancer-trainer',375)
 
 NECROMANCY_TRAINER_HUMAN.Name.enGB.set('My Trainer');
-NECROMANCY_TRAINER_HUMAN.Title.enGB.set('Necromancy Trainer')
+NECROMANCY_TRAINER_HUMAN.Subname.enGB.set('Necromancy Trainer')
 ```
 
 Rebuild the code using `build data` and log in as a human. We can find the ID of our new creature by using the ingame command `.lookup creature my trainer`. Then, we can spawn this creature at the players current location using `.npc add creatureid`. 
@@ -91,12 +91,17 @@ In this tutorial, you have learnt the basics of how creatures work in World of W
 
 ```ts
 import { std } from "tswow-stdlib";
+import { NECROMANCER_CLASS, DEATH_SKILL, NECROMANCY_SKILL } from "./Necromancer";
+import { DEATH_BOLT } from "./spells";
+import { SUMMON_ABOMINATION } from "./SummonAbomination";
+import { BONE_SHIELD } from "./BoneShield";
+import { Pos } from "tswow-stdlib/Misc/Position";
 
 export const NECROMANCY_TRAINER_HUMAN = 
     std.CreatureTemplates.create('tswow-introduction','necromancer-trainer',375)
 
 NECROMANCY_TRAINER_HUMAN.Name.enGB.set('My Trainer');
-NECROMANCY_TRAINER_HUMAN.Title.enGB.set('Necromancy Trainer')
+NECROMANCY_TRAINER_HUMAN.Subname.enGB.set('Necromancy Trainer')
 
 // The text displayed at the top of the trainer window
 NECROMANCY_TRAINER_HUMAN.Trainer.Greeting.enGB.set(`Blah blah blah necromancy blah blah`)
@@ -105,7 +110,7 @@ NECROMANCY_TRAINER_HUMAN.Trainer.Greeting.enGB.set(`Blah blah blah necromancy bl
 NECROMANCY_TRAINER_HUMAN.Trainer.Class.set(NECROMANCER_CLASS.ID);
 
 // Need to disable gossip text to make trainer work for our new class
-NECROMANCY_TRAINER_HUMAN.GossipID.set(0);
+NECROMANCY_TRAINER_HUMAN.Gossip.setID(0);
 
 // Because of how Trainers work, trainer data is not copied over from the last creature
 NECROMANCY_TRAINER_HUMAN.Trainer.addSpell(DEATH_BOLT.ID,10,0,DEATH_SKILL.ID);

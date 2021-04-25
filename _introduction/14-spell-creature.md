@@ -86,4 +86,4 @@ export function Main(events: TSEventHandlers) {
 }
 ```
 
-There are still a few things left to learn about Live scripting, but for now you can use the [documentation](../documentation/TSWoW/live-scripts/), our [test module](https://github.com/tswow/tswow-testmodule) or ask away on the [discord](https://discord.gg/M89n6TZh9x).
+There are still a few things left to learn about Live scripting, but for now you can use the [documentation](../../documentation/live-scripts/), our [test module](https://github.com/tswow/tswow-testmodule) or ask away on the [discord](https://discord.gg/M89n6TZh9x).

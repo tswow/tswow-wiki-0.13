@@ -120,6 +120,7 @@ Our final code in `Talents.ts` becomes:
 ```ts
 import { std } from "tswow-stdlib";
 import { NECROMANCER_CLASS } from "./Necromancer";
+import { SUMMON_ABOMINATION } from "./SummonAbomination";
 
 // Creates a new talent tree at index 0 (the first talent tree)
 export const NECROMANCY = std.TalentTrees.create('tswow-introduction','tswow',0,[NECROMANCER_CLASS.ID])

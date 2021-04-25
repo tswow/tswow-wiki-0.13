@@ -12,7 +12,7 @@ _Live Scripts are **completely separate** from data scripts. You can **not** imp
 
 ## Our first Live Script
 
-Live Scripts are stored in the `scripts` subdirectory of a module. There should always be a file named inside `modulename_scripts.ts`. Inside of this file, we always have the following function:
+Live Scripts are stored in the `livescripts` subdirectory of a module. If you do not have a livescripts directory, run the command `module add-feature mymodule --livescripts` to create it. There should always be a file named inside `mymodule-scripts.ts`. Inside of this file, we always have the following function:
 
 ```ts
 export function Main(events: TSEventHandlers) {

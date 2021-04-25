@@ -33,10 +33,10 @@ _Module as viewed from VSCodium_
 
 ## The Three Types of TSWoW Mods
 
-There are three types of mods that we can create with TSWoW: **Data Scripts**, **Live Scripts** and **Assets**. As you can see above, in each module we have a dedicated folder for each type. The **data** folder is for data scripts, the **scripts** folder is for live scripts and the **assets** folder is for assets. We will now briefly explain what each type of mod is used for.
+There are three types of mods that we can create with TSWoW: **Data Scripts**, **Live Scripts** and **Assets**. As you can see above, in each module we have a dedicated folder for each type. The **datadata** folder is for data scripts, the **livescripts** folder is for live scripts and the **assets** folder is for assets. We will now briefly explain what each type of mod is used for.
 
 
-### Data Scripts (data)
+### Data Scripts
 
 Data scripts are TypeScript code files that modify the World of Warcraft game data in some way by creating or modifying existing game entities, such as classes, items, quests, titles, and languages. These files are run only during development to create data files for the server and client, and never when the game is actually running. Below is an example of how a data script might look. 
 
@@ -57,7 +57,7 @@ export const NECROMANCER = std.Classes.create('tswow','necromancer','NECROMANCER
 _Code example of a fully working custom class made with a Data Script_
 {: refdef}
 
-### Live Scripts (scripts)
+### Live Scripts
 
 Sometimes, we need extra custom behavior that data scripts cannot achieve, since all they do is modify or create static game data. For this, we use Live scripts, which allows us to run live code in the server when certain events happen, such as a creature taking damage, a player logging in or a guild being created. We write live scripts in TypeScript, and TSWoW transforms it into C++ that can be reloaded into the server without restarting it. For modding veterans, this is the TSWoW version of C++ scripts or Eluna lua scripts.  With live scripts, we get the best of both worlds since scripts are both easy to write thanks to autocompletion and highly performant thanks to the C++ transpiler. 
 
@@ -104,3 +104,5 @@ You have now learnt the three things you can do with TSWoW:
 - Use Assets to replace **resource files and game assets**
 
 - Use Live scripts to **script the server**
+
+- Use AddOns to modify the **client interface and scripts**

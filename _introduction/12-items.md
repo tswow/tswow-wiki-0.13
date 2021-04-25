@@ -84,7 +84,7 @@ const ZOMBIE_BRAIN = std.Items
 // Changes the english display name to "Zombie Brain"
 ZOMBIE_BRAIN.Name.set({enGB:'Zombie Brain'})
 // Changes the displayed icon to that of a brain (finding icons is a future tutorial)
-ZOMBIE_BRAIN.Visual.Icon.set('Interface\\Icons\\Spell_Shadow_Brainwash.blp')
+ZOMBIE_BRAIN.DisplayInfo.Icon.set('Interface\\Icons\\Spell_Shadow_Brainwash.blp')
 ```
 
 ### Loot Tables

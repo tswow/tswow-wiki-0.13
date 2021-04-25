@@ -12,7 +12,7 @@ _In these tutorials, you will be asked to start writing TSWoW code. It is highly
 
 _Note: If you create a class and later remove it (or change the modid:entityid), you need to **remove** the `config/ids.txt` file, as the current generation algorithm does not work with holes in the class IDs (your client will crash)._
 
-Our first task will be to create the definition for our new custom class. Create a new file called `Necromancer.ts` in your `data` mod folder. Enter the following code: 
+Our first task will be to create the definition for our new custom class. Create a new file called `Necromancer.ts` in your `datascripts` mod folder. Enter the following code: 
 
 ```ts
 import { std } from 'tswow-stdlib';

@@ -10,6 +10,7 @@ TSWoW provides an API to create and load talent trees for any class. Create a ne
 
 ```ts
 import { std } from "tswow-stdlib";
+import { NECROMANCER_CLASS } from "./Necromancer";
 
 // Creates a new talent tree at index 0 (the first talent tree)
 export const NECROMANCY = std.TalentTrees.create('tswow-introduction','tswow',0,[NECROMANCER_CLASS.ID])
@@ -118,6 +119,7 @@ Our final code in `Talents.ts` becomes:
 
 ```ts
 import { std } from "tswow-stdlib";
+import { NECROMANCER_CLASS } from "./Necromancer";
 
 // Creates a new talent tree at index 0 (the first talent tree)
 export const NECROMANCY = std.TalentTrees.create('tswow-introduction','tswow',0,[NECROMANCER_CLASS.ID])

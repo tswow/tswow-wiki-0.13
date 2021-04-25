@@ -10,7 +10,7 @@ You should have read the [Modding Introduction](1_ModdingIntroduction.md) and [i
 
 Start up your VSCodium editor in the TSWoW directory and start TSWoW from the terminal (`npm run start`).
 
-Once TSWoW has started, type the command `module create mymodule`. This will create a new directory called _mymodule_ in your modules folder.
+Once TSWoW has started, type the command `module create mymodule --datascripts --assets --livescripts`. This will create a new directory called _mymodule_ in your modules folder.
 
 {:refdef: style="text-align: center;"}
 ![](newmodule-vscodium.png)

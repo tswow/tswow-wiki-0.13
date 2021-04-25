@@ -93,7 +93,7 @@ _Silly boar recoloring using an asset replacement_
 
 ### The Fourth Mod Type
 
-Since version 0.10, there is a new type of TSWoW mod: [AddOns](../documentation/addons/) which allows you to create clientside AddOns that can communicate with the server. Just like every other type of mod, AddOns can be written in TypeScript instead of lua. This type of mod is a more advanced feature of TSWoW and won't be covered in the introductory tutorial.
+Since version 0.10, there is a new type of TSWoW mod: [AddOns](../../documentation/addons/) which allows you to create clientside AddOns that can communicate with the server. Just like every other type of mod, AddOns can be written in TypeScript instead of lua. This type of mod is a more advanced feature of TSWoW and won't be covered in the introductory tutorial.
 
 ## Summary
 

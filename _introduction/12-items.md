@@ -99,7 +99,7 @@ Since we only want to add a quest item to a creature with an existing loot table
  * - Drop between 1 and 1 each time
  * - Final argument makes it only drop if we have a quest for it
  */
-ZOMBIE.Loot.Normal.addItem(ZOMBIE_BRAIN.ID,80,1,1,true)
+ZOMBIE.NormalLoot.addItem(ZOMBIE_BRAIN.ID,80,1,1,true)
 ```
 
 ### Loot Quest

@@ -134,6 +134,7 @@ Our final code in `Quest.ts` becomes:
 ```ts
 import { std } from "tswow-stdlib";
 import { ZOMBIE } from "./EnemyCreature";
+import { Pos } from "tswow-stdlib/Misc/Position";
 
 /** 
  * Kill Quest 
@@ -214,5 +215,4 @@ endWalk.Action.setFinishQuestWalk(escortQuest.ID);
 // Say a message after we complete the quest
 const finalSay = endWalk.then()
 finalSay.Action.setTalk({enGB:'Well... you come up with what happens from here!'},10,0)
-
 ```

@@ -2,8 +2,6 @@
 title: TSWoW Alpha to Beta Migration
 ---
 
-_Note: This tutorial is not finished and may change until the beta releases._
-
 The purpose of this guide is to explain the differences between the TSWoW alpha and beta versions, and the steps needed to migrate from one to the other.
 
 Because the TSWoW beta has quite a few differences from the old versions, you cannot use the old "update.7z" method. Instead, you need to install the beta separately,

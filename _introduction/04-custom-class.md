@@ -23,8 +23,6 @@ export const NECROMANCER_CLASS =
         'myname-mymod',
         // Entity id
         'necromancer',
-        // Entity id in uppercase, used internally by World of Warcraft
-        'NECROMANCER',
         // The parent name of our class.
         'MAGE');
 
@@ -126,8 +124,6 @@ export const NECROMANCER_CLASS =
         'myname-mymod',
         // Entity id
         'necromancer',
-        // Entity id in uppercase, used internally by World of Warcraft
-        'NECROMANCER',
         // The parent name of our class.
         'MAGE');
 

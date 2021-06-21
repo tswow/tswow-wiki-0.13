@@ -305,3 +305,76 @@ Only primitive types (ints, floats, strings) can be used as @Fields or @PrimaryK
 | uint16   | Yes        | Yes             |
 | uint32   | Yes        | Yes             |
 | uint64   | Yes        | Yes             |
+
+## Using C++
+
+Since [version 12](https://github.com/tswow/tswow/releases/tag/v0.12-beta), you can write C++ directly in your livescripts. Note that the raw C++ API should be considered more unstable than the transpiled TypeScript, so modules that use raw C++ are more likely to break on updates.
+
+### Calling C++ from TypeScript
+
+First, we create a header `raw-file.h`
+```cpp
+void cpp_function();
+```
+
+Then, a corresponding cpp `raw-file.cpp`
+```cpp
+#include <iostream>
+
+void cpp_function()
+{
+    std::cout << "Hello world from C++!" << "\n";
+}
+```
+
+Then, we'll need a type declaration file `raw-file.d.ts`
+```ts
+export declare function cpp_function(): void;
+```
+
+Finally, we can call this function from our main function (or any other TypeScript module).
+```ts
+import { cpp_function } from "./raw_file"
+
+export function Main(events: TSEventHandlers) {
+    // will print the hello world message when script is reloaded
+    cpp_function();
+}
+```
+
+_Note: The main file of a project must always be a TypeScript file_
+
+### Calling TypeScript from C++
+
+Create a typescript file `ts-file.ts`
+```ts
+export function ts_function() {
+    console.log("Hello world from TypeScript!");
+}
+```
+
+Then, from any c++ file as created above, simply do the following:
+
+```cpp
+#include "ts-file.h"
+// (if the file was in a subdirectory, the include should instead be #include "subdir/ts-file.h")
+
+void some_function()
+{
+    ts_function();
+}
+```
+
+## Custom CMakeLists.txt
+
+You can create a special `CMakeLists.txt` placed in your root livescripts directory to link external libraries. You do not need to set up the entire project in this file, it will be included after TSWoW has created a target named after your module (module named `module-a` has a target `module-a` ready when the file is loaded). Simply add any libraries or external headers to this file. 
+
+_Note: Do not place external library files into the livescripts directory, since TSWoW will think it should compile them as part of the script itself._
+
+_Note: Remember that livescripts are completely unloaded from memory any time you rebuild them, but it's your responsibility to handle heap allocations_
+
+## Passing arguments
+
+Livescript TypeScript uses different conventions depending on what type it is, and may require including special headers. For example, user types are (currently) always wrapped in `std::shared_ptr` while `TS*` types are always sent as is. The `string` type is called `TSString` in C++.
+
+To figure out how to accept an argument of a specific type, try writing a TypeScript function and look at the C++ the transpiler produces at `livescripts/build/cpp/livescripts`.

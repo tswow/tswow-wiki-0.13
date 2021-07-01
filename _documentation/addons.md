@@ -204,3 +204,72 @@ export function SharedFunction() {
    </Frame>
 </Ui>
 ```
+
+# Using Lua
+
+Since [version 12](https://github.com/tswow/tswow/releases/tag/v0.12-beta), you can write lua directly in your addons.
+
+## Lua Modules (Calling Typescript from Lua / Calling Lua from TypeScript)
+
+Normally in WoW AddOns, a `.toc` file is used to specify what order lua files are loaded. AddOns written in TypeScript automatically generates this file, since they instead rely on es6-style imports just like a normal TypeScript project. 
+
+With raw lua files, we can use a special boilerplate syntax to register modules that allow us to both export and import modules, just like we would in a TypeScript file: 
+
+First, we create a simple TypeScript function:
+
+_tsfile.ts:_
+```ts
+export function tsfunction() { console.log("Hello from tsfunction()"); } 
+```
+
+Then, we create a lua function that will call it. To call TypeScript from lua, we **must** set it up with the `tstl_register_module` boilerplate function.
+
+_luafile.lua:_
+```lua
+-- This boilerplate function creates our module.
+tstl_register_module(
+    -- This is the name of our module. 
+    -- This should always be on the form "TSAddons.my-module.addon.path.to.my.module" (don't forget the ".addon." part)
+    "TSAddons.my-module.addon.luafile",
+    function()
+        local exports = {}
+        -- Here, we can import a TypeScript module file and use its functions.
+        -- Note how we must also prepend with "TSAddons.my-module.addon", just like when registering.
+        -- (again, don't forget the ".addon." part)
+        local tstest = require("TSAddons.my-module.addon.tsfile")
+        function exports.luafunction()
+            print("Hello from luafunction!")
+            -- Call the tsfunction we defined in tsfile.ts above
+            tstest.tsfunction()
+        end
+        return exports
+    end
+)
+```
+
+Now, we can create a definition file corresponding to the lua file we just created to be able to access its functions from TypeScript again:
+
+_luafile.d.ts:_
+```ts
+export declare function luafunction();
+```
+
+_tsfile2.ts:_
+```ts
+import { luafunction } from "./luafile"
+
+luafunction();
+
+```
+
+## Custom Load orders
+
+As mentioned previously, when building TypeScript AddOns tswow automatically generates the .toc file to ensure all modules are included and always load before the modules entry point. 
+
+Sometimes, we might not want to use the module syntax, or for some other reason specify that some lua files should be loaded before others. For this, we can use any of three special .toc files, placed in the addon root directory of our module (same as the entrypoint):
+
+- `beforelib.toc`: Files listed here are loaded before even library modules and any other modules normal addon files.
+- `before.toc`: Files listed here are loaded before any of the module files in this addon.
+- `after.toc`: Files listed here are loaded after any of the module files in this addon.
+
+If you wish to use any functions from files in `beforelib.toc` or `before.toc` in your TypeScript files, you can declare them in a `global.d.ts` placed in your modules addons folder.

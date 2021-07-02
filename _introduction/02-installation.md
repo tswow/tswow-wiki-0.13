@@ -20,7 +20,7 @@ You will need to install the following programs:
 
 - [Git](https://github.com/git-for-windows/git/releases/download/v2.30.0.windows.1/Git-2.30.0-64-bit.exe)
 
-- [7-zip](https://www.7-zip.org/a/7z1900-x64.exe)
+- [7-zip](https://www.7-zip.org/a/7z1900-x64.exe) (do **not** use winrar to open 7zip files, we've had reports that this breaks/ignores some files)
 
 - [Node.js (version 12.19 or higher)](https://nodejs.org/dist/v14.15.1/node-v14.15.1-x64.msi)
 

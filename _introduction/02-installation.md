@@ -57,7 +57,6 @@ You will need to install the following programs:
     package-lock.json
     package.json
     bin
-    config
     coredata
     modules
     node_modules

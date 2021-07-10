@@ -81,7 +81,7 @@ client_path: "C:\dev\wow\335\client"
 ```
 
 not valid:
-```yaml
+```
 client_path: C:\\dev\\wow\\335\\client
 ```
 

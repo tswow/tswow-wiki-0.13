@@ -63,7 +63,27 @@ You will need to install the following programs:
     ```
 3. Start the VSCodium editor. Press F1 and type "Open folder", select the first option and select your TSWoW installation folder. This is your new development environment.
 
-4. Configure your client path. Open the file `coredata/datasets/default/default.dataset.yaml` (shortcut. press `Ctrl+P` and type `default.dataset`) and fill in the `client_path` field. This should be the **directory** that contains your client executable.
+4. Configure your client path. Open the file `coredata/datasets/default/default.dataset.yaml` (shortcut. press `Ctrl+P` and type `default.dataset`) and fill in the `client_path` field. This should be the **directory** that contains your client executable. **Note: If using double quotes, you need to use double backslashes**:
+
+valid:
+```yaml
+client_path: C:\dev\wow\335\client
+```
+
+valid:
+```yaml
+client_path: "C:\\dev\\wow\\335\\client"
+```
+
+not valid:
+```
+client_path: "C:\dev\wow\335\client"
+```
+
+not valid:
+```yaml
+client_path: C:\\dev\\wow\\335\\client
+```
 
 ## Starting the server
 

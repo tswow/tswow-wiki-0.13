@@ -50,7 +50,7 @@ Let's change the class UI color and add a proper description. Add the following 
 
 ```ts
 // Change display color
-NECROMANCER_CLASS.UI.color.set(0xcc0077)
+NECROMANCER_CLASS.UI.Color.set(0xcc0077)
 
 // Add character creation description
 NECROMANCER_CLASS.UI.Info.add('- Role: Damage, Tank')

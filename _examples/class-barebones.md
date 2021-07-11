@@ -12,7 +12,7 @@ const MODNAME = 'tswow-necromancer';
 /******************************************************************
  * NECROMANCER CLASS
  ******************************************************************/
-const NECROMANCER = std.Classes.create(MODNAME,'necromancer','NECROMANCER','MAGE')
+const NECROMANCER = std.Classes.create(MODNAME,'necromancer','MAGE')
 NECROMANCER.Name.enGB.set('Necromancer');
 NECROMANCER.addRaces(['HUMAN','ORC','UNDEAD','TROLL'])
 NECROMANCER.UI.Color.set(0x770077);
@@ -39,8 +39,8 @@ DEATH_COIL_ABILITY.setAutolearn();
 
 // Copy visual data from the real death coil
 const DEATH_COIL_DK = std.Spells.load(47541)
-DEATH_COIL.Visual.MissileModel.set(DEATH_COIL_DK.Visual.MissileModel.get());
-DEATH_COIL.Visual.Kits.Impact.cloneFrom(DEATH_COIL_DK.Visual.Kits.Impact);
+DEATH_COIL.Visual.MissileModel.setID(DEATH_COIL_DK.Visual.MissileModel.ID);
+DEATH_COIL.Visual.ImpactKit.cloneFrom(DEATH_COIL_DK.Visual.ImpactKit);
 DEATH_COIL.Icon.set(DEATH_COIL_DK.Icon.get());
 NECROMANCY.Icon.set(DEATH_COIL_DK.Icon.get());
 
@@ -63,7 +63,7 @@ SUMMON_ABOMINATION.Icon.set('Interface\\Icons\\Achievement_Boss_patchwerk.blp')
 export const NECRO_TRAINER = 
     std.CreatureTemplates.create('tswow-necromancer','necromancer-trainer',198)
 NECRO_TRAINER.Name.enGB.set('Wilson Carter');
-NECRO_TRAINER.Title.enGB.set('Necromancy Trainer')
+NECRO_TRAINER.Subname.enGB.set('Necromancy Trainer')
 NECRO_TRAINER.Trainer.Greeting.enGB.set(`Necromancy is like baseball, I know nothing of either.`)
 NECRO_TRAINER.Trainer.Class.set(NECROMANCER.ID);
 NECRO_TRAINER.Trainer.addSpell(SUMMON_ABOMINATION.ID,0,1);

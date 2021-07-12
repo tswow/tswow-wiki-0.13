@@ -106,7 +106,7 @@ const THUNDERFURY_2 = std.Items
         // Numerical ID for the original Thunderfury
         19019
     )
-THUNDERFURY_2.Name.set({enGB:'Thunderfury 2'});
+THUNDERFURY_2.Name.enGB.set('Thunderfury 2');
 ```
 
 Here, we supply the create functions with the arguments 'my-module','thunderfury-2', and 19019. If we follow the autocompletion, we can see that the parameter names are "mod", "id" and "parent", respectively. Whenever a function in TSWoW asks for a "mod" and an "id" parameter, you can be sure that it's asking you for your current module and a new **unique** entity id. The third argument in this example, parent, is the numerical ID of the item we want to copy. 

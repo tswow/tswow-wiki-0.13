@@ -35,7 +35,7 @@ This code demonstrates how to loop an action indefinitely.
 export function Main(events: TSEventHandlers) {
     events.Player.OnSay((player,type,lang,msg)=>{
         // Loops an action labeled "test_task" by 1000ms infinitely (0) times.
-        player.GetTasks().AddTimer(ModID(),"test_task",1000,0,(timer,entity,del,can)=>{
+        player.GetTasks().AddTimer("test_task",1000,0,(timer,entity,del,can)=>{
             entity.ToPlayer().SendBroadcastMessage("Looped message");
         });
     });
@@ -56,8 +56,7 @@ class ExtendedPlayerData {
 export function Main(events: TSEventHandlers) {
     events.Player.OnSay((player,type,lang,msg)=>{
       // Gets a data tag from a player, or creates a new one and attaches it if it doesn't already exist.
-      const data = player.GetData().GetObject<ExtendedPlayerData>
-        (ModID(),"custom_data",()=>new ExtendedPlayerData());
+      const data = player.GetData().GetObject("custom_data",new ExtendedPlayerData());
       player.SendBroadcastMessage("Your happiness is "+data.happiness++);
     });
 }
@@ -89,18 +88,16 @@ export function Main(events: TSEventHandlers) {
         const guid = player.GetGUIDLow()
         const rows = LoadRows(PlayerStatsExtended,`player = ${guid}`)
         const stats = rows.length > 0 ? rows.get(0) : new PlayerStatsExtended(guid);
-        player.GetData().SetObject(ModID(),STATS_FIELD,stats);
+        player.GetData().SetObject(STATS_FIELD,stats);
     });
 
     events.Player.OnSay((p,t,l,msg)=>{
-        const messageCount = p.GetData().GetObject<PlayerStatsExtended>
-            (ModID(),STATS_FIELD).messageCount++
+        const messageCount = p.GetData().GetObject(STATS_FIELD,new PlayerStatsExtended(player.getGUIDLow())).messageCount++
         p.SendBroadcastMessage("Your message count is "+messageCount);
     });
 
     events.Player.OnSave((player)=>{
-        player.GetData().GetObject<PlayerStatsExtended>
-            (ModID(),STATS_FIELD).save();
+        player.GetData().GetObject(STATS_FIELD,new PlayerStatsExtended(player.getGUIDLow())).save();
     });
 }
 ```

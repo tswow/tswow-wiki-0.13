@@ -79,7 +79,7 @@ The source, build and install directories should all be **separate**. Do not pla
 
 1. Run either of the following commands (_optionally in a new empty folder_):
     - For bleeding edge: `git clone https://github.com/tswow/tswow.git --recurse`
-    - For the latest release `git clone https://github.com/tswow/tswow.git --recurse --branch --release v0.12-beta` (change tag)
+    - For the latest release `git clone https://github.com/tswow/tswow.git --recurse --branch v0.12-beta` (change tag)
     - This will create the `source` directory, called "tswow".
     - This download is expected to take some time.
     - It is recommended to start developing on the latest release rather than the bleeding edge, as linux is often only tested for new releases.

@@ -77,11 +77,12 @@ When building TSWoW from source, we are concerned about three directories:
 
 The source, build and install directories should all be **separate**. Do not place any of them inside any of the others. The recommended setup is to have a `tswow-root` containing all three folders.
 
-1. Run the following command (_optionally in a new empty folder_): `git clone https://github.com/tswow/tswow.git --recurse`
-
+1. Run either of the following commands (_optionally in a new empty folder_):
+    - For bleeding edge: `git clone https://github.com/tswow/tswow.git --recurse`
+    - For the latest release `git clone https://github.com/tswow/tswow.git --recurse --branch --release v0.12-beta` (change tag)
     - This will create the `source` directory, called "tswow".
-
     - This download is expected to take some time.
+    - It is recommended to start developing on the latest release rather than the bleeding edge, as linux is often only tested for new releases.
   
 2. Copy `source/build.default.yaml` to `source/build.yaml` and open it. Here you can configure where tswow should place `build` and `install` directories. 
 

@@ -100,7 +100,7 @@ The source, build and install directories should all be **separate**. Do not pla
 
 7. To get a fully working TSWoW installation, you can run the `build full` command, which will compile TrinityCore and all other components necessary. 
 
-    - <span>To build only TrinityCore, you can use the command `build trinitycore-release`</span>
+    - <span>To build only TrinityCore, you can use the command `build trinitycore-relwithdebinfo`</span>
 
 8. You should now be able to start TSWoW from the new installation folder.
 

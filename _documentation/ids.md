@@ -28,14 +28,14 @@ This is the simplest method, but also the most destructive. Simply type in `clea
 #### Manually rewriting the id file
 Users may also open their id file, typically located at `coredata/datasets/default.ids.txt` and remove the lines causing discontinuity. For example, if a user registered two development classes `modid:a` to id 12 and `modid:b` to id 13 and later removing `modid:a`, they may open the id file and change the class lines as such:
 
-```csv
+```
 ChrClasses|modid:a|12|12|
 ChrClasses|modid:b|13|13|
 ```
 
 To
 
-```csv
+```
 ChrClasses|modid:b|12|12|
 ```
 

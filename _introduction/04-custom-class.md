@@ -4,7 +4,7 @@ title: Custom Class
 
 This tutorial will demonstrate how to create a fully functional custom class with TSWoW. Custom classes have been a thing in WotLK for a long time, but used to be very tedious and error-prone to set up. As we will see in this tutorial, TSWoW makes creating custom classes very simple. In the next tutorials, we will also cover custom spells and trainers. 
 
-The class we will be creating is the very same necromancer class that was shown in the [promotional video]().
+The class we will be creating is the very same necromancer class that was shown in the [promotional video](https://youtu.be/VugHLQ303_k).
 
 _In these tutorials, you will be asked to start writing TSWoW code. It is highly recommended that you **type out** the code yourself into the editor instead of copypasting to get a feel for the autocompletion that VSCodium offers._
 

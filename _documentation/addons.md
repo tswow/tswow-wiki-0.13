@@ -25,9 +25,7 @@ When an addon is generated, the following necessary files are automatically crea
 
 - `lib/Events.ts`: Contains TSWoWs custom addon event and communications systems.
 
-- `lib/BinReader.ts`: Contains functions for writing binary data for client/server communications, mostly just used internally by .
-
-- `modulename-addon.ts`: Is always the first real entrypoint of your addon. It is the only transpiled file that is automatically executed.
+- `addon.ts`: Is always the first real entrypoint of your addon. It is the only transpiled file that is automatically executed.
 
 ## TypeScript
 
@@ -70,101 +68,6 @@ Events.ChatInfo.OnChatMsgSay(frame,(text)=>{
 ```
 
 Internally, the Events interface uses `frame.SetScript('OnEvent',...)` to listen for events, meaning users **cannot** use both the Events API and manually apply an OnEvent listener to the same frame.
-
-### Client/Server communication
-
-TSWoW has support for a simple client/server communication system with custom data types that both addons and live scripts can access. 
-The `shared` directory in modules can be accessed by both live scripts and addons, which can be used to store "Message classes".
-
-#### Example
-This section will demonstrate a basic addon/server communication system.
-
-**shared/ExampleMessage.ts**
-```ts
-
-// Declares this class can be sent between an addon and a live script.
-@Message
-export class ExampleMessage {
-  // Without a decorator, this field will be ignored during transmission.
-  transient: uint32 = 80;
-
-  // Declares this field is a primitive that should be serialized
-  @MsgPrimitive 
-  field: uint32 = 25;
-  
-  // Declares this field is a primitive array with at most 3 entries
-  @MsgPrimitiveArray(3) 
-  array: TSArray<uint32> = [1,2,3,4] // This is valid, but the fourth entry will be ignored when this message is serialized.
-  
-  // Declares this field is a string with at most 5 characters
-  @MsgString(5) 
-  str: string = "abcdefg" // Also valid, but only 5 characters will be transmitted.
-  
-  // Declares this field is a string array of at most 2 entries with at most 3 characters each.
-  @MsgStringArray(2,3)
-  stringArr: TSArray<string> = ["abcd","aaaa",""]
-}
-
-@Message
-export class WrapperMessage {
-  // Messages can contain other message classes
-  @MsgClass
-  inner: ExampleMessage = new ExampleMessage(); // Inner message classes should always be initialized.
-  
-  // Declares this field is an array of at most 2 inner classes
-  @MsgClassArray(2)
-  innerArray: TSArray<ExampleMessage> = [new ExampleMessage(), new ExampleMessage(), new ExampleMessage()];
-}
-```
-
-**addon/modulename-addon.ts**
-```ts
-import { ExampleMessage } from "../shared/ExampleMessage";
-
-const frame = CreateFrame('Frame','UniqueName');
-
-// Registers a listener for "ExampleMessage" packets
-Events.AddOns.OnMessage(frame,ExampleMessage,(msg)=>{
-    console.log("Addon received an ExampleMessage from the server!");
-    // Sends back a new message to the server
-    SendToServer(new ExampleMessage());
-});
-```
-
-**scripts/modulename_scripts.ts**
-```ts
-import { ExampleMessage } from "../shared/Data";
-
-export function Main(events: TSEventHandlers) {
-    // Use a basic OnSay event to trigger the transmission
-    events.Player.OnSay((player,type,lang,msg)=>{
-      // Sends an example message that will fire the event in the addon.
-      player.SendData(new ExampleMessage());
-    });
-
-    // Wait for clients to send this message back
-    events.Addon.OnMessageID(MessageClass,(player,msg)=>{
-        player.SendBroadcastMessage("Server received an ExampleMessage from the client!");
-        
-    });    
-}
-```
-
-### Notes
-
-- When changing anything about message classes, you must both `build addon && build scripts` for changes to apply both on the server and the client.
-
-- When a message class is compiled, a special opcode is automatically generated and stored in `config/ids.txt`.
-
-- Received data may be malicious or corrupt, but is harmless on its own and protected from buffer overflows.
-
-- Players can still very easily forge any valid message, so remember to never trust data sent from players as authoritative
-
-- All messages have a fixed size, and arrays will be automatically padded to fill the expected size. If the server receives any message that does not match the expected size exactly, the message will be discarded.
-
-- The maximum size of a single message is ~180 bytes, and the compiler will give an error if you try to exceed this. 
-
-- String values received may not be valid strings, even in non-malicious packets (multi-byte characters etc).
 
 ## XML
 XML works more or less identical to how they work in normal addon development, but the way they call scripts is slightly different:

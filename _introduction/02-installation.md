@@ -32,10 +32,7 @@ You will need to install the following programs:
 
     - [2013 x86+x64](https://www.microsoft.com/en-us/download/details.aspx?id=40784) (Select "English", then both x86 and x64)
 
-- [VSCodium version 1.55](https://github.com/VSCodium/vscodium/releases/download/1.55.2/VSCodiumSetup-x64-1.55.2.exe)
-
-    - <span>Later versions will still work (including Microsofts VSCode), but there is an [active issue](https://github.com/tswow/tswow/issues/263) causing problems for datascripts in versions above 1.55. [See workarounds here](https://github.com/tswow/tswow/issues/263#issuecomment-881907723).</span>
-
+- [VSCodium version 1.60](https://github.com/VSCodium/vscodium/releases/download/1.55.2/VSCodiumSetup-x64-1.55.2.exe)
 
 - (Optional) To compile **live scripts**, you will also need [Visual Studio 2019 Community](https://visualstudio.microsoft.com/downloads/). The whole first part of this tutorial series will only be using data scripts, so you don't need to install this yet.
 

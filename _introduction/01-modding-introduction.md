@@ -66,11 +66,11 @@ However, because Live Scripts are transformed into C++ they only support a **sub
 
 ```ts
 // The main entry point a module
-export function Main(events: TSEventHandlers) {
+export function Main(events: TSEvents) {
     // Register an event when a player says something
-    events.Player.OnSay((player,msgType,lang,msg)=>{
+    events.Player.OnSay((player,message)=>{
         // Send a message to the player from the server
-        player.SendBroadcastMessage('Hello world!');
+        player.SendBroadcastMessage(`You said "${message.get()}"!`);
     });
 }
 ```

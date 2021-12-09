@@ -4,9 +4,7 @@ title: Windows Installation
 
 This guide will explain how to set up a fully working TSWoW development environment with a working server that you can connect to from your local computer.
 
-**Note: Currently, TSWoW doesn't like spaces in filepaths. Make sure your installation path and client files do not have spaces.**
-
-[Video Version of this Tutorial](https://youtu.be/OApiAnrTJ78)
+**Note: Just like many tools in WoW development, TSWoW does not permit spaces in filepaths. Make sure your installation path and client files do not contain any spaces**
 
 ## Prerequisites
 

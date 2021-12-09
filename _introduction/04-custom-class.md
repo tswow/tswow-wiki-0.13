@@ -15,21 +15,10 @@ _Note: If you create a class and later remove it (or change the modid:entityid),
 Our first task will be to create the definition for our new custom class. Create a new file called `Necromancer.ts` in your `datascripts` mod folder. Enter the following code: 
 
 ```ts
-import { std } from 'tswow-stdlib';
-
-export const NECROMANCER_CLASS = 
-    std.Classes.create(
-        // Mod id
-        'myname-mymod',
-        // Entity id
-        'necromancer',
-        // The parent name of our class.
-        'MAGE');
-
-NECROMANCER_CLASS.addRaces(['HUMAN','ORC','BLOODELF']);
-
-// Changes the english display name to "Necromancer"
-NECROMANCER_CLASS.Name.enGB.set('Necromancer');
+export const NECROMANCER_CLASS = std.Classes
+    .create('myname-mymod','necromancer','MAGE')
+    .Races.add(['HUMAN','ORC','BLOODELF'])
+    .Name.enGB.set('Necromancer')
 ```
 
 This creates a new class with the name "Necromancer" based off the Mage class. Run the `build data` command and enter the character creation screen. You should see your new class added.

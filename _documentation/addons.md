@@ -13,9 +13,9 @@ _Please note: The sources TSWoW has used to generate type definitions come from 
 ## Files
 
 A single module can contain at most a single addon, which is located at `modulename/addons`. Users can generate this directory using the command `addon create modulename`.
-The entrypoint for all addons is the file `addons/modulename-addon.ts`, but users may create any other amount typescript files under this directory and import them as you normally would in TypeScript. 
+The entrypoint for all addons is the file `addons/modulename-addon.ts`, but users may create any other amount typescript files under this directory and import them as you normally would in TypeScript.
 
-Addons can also access files in the `modulename/shared` directory. Since the `shared` directory is also used by live scripts, the coding style here must be valid for both addons and live scripts.  
+Addons can also access files in the `modulename/shared` directory. Since the `shared` directory is also used by live scripts, the coding style here must be valid for both addons and live scripts.
 
 ### Special Files
 
@@ -25,14 +25,12 @@ When an addon is generated, the following necessary files are automatically crea
 
 - `lib/Events.ts`: Contains TSWoWs custom addon event and communications systems.
 
-- `lib/BinReader.ts`: Contains functions for writing binary data for client/server communications, mostly just used internally by .
-
 - `modulename-addon.ts`: Is always the first real entrypoint of your addon. It is the only transpiled file that is automatically executed.
 
 ## TypeScript
 
 TypeScript files are used just like lua files are in normal addon development, with the exception that it's only `addons/modulename-addon.ts` that is automatically executed.
-For any other file to be executed, it must be imported by this file or any file that is itself imported.  
+For any other file to be executed, it must be imported by this file or any file that is itself imported.
 
 The type declarations allow users to write code that's usually very similar to the way normal lua addon development works:
 
@@ -45,7 +43,7 @@ myframe.Show();
 
 ### Event Registry
 
-TSWoW has a special system for more easily handle events, which is very similar to how events are handled on LiveScripts.  
+TSWoW has a special system for more easily handle events, which is very similar to how events are handled on LiveScripts.
 
 ```ts
 import { Events } from "./events";
@@ -70,101 +68,6 @@ Events.ChatInfo.OnChatMsgSay(frame,(text)=>{
 ```
 
 Internally, the Events interface uses `frame.SetScript('OnEvent',...)` to listen for events, meaning users **cannot** use both the Events API and manually apply an OnEvent listener to the same frame.
-
-### Client/Server communication
-
-TSWoW has support for a simple client/server communication system with custom data types that both addons and live scripts can access. 
-The `shared` directory in modules can be accessed by both live scripts and addons, which can be used to store "Message classes".
-
-#### Example
-This section will demonstrate a basic addon/server communication system.
-
-**shared/ExampleMessage.ts**
-```ts
-
-// Declares this class can be sent between an addon and a live script.
-@Message
-export class ExampleMessage {
-  // Without a decorator, this field will be ignored during transmission.
-  transient: uint32 = 80;
-
-  // Declares this field is a primitive that should be serialized
-  @MsgPrimitive 
-  field: uint32 = 25;
-  
-  // Declares this field is a primitive array with at most 3 entries
-  @MsgPrimitiveArray(3) 
-  array: TSArray<uint32> = [1,2,3,4] // This is valid, but the fourth entry will be ignored when this message is serialized.
-  
-  // Declares this field is a string with at most 5 characters
-  @MsgString(5) 
-  str: string = "abcdefg" // Also valid, but only 5 characters will be transmitted.
-  
-  // Declares this field is a string array of at most 2 entries with at most 3 characters each.
-  @MsgStringArray(2,3)
-  stringArr: TSArray<string> = ["abcd","aaaa",""]
-}
-
-@Message
-export class WrapperMessage {
-  // Messages can contain other message classes
-  @MsgClass
-  inner: ExampleMessage = new ExampleMessage(); // Inner message classes should always be initialized.
-  
-  // Declares this field is an array of at most 2 inner classes
-  @MsgClassArray(2)
-  innerArray: TSArray<ExampleMessage> = [new ExampleMessage(), new ExampleMessage(), new ExampleMessage()];
-}
-```
-
-**addon/modulename-addon.ts**
-```ts
-import { ExampleMessage } from "../shared/ExampleMessage";
-
-const frame = CreateFrame('Frame','UniqueName');
-
-// Registers a listener for "ExampleMessage" packets
-Events.AddOns.OnMessage(frame,ExampleMessage,(msg)=>{
-    console.log("Addon received an ExampleMessage from the server!");
-    // Sends back a new message to the server
-    SendToServer(new ExampleMessage());
-});
-```
-
-**scripts/modulename_scripts.ts**
-```ts
-import { ExampleMessage } from "../shared/Data";
-
-export function Main(events: TSEventHandlers) {
-    // Use a basic OnSay event to trigger the transmission
-    events.Player.OnSay((player,type,lang,msg)=>{
-      // Sends an example message that will fire the event in the addon.
-      player.SendData(new ExampleMessage());
-    });
-
-    // Wait for clients to send this message back
-    events.Addon.OnMessageID(MessageClass,(player,msg)=>{
-        player.SendBroadcastMessage("Server received an ExampleMessage from the client!");
-        
-    });    
-}
-```
-
-### Notes
-
-- When changing anything about message classes, you must both `build addon && build scripts` for changes to apply both on the server and the client.
-
-- When a message class is compiled, a special opcode is automatically generated and stored in `config/ids.txt`.
-
-- Received data may be malicious or corrupt, but is harmless on its own and protected from buffer overflows.
-
-- Players can still very easily forge any valid message, so remember to never trust data sent from players as authoritative
-
-- All messages have a fixed size, and arrays will be automatically padded to fill the expected size. If the server receives any message that does not match the expected size exactly, the message will be discarded.
-
-- The maximum size of a single message is ~180 bytes, and the compiler will give an error if you try to exceed this. 
-
-- String values received may not be valid strings, even in non-malicious packets (multi-byte characters etc).
 
 ## XML
 XML works more or less identical to how they work in normal addon development, but the way they call scripts is slightly different:
@@ -211,15 +114,15 @@ Since [version 12](https://github.com/tswow/tswow/releases/tag/v0.12-beta), you 
 
 ## Lua Modules (Calling Typescript from Lua / Calling Lua from TypeScript)
 
-Normally in WoW AddOns, a `.toc` file is used to specify what order lua files are loaded. AddOns written in TypeScript automatically generates this file, since they instead rely on es6-style imports just like a normal TypeScript project. 
+Normally in WoW AddOns, a `.toc` file is used to specify what order lua files are loaded. AddOns written in TypeScript automatically generates this file, since they instead rely on es6-style imports just like a normal TypeScript project.
 
-With raw lua files, we can use a special boilerplate syntax to register modules that allow us to both export and import modules, just like we would in a TypeScript file: 
+With raw lua files, we can use a special boilerplate syntax to register modules that allow us to both export and import modules, just like we would in a TypeScript file:
 
 First, we create a simple TypeScript function:
 
 _tsfile.ts:_
 ```ts
-export function tsfunction() { console.log("Hello from tsfunction()"); } 
+export function tsfunction() { console.log("Hello from tsfunction()"); }
 ```
 
 Then, we create a lua function that will call it. To call TypeScript from lua, we **must** set it up with the `tstl_register_module` boilerplate function.
@@ -228,7 +131,7 @@ _luafile.lua:_
 ```lua
 -- This boilerplate function creates our module.
 tstl_register_module(
-    -- This is the name of our module. 
+    -- This is the name of our module.
     -- This should always be on the form "TSAddons.my-module.addon.path.to.my.module" (don't forget the ".addon." part)
     "TSAddons.my-module.addon.luafile",
     function()
@@ -264,7 +167,7 @@ luafunction();
 
 ## Custom Load orders
 
-As mentioned previously, when building TypeScript AddOns tswow automatically generates the .toc file to ensure all modules are included and always load before the modules entry point. 
+As mentioned previously, when building TypeScript AddOns tswow automatically generates the .toc file to ensure all modules are included and always load before the modules entry point.
 
 Sometimes, we might not want to use the module syntax, or for some other reason specify that some lua files should be loaded before others. For this, we can use any of three special .toc files, placed in the addon root directory of our module (same as the entrypoint):
 

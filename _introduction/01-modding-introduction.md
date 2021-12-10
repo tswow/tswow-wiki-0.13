@@ -16,12 +16,12 @@ _A typical TSWoW development environment_
 TSWoW mods are divided into _modules_. A module is a folder containing scripts and game assets that modifies the game in some way. All modules are placed in the `modules` subdirectory in your TSWoW installation.
 
 {:refdef: style="text-align: center;"}
-![](../modules.png)  
+![](../modules.png)
 _Two modules installed_
 {: refdef}
 
 {:refdef: style="text-align: center;"}
-![](../module-contents.png)  
+![](../module-contents.png)
 _Contents of a typical TSWoW module_
 {: refdef}
 
@@ -38,7 +38,7 @@ There are three types of mods that we can create with TSWoW: **Data Scripts**, *
 
 ### Data Scripts
 
-Data scripts are TypeScript code files that modify the World of Warcraft game data in some way by creating or modifying existing game entities, such as classes, items, quests, titles, and languages. These files are run only during development to create data files for the server and client, and never when the game is actually running. Below is an example of how a data script might look. 
+Data scripts are TypeScript code files that modify the World of Warcraft game data in some way by creating or modifying existing game entities, such as classes, items, quests, titles, and languages. These files are run only during development to create data files for the server and client, and never when the game is actually running. Below is an example of how a data script might look.
 
 ```ts
 // Create a class with id "tswow:necromancer", class id "NECROMANCER" and based on the Mage class.
@@ -46,7 +46,7 @@ export const NECROMANCER = std.Classes.create('tswow','necromancer','NECROMANCER
     .addRaces(['HUMAN','ORC','DWARF','UNDEAD','BLOODELF']) // Enable this class for those races
     .Name.set({enGB:"Necromancer"})
     .Stats.SpellCrit.set((x)=>x*2)
-    .Stats.MeleeAttackPower.set("1337*level") 
+    .Stats.MeleeAttackPower.set("1337*level")
     .EquipSkills.Staves.setAuto() // Enable staves at level 1
     .EquipSkills.Cloth.setAuto() // Enable cloth at level 1
 ```
@@ -59,7 +59,7 @@ _Code example of a fully working custom class made with a Data Script_
 
 ### Live Scripts
 
-Sometimes, we need extra custom behavior that data scripts cannot achieve, since all they do is modify or create static game data. For this, we use Live scripts, which allows us to run live code in the server when certain events happen, such as a creature taking damage, a player logging in or a guild being created. We write live scripts in TypeScript, and TSWoW transforms it into C++ that can be reloaded into the server without restarting it. For modding veterans, this is the TSWoW version of C++ scripts or Eluna lua scripts.  With live scripts, we get the best of both worlds since scripts are both easy to write thanks to autocompletion and highly performant thanks to the C++ transpiler. 
+Sometimes, we need extra custom behavior that data scripts cannot achieve, since all they do is modify or create static game data. For this, we use Live scripts, which allows us to run live code in the server when certain events happen, such as a creature taking damage, a player logging in or a guild being created. We write live scripts in TypeScript, and TSWoW transforms it into C++ that can be reloaded into the server without restarting it. For modding veterans, this is the TSWoW version of C++ scripts or Eluna lua scripts.  With live scripts, we get the best of both worlds since scripts are both easy to write thanks to autocompletion and highly performant thanks to the C++ transpiler.
 
 However, because Live Scripts are transformed into C++ they only support a **subset** of TypeScript, and are intended to register event listeners in a specific way. You can not use npm packages, and there are generally a lot of restrictions on how you can write this code.
 
@@ -87,7 +87,7 @@ _Note to veterans: To modify DBC, LUA or XML files you use data scripts, not ass
 
 {:refdef: style="text-align: center;"}
 ![](../boar-file.png)
-![](../boar-ingame.png)  
+![](../boar-ingame.png)
 _Silly boar recoloring using an asset replacement_
 {:refdef}
 

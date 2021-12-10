@@ -4,16 +4,18 @@ title: Compiling on Linux
 
 [Windows Guide](../compiling/)
 
+**Please note: Linux development is currently disabled on the 0.13 branch of tswow.**
+
 The purpose of this document is to:
 
 1. Walk users through how to build TSWoW from source
 
 2. Document important details and common issues
 
-This guide has been tested on `Debian` and `Ubuntu`. 
+This guide has been tested on `Debian` and `Ubuntu`.
 
 ## Prerequisites
-Simply run these commands in a terminal. Before anything else, run `sudo apt-get update`. 
+Simply run these commands in a terminal. Before anything else, run `sudo apt-get update`.
 You should install dependencies in the order listed here, since they sometimes depend on each others.
 
 #### Curl
@@ -21,7 +23,7 @@ You should install dependencies in the order listed here, since they sometimes d
 sudo apt-get install curl
 ```
 
-#### NodeJS 
+#### NodeJS
 ```
 sudo curl -fsSL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 sudo apt-get install -y nodejs
@@ -40,7 +42,7 @@ sudo apt-get install git
 
 ## MySQL Installation
 
-We will need to create a user account that can access MySQL. This is because we don't want to configure TSWoW to use the root user directly, as that usually requires 
+We will need to create a user account that can access MySQL. This is because we don't want to configure TSWoW to use the root user directly, as that usually requires
 the process itself to run as this user.
 
 Log in to mysql as root:
@@ -67,9 +69,9 @@ GRANT ALL PRIVILEGES ON *.* TO 'tswow';
 
 ### Building TSWoW
 
-When building TSWoW from source, we are concerned about three directories: 
+When building TSWoW from source, we are concerned about three directories:
 
-- The `source` directory is the root directory containing all source code used to build TSWoW. 
+- The `source` directory is the root directory containing all source code used to build TSWoW.
 
 - The `build` directory contains all intermediate files and build configurations
 
@@ -83,11 +85,11 @@ The source, build and install directories should all be **separate**. Do not pla
     - This will create the `source` directory, called "tswow".
     - This download is expected to take some time.
     - It is recommended to start developing on the latest release rather than the bleeding edge, as linux is often only tested for new releases.
-  
-2. Copy `source/build.default.yaml` to `source/build.yaml` and open it. Here you can configure where tswow should place `build` and `install` directories. 
+
+2. Copy `source/build.default.yaml` to `source/build.yaml` and open it. Here you can configure where tswow should place `build` and `install` directories.
 
     - <span>**Do not set `install` to point at your normal TSWoW installation unless you know what you're doing, it will frequently flush out all your settings and modules!**</span>
-  
+
 3. In the `source` directory, run the command `npm i`
 
 4. In the `source` directory, run the command `npm run build-interactive` (for building everything with a single command, just run `npm run build`).
@@ -98,7 +100,7 @@ The source, build and install directories should all be **separate**. Do not pla
 
     - We currently have a bug where the prompt doesn't allow you to enter anything. Restarting the build script seems to fix this for now.
 
-7. To get a fully working TSWoW installation, you can run the `build full` command, which will compile TrinityCore and all other components necessary. 
+7. To get a fully working TSWoW installation, you can run the `build full` command, which will compile TrinityCore and all other components necessary.
 
     - <span>To build only TrinityCore, you can use the command `build trinitycore-relwithdebinfo`</span>
 

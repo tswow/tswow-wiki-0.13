@@ -6,6 +6,8 @@ collection: home
 
 This is the official wiki for TSWoW, the modding framework for World of Warcraft: Wrath of the Lich King.
 
+**For versions 0.12 or older, please see the [0.12 archive version of this wiki](https://tswow.github.io/tswow-wiki-0.12/home/).**
+
 The aim of this wiki is to contain a beginner-friendly introduction, documentation and practical examples for how to use this tool.
 Anyone is welcome to contribute, but changes won't be instant as they have to be reviewed by the TSWoW team manually.
 

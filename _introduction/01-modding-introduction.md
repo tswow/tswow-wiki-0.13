@@ -41,14 +41,15 @@ There are three types of mods that we can create with TSWoW: **Data Scripts**, *
 Data scripts are TypeScript code files that modify the World of Warcraft game data in some way by creating or modifying existing game entities, such as classes, items, quests, titles, and languages. These files are run only during development to create data files for the server and client, and never when the game is actually running. Below is an example of how a data script might look.
 
 ```ts
-// Create a class with id "tswow:necromancer", class id "NECROMANCER" and based on the Mage class.
-export const NECROMANCER = std.Classes.create('tswow','necromancer','NECROMANCER','MAGE')
-    .addRaces(['HUMAN','ORC','DWARF','UNDEAD','BLOODELF']) // Enable this class for those races
+import { std } from "tswow-stdlib";
+
+// Create a class with id "tswow:necromancer" based on the Mage class.
+export const NECROMANCER = std.Classes
+    .create('tswow','necromancer','MAGE')
+    .Races.add(['HUMAN','ORC','DWARF','UNDEAD','BLOODELF'])
     .Name.set({enGB:"Necromancer"})
     .Stats.SpellCrit.set((x)=>x*2)
-    .Stats.MeleeAttackPower.set("1337*level")
-    .EquipSkills.Staves.setAuto() // Enable staves at level 1
-    .EquipSkills.Cloth.setAuto() // Enable cloth at level 1
+    .Stats.MeleePowerType.MAGE.set()
 ```
 
 {:refdef: style="text-align: center;"}
@@ -65,11 +66,11 @@ However, because Live Scripts are transformed into C++ they only support a **sub
 
 ```ts
 // The main entry point a module
-export function Main(events: TSEventHandlers) {
+export function Main(events: TSEvents) {
     // Register an event when a player says something
-    events.Player.OnSay((player,msgType,lang,msg)=>{
+    events.Player.OnSay((player,message)=>{
         // Send a message to the player from the server
-        player.SendBroadcastMessage('Hello world!');
+        player.SendBroadcastMessage(`You said "${message.get()}"!`);
     });
 }
 ```

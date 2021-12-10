@@ -25,7 +25,7 @@ When an addon is generated, the following necessary files are automatically crea
 
 - `lib/Events.ts`: Contains TSWoWs custom addon event and communications systems.
 
-- `modulename-addon.ts`: Is always the first real entrypoint of your addon. It is the only transpiled file that is automatically executed.
+- `addon.ts`: Is always the first real entrypoint of your addon. It is the only transpiled file that is automatically executed.
 
 ## TypeScript
 

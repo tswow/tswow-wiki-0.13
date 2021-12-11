@@ -6,15 +6,15 @@ This tutorial will teach you all you need to know about how to create talent tre
 
 ## Talent Trees
 
-TSWoW provides an API to create and load talent trees for any class. Create a new file called `Talents.ts` and add the following code: 
+TSWoW provides an API to create and load talent trees for any class. Create a new file called `Talents.ts` and add the following code:
 
 ```ts
 import { std } from "tswow-stdlib";
 import { NECROMANCER_CLASS } from "./Necromancer";
 
-// Creates a new talent tree at index 0 (the first talent tree)
-export const NECROMANCY = std.TalentTrees.create('tswow-introduction','tswow',0,[NECROMANCER_CLASS.ID])
-NECROMANCY.Name.enGB.set(`Necromancy`);
+export const NECROMANCY_TREE = NECROMANCER_CLASS.TalentTrees
+        .addGet('tswow-introduction','necromancy-talents',0)
+        .Name.enGB.set('Necromancy')
 ```
 
 If we rebuild our scripts with the `build data` command and level up a necromancer to level 10 (`.levelup 9`), we can see that we have an empty talent tree called "Necromancy".
@@ -30,12 +30,15 @@ The one difference between learning spells normally and through a talent tree is
 
 ### Adding arbitrary spells as a talent
 
-To illustrate the above section, we will create a very silly example talent consisting of the spells `Fireball` (ID 133), `Shadow bolt` (ID 686), `Auto Attack` (ID 6603), and finally `Sinister Strike` (ID 1752). 
+To illustrate the above section, we will create a very silly example talent consisting of the spells `Fireball` (ID 133), `Shadow bolt` (ID 686), `Auto Attack` (ID 6603), and finally `Sinister Strike` (ID 1752).
 
-Add the following line to your `Necromancer.ts` file: 
+Add the following line to your `Necromancer.ts` file:
 
 ```ts
-NECROMANCY.addTalent('tswow-introduction','silly-talent',0,0,[133,686,6603,1752])
+const SILLY_TALENT = NECROMANCY_TREE.Talents
+    .addGet('tswow-introduction','silly-talent')
+    .Spells.add([133,686,6603,1752])
+    .Position.set(0,0)
 ```
 
 Rebuild the code using `build data`, level up a necromancer to 15 and look at your talent tree. You should see fire bolt as the talent icon.
@@ -44,7 +47,7 @@ Rebuild the code using `build data`, level up a necromancer to 15 and look at yo
 ![](../fireball-talent.png)
 {:refdef}
 
-If we click it once, it will state that we have now learnt Fireball and that the icon stays the same. If we click it again to learn the second rank something happens, however. 
+If we click it once, it will state that we have now learnt Fireball and that the icon stays the same. If we click it again to learn the second rank something happens, however.
 
 {:refdef: style="text-align: center;"}
 ![](../shadowbolt-talent.png)
@@ -52,7 +55,7 @@ If we click it once, it will state that we have now learnt Fireball and that the
 
 The icon has changed to shadow bolt, and if we open our spell book we can see that we have unlearnt fireball and instead learnt shadow bolt. If we click it again it will likewise change to auto attack, and we have unlearnt shadow bolt.
 
-Clicking the talent one last time changes the icon to Sinister strike, and if we open our spell book we can see that we have **unlearnt auto-attack**, despite that we already knew it from before. 
+Clicking the talent one last time changes the icon to Sinister strike, and if we open our spell book we can see that we have **unlearnt auto-attack**, despite that we already knew it from before.
 
 {:refdef: style="text-align: center;"}
 ![](../no-autoattack.png)
@@ -78,7 +81,7 @@ Add the following code to your `Talents.ts` file, importing SUMMON_ABOMINATION b
 // Load the Improved Fireball spell
 const IMPROVED_FIREBALL = std.Spells.load(11069)
 
-export const IMP_ABOMINATION = 
+export const IMP_ABOMINATION =
     std.Spells.create('tswow-introduction','imp-abomination-spell',11069)
 IMP_ABOMINATION.Name.enGB.set(`Improved Summon Abomination`);
 
@@ -87,11 +90,14 @@ SUMMON_ABOMINATION.ClassMask.match(IMPROVED_FIREBALL.Effects.get(0))
 
 // This spell happens to store the casttime reduction in the effects "BasePoints" field
 // So we change this to -9000 for a 9 second cast-time reduction.
-IMP_ABOMINATION.Effects.get(0).BasePoints.set(-9000)
+IMP_ABOMINATION.Effects.get(0).PointsBase.set(-9000)
 
-NECROMANCY.addTalent('tswow-introduction','imp-abomination-talent',0,1,[IMP_ABOMINATION.ID])
+const IMP_ABOMINATION_TALENT = NECROMANCY_TREE.Talents
+    .addGet('tswow-introduction','imp-abomination-talent')
+    .Position.set(0,1)
+    .Spells.add([IMP_ABOMINATION.ID])
 ```
-Learning this talent and trying to cast summon abomination now should convince you that the talent is indeed working as intended. ClassMasks are slightly more complex than we have shown here, but we think learning just exactly how they work is a little too out of scope for this tutorial. You will however most certainly encounter them again if you do anything involving talents, and generally it is sufficient to use this method for them to work. 
+Learning this talent and trying to cast summon abomination now should convince you that the talent is indeed working as intended. ClassMasks are slightly more complex than we have shown here, but we think learning just exactly how they work is a little too out of scope for this tutorial. You will however most certainly encounter them again if you do anything involving talents, and generally it is sufficient to use this method for them to work.
 
 ## Talent Requirements
 
@@ -122,14 +128,19 @@ import { std } from "tswow-stdlib";
 import { NECROMANCER_CLASS } from "./Necromancer";
 import { SUMMON_ABOMINATION } from "./SummonAbomination";
 
-// Creates a new talent tree at index 0 (the first talent tree)
-export const NECROMANCY = std.TalentTrees.create('tswow-introduction','tswow',0,[NECROMANCER_CLASS.ID])
-NECROMANCY.Name.enGB.set(`Necromancy`);
+export const NECROMANCY_TREE = NECROMANCER_CLASS.TalentTrees
+        .addGet('tswow-introduction','necromancy-talents',0)
+        .Name.enGB.set('Necromancy')
+
+const SILLY_TALENT = NECROMANCY_TREE.Talents
+    .addGet('tswow-introduction','silly-talent')
+    .Spells.add([133,686,6603,1752])
+    .Position.set(0,0)
 
 // Load the Improved Fireball spell
 const IMPROVED_FIREBALL = std.Spells.load(11069)
 
-export const IMP_ABOMINATION = 
+export const IMP_ABOMINATION =
     std.Spells.create('tswow-introduction','imp-abomination-spell',11069)
 IMP_ABOMINATION.Name.enGB.set(`Improved Summon Abomination`);
 
@@ -138,7 +149,12 @@ SUMMON_ABOMINATION.ClassMask.match(IMPROVED_FIREBALL.Effects.get(0))
 
 // This spell happens to store the casttime reduction in the effects "BasePoints" field
 // So we change this to -9000 for a 9 second cast-time reduction.
-IMP_ABOMINATION.Effects.get(0).BasePoints.set(-9000)
+IMP_ABOMINATION.Effects.get(0).PointsBase.set(-9000)
 
-NECROMANCY.addTalent('tswow-introduction','imp-abomination-talent',0,1,[IMP_ABOMINATION.ID])
+const IMP_ABOMINATION_TALENT = NECROMANCY_TREE.Talents
+    .addGet('tswow-introduction','imp-abomination-talent')
+    .Position.set(0,1)
+    .Spells.add([IMP_ABOMINATION.ID])
+
+IMP_ABOMINATION_TALENT.Requirements.add(SILLY_TALENT.ID, 3);
 ```

@@ -2,7 +2,7 @@
 title: Custom Class
 ---
 
-This tutorial will demonstrate how to create a fully functional custom class with TSWoW. Custom classes have been a thing in WotLK for a long time, but used to be very tedious and error-prone to set up. As we will see in this tutorial, TSWoW makes creating custom classes very simple. In the next tutorials, we will also cover custom spells and trainers. 
+This tutorial will demonstrate how to create a fully functional custom class with TSWoW. Custom classes have been a thing in WotLK for a long time, but used to be very tedious and error-prone to set up. As we will see in this tutorial, TSWoW makes creating custom classes very simple. In the next tutorials, we will also cover custom spells and trainers.
 
 The class we will be creating is the very same necromancer class that was shown in the [promotional video](https://youtu.be/VugHLQ303_k).
 
@@ -12,7 +12,7 @@ _In these tutorials, you will be asked to start writing TSWoW code. It is highly
 
 _Note: If you create a class and later remove it (or change the modid:entityid), you need to **remove** the `config/ids.txt` file, as the current generation algorithm does not work with holes in the class IDs (your client will crash)._
 
-Our first task will be to create the definition for our new custom class. Create a new file called `Necromancer.ts` in your `datascripts` mod folder. Enter the following code: 
+Our first task will be to create the definition for our new custom class. Create a new file called `Necromancer.ts` in your `datascripts` mod folder. Enter the following code:
 
 ```ts
 export const NECROMANCER_CLASS = std.Classes
@@ -63,11 +63,9 @@ _Class color modified_
 
 ## Stats
 
-Modifying stats is also very simple to do in TSWoW. The below code modifies the Melee attack power, and Spell/Melee crit of our new class. Notice how Melee attack power uses a string to represent an equation, whereas Spell/Melee crit uses callback functions. This is because those stats work very differently under the hood in World of Warcraft, and TSWoW does its best to make modifying them as similar as possible.
+Modifying stats is also very simple to do in TSWoW. The below code modifies the Spell/Melee crit of our new class.
 
 ```ts
-// Attack power = 1337*intellect
-NECROMANCER_CLASS.Stats.MeleeAttackPower.set('1337*int')
 // Spell Crit = 0.1*level
 NECROMANCER_CLASS.Stats.SpellCrit.set((x,level)=>1337*level)
 // Melee crit = 0.1*level
@@ -81,15 +79,35 @@ Add the following to the bottom of your `Necromancer.ts` to create two SkillLine
 
 ```ts
 export const NECROMANCY_SKILL = std.SkillLines
-    .createClass('tswow-introduction','necromancy-skill',NECROMANCER_CLASS.ID)
-NECROMANCY_SKILL.Name.enGB.set(`Necromancy`)
+    .create('tswow-introduction','necromancy-skill')
+    .Category.CLASS.set()
+    .RaceClassInfos.add([NECROMANCER_CLASS.Mask])
+    .Name.enGB.set('Necromancy')
 
 export const DEATH_SKILL = std.SkillLines
-    .createClass('tswow-introduction','death-skill',NECROMANCER_CLASS.ID)
-DEATH_SKILL.Name.enGB.set(`Death`)
+    .create('tswow-introduction','death-skill')
+    .Category.CLASS.set()
+    .RaceClassInfos.add([NECROMANCER_CLASS.Mask])
+    .Name.enGB.set('Death')
 ```
 
-We won't use these until the next tutorial, so you can just leave them like this for now.
+We won't use these until the next tutorial, so you can just leave them like this for now. Notice how we can keep modifying properties in a long method chain by just moving to a new line and continuing with `.` after we `set` or add a property? That can help make the code a lot cleaner than constantly re-declaring the variable we want to modify, and the above code is equivalent to:
+
+```ts
+export const NECROMANCY_SKILL = std.SkillLines
+    .create('tswow-introduction','necromancy-skill')
+
+NECROMANCY_SKILL.Category.CLASS.set()
+NECROMANCY_SKILL.RaceClassInfos.add([NECROMANCER_CLASS.Mask])
+NECROMANCY_SKILL.Name.enGB.set('Necromancy')
+
+export const DEATH_SKILL = std.SkillLines
+    .create('tswow-introduction','death-skill')
+
+DEATH_SKILL.Category.CLASS.set()
+DEATH_SKILL.RaceClassInfos.add([NECROMANCER_CLASS.Mask])
+DEATH_SKILL.Name.enGB.set('Death')
+```
 
 ## Summary
 
@@ -107,22 +125,13 @@ Our final code for `Necromancer.ts` is as follows:
 ```ts
 import { std } from 'tswow-stdlib';
 
-export const NECROMANCER_CLASS = 
-    std.Classes.create(
-        // Mod id
-        'myname-mymod',
-        // Entity id
-        'necromancer',
-        // The parent name of our class.
-        'MAGE');
-
-NECROMANCER_CLASS.addRaces(['HUMAN','ORC','BLOODELF']);
-
-// Changes the english display name to "Necromancer"
-NECROMANCER_CLASS.Name.enGB.set('Necromancer');
+export const NECROMANCER_CLASS = std.Classes
+    .create('myname-mymod','necromancer','MAGE')
+    .Races.add(['HUMAN','ORC','BLOODELF'])
+    .Name.enGB.set('Necromancer')
 
 // Change display color
-NECROMANCER_CLASS.UI.color.set(0xcc0077)
+NECROMANCER_CLASS.UI.Color.set(0xcc0077)
 
 // Add character creation description
 NECROMANCER_CLASS.UI.Info.add('- Role: Damage, Tank')
@@ -131,18 +140,20 @@ NECROMANCER_CLASS.UI.Info.add('- Controls multiple undead servants')
 NECROMANCER_CLASS.UI.Info.add('- Uses mana as a resource')
 NECROMANCER_CLASS.UI.Description.set("Necromancers raise and control the undead.")
 
-// Attack power = 1337*intellect
-NECROMANCER_CLASS.Stats.MeleeAttackPower.set('1337*int')
 // Spell Crit = 0.1*level
 NECROMANCER_CLASS.Stats.SpellCrit.set((x,level)=>1337*level)
 // Melee crit = 0.1*level
 NECROMANCER_CLASS.Stats.MeleeCrit.set((x,level)=>1337*level)
 
 export const NECROMANCY_SKILL = std.SkillLines
-    .createClass('tswow-introduction','necromancy-skill',NECROMANCER_CLASS.ID)
-NECROMANCY_SKILL.Name.enGB.set(`Necromancy`)
+    .create('tswow-introduction','necromancy-skill')
+    .Category.CLASS.set()
+    .RaceClassInfos.add([NECROMANCER_CLASS.Mask])
+    .Name.enGB.set('Necromancy')
 
 export const DEATH_SKILL = std.SkillLines
-    .createClass('tswow-introduction','death-skill',NECROMANCER_CLASS.ID)
-DEATH_SKILL.Name.enGB.set(`Death`)
+    .create('tswow-introduction','death-skill')
+    .Category.CLASS.set()
+    .RaceClassInfos.add([NECROMANCER_CLASS.Mask])
+    .Name.enGB.set('Death')
 ```

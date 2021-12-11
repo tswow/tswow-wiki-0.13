@@ -2,6 +2,8 @@
 title: Modding Introduction
 ---
 
+_Note: This tutorial series was recently rewritten to work with tswow version 0.13. Some code is not very well explained here, and the later sections have not yet been rewritten as we're looking at replacing this with a better tutorial altogether. Please reach out if there is anything you would like to know, we can usually provide basic code examples for most types of mods in the game._
+
 In this section, we will briefly explain how modding with TSWoW looks and feels like. There are no exercises here, just read it through and try to understand the basic concepts. When finished, you're not expected to understand **how** to create these types of mods, but simply know that they exist.
 
 With TSWoW, we use the TypeScript programming language in the VSCodium/VSCode editor to modify the games data and behavior. Below is how modding typically looks, we have a code window and a terminal open to compile our code, and to restart and communicate with the server and client.

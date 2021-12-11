@@ -11,30 +11,27 @@ Creating an enemy creature is generally no different from any other entity: we f
 Let's create a basic zombie entity and spawn a few of them. Create a new file called `EnemyCreature.ts` and enter the following code:
 
 ```ts
-// Create a mob based on the zombies in Deathknell. 
+import { std } from "tswow-stdlib";
+
+// Create a mob based on the zombies in Deathknell.
 export const ZOMBIE = std.CreatureTemplates
     .create('mymod','zombie',1501)
 
 // Random positions behind northshire abbey, between the sawmill and river.
-const positions = [
-    Pos(0,-8860.666016,-261.928772,80.420403,2.052581),
-    Pos(0,-8872.766602,-269.979706,79.303566,3.072814),
-    Pos(0,-8863.773438,-281.623444,78.845047,4.894153),
-    Pos(0,-8849.226563,-282.741882,79.074303,1.732141),
-    Pos(0,-8832.603516,-280.921326,78.904022,0.446443),
-    Pos(0,-8842.893555,-293.981720,78.108154,4.027075),
-    Pos(0,-8857.631836,-300.569183,77.552925,3.555051),
-    Pos(0,-8888.351563,-308.467163,74.824699,2.529320),
-    Pos(0,-8905.495117,-286.458191,77.376122,2.452351),
-    Pos(0,-8924.399414,-270.791168,77.919647,0.761388),
-    Pos(0,-8900.039063,-255.879608,79.980675,0.271300),
-    Pos(0,-8872.840820,-244.551208,82.048447,4.263481),
-]
-
-// Iterate over each position, and spawn a zombie based on it.
-for(let i=0;i<positions.length;++i) {
-    const spawn = ZOMBIE.spawn('mymod',`zombie-spawn-${i}`,positions[i]);
-}
+const ZOMBIE_SPAWNS = ZOMBIE.Spawns.add('mymod','zombie-spawns',[
+    {map: 0,x: -8860.666016,y: -261.928772,z: 80.420403,o: 2.052581},
+    {map: 0,x: -8872.766602,y: -269.979706,z: 79.303566,o: 3.072814},
+    {map: 0,x: -8863.773438,y: -281.623444,z: 78.845047,o: 4.894153},
+    {map: 0,x: -8849.226563,y: -282.741882,z: 79.074303,o: 1.732141},
+    {map: 0,x: -8832.603516,y: -280.921326,z: 78.904022,o: 0.446443},
+    {map: 0,x: -8842.893555,y: -293.981720,z: 78.108154,o: 4.027075},
+    {map: 0,x: -8857.631836,y: -300.569183,z: 77.552925,o: 3.555051},
+    {map: 0,x: -8888.351563,y: -308.467163,z: 74.824699,o: 2.529320},
+    {map: 0,x: -8905.495117,y: -286.458191,z: 77.376122,o: 2.452351},
+    {map: 0,x: -8924.399414,y: -270.791168,z: 77.919647,o: 0.761388},
+    {map: 0,x: -8900.039063,y: -255.879608,z: 79.980675,o: 0.271300},
+    {map: 0,x: -8872.840820,y: -244.551208,z: 82.048447,o: 4.263481},
+])
 ```
 
 Storing the positions in an array makes it easier to copypaste directly from the positions.txt file, and leads to slightly less code to write. To get these positions, I just ran around the area behind Northshire abbey and used the `.at` ingame command at random locations. If we log in, we should now see a bunch of zombies standing around.
@@ -48,10 +45,10 @@ Storing the positions in an array makes it easier to copypaste directly from the
 Adding random movement to a mob is fairly simple, but we actually add this behavior to creature instances instead of templates. Add the following to the bottom of your for-loop to make your zombies wander around:
 
 ```ts
-// Sets the creature to walk randomly
-spawn.MovementType.setRandomMovement();
-// Sets the wander distance to 10 yards
-spawn.WanderDistance.set(10);
+for(const spawn of ZOMBIE_SPAWNS) {
+    spawn.MovementType.RANDOM_MOVEMENT.set()
+    spawn.WanderDistance.set(10)
+}
 ```
 
 If we rebuild, we should see that all our zombies now walk around.
@@ -76,10 +73,10 @@ Let's change the levels of our zombies to be between 4 and 6, and change their c
 
 ```ts
 ZOMBIE.Level.set(4,6)
-ZOMBIE.UnitClass.setMage()
+ZOMBIE.UnitClass.MAGE.set()
 // Set zombie damage to 0.5x
 ZOMBIE.Stats.DamageMod.set(0.5);
-// Set zombie health to 0.75x 
+// Set zombie health to 0.75x
 ZOMBIE.Stats.HealthMod.set(0.75)
 // Set zombie mana to 0.25x
 ZOMBIE.Stats.ManaMod.set(0.25)
@@ -97,7 +94,7 @@ Mob aggressiveness is primarily controlled by what faction they belong to. All c
 
 We will use the same old strategy we always use: we find a unit that already is aggressive and try to figure out what faction it belongs to.
 
-I just went outside of Northshire, took the first hostile mob I could find and used the ingame `.id` command to print its ID: 
+I just went outside of Northshire, took the first hostile mob I could find and used the ingame `.id` command to print its ID:
 
 {:refdef: style="text-align: center;"}
 ![](../hostile-mob.png)
@@ -137,48 +134,16 @@ Our completed code for `EnemyCreature.ts` becomes:
 
 ```ts
 import { std } from "tswow-stdlib";
-import { Pos } from "tswow-stdlib/Misc/Position";
 
-// Create a mob based on the zombies in Deathknell. 
+// Create a mob based on the zombies in Deathknell.
 export const ZOMBIE = std.CreatureTemplates
     .create('mymod','zombie',1501)
 
-// Random positions behind northshire abbey, between the sawmill and river.
-const positions = [
-    Pos(0,-8860.666016,-261.928772,80.420403,2.052581),
-    Pos(0,-8872.766602,-269.979706,79.303566,3.072814),
-    Pos(0,-8863.773438,-281.623444,78.845047,4.894153),
-    Pos(0,-8849.226563,-282.741882,79.074303,1.732141),
-    Pos(0,-8832.603516,-280.921326,78.904022,0.446443),
-    Pos(0,-8842.893555,-293.981720,78.108154,4.027075),
-    Pos(0,-8857.631836,-300.569183,77.552925,3.555051),
-    Pos(0,-8888.351563,-308.467163,74.824699,2.529320),
-    Pos(0,-8905.495117,-286.458191,77.376122,2.452351),
-    Pos(0,-8924.399414,-270.791168,77.919647,0.761388),
-    Pos(0,-8900.039063,-255.879608,79.980675,0.271300),
-    Pos(0,-8872.840820,-244.551208,82.048447,4.263481),
-]
-
-// Iterate over each position, and spawn a zombie based on it.
-for(let i=0;i<positions.length;++i) {
-    const spawn = ZOMBIE.spawn('mymod',`zombie-spawn-${i}`,positions[i]);
-
-    // Sets the creature to walk randomly
-    spawn.MovementType.setRandomMovement();
-    // Sets the wander distance to 10 yards
-    spawn.WanderDistance.set(10);
-
-    // Sets the creature to walk randomly
-    spawn.MovementType.setRandomMovement();
-    // Sets the wander distance to 10 yards
-    spawn.WanderDistance.set(10);
-}
-
 ZOMBIE.Level.set(4,6)
-ZOMBIE.UnitClass.setMage()
+ZOMBIE.UnitClass.MAGE.set()
 // Set zombie damage to 0.5x
 ZOMBIE.Stats.DamageMod.set(0.5);
-// Set zombie health to 0.75x 
+// Set zombie health to 0.75x
 ZOMBIE.Stats.HealthMod.set(0.75)
 // Set zombie mana to 0.25x
 ZOMBIE.Stats.ManaMod.set(0.25)
@@ -188,4 +153,25 @@ const DEFIAS_CUTPURSE = std.CreatureTemplates.load(94)
 // The field for creature faction is "faction template".
 // Future tutorials will further explain the meaning of this name.
 ZOMBIE.FactionTemplate.set(DEFIAS_CUTPURSE.FactionTemplate.get())
+
+// Random positions behind northshire abbey, between the sawmill and river.
+const ZOMBIE_SPAWNS = ZOMBIE.Spawns.addGet('mymod','zombie-spawns',[
+    {map: 0,x: -8860.666016,y: -261.928772,z: 80.420403,o: 2.052581},
+    {map: 0,x: -8872.766602,y: -269.979706,z: 79.303566,o: 3.072814},
+    {map: 0,x: -8863.773438,y: -281.623444,z: 78.845047,o: 4.894153},
+    {map: 0,x: -8849.226563,y: -282.741882,z: 79.074303,o: 1.732141},
+    {map: 0,x: -8832.603516,y: -280.921326,z: 78.904022,o: 0.446443},
+    {map: 0,x: -8842.893555,y: -293.981720,z: 78.108154,o: 4.027075},
+    {map: 0,x: -8857.631836,y: -300.569183,z: 77.552925,o: 3.555051},
+    {map: 0,x: -8888.351563,y: -308.467163,z: 74.824699,o: 2.529320},
+    {map: 0,x: -8905.495117,y: -286.458191,z: 77.376122,o: 2.452351},
+    {map: 0,x: -8924.399414,y: -270.791168,z: 77.919647,o: 0.761388},
+    {map: 0,x: -8900.039063,y: -255.879608,z: 79.980675,o: 0.271300},
+    {map: 0,x: -8872.840820,y: -244.551208,z: 82.048447,o: 4.263481},
+])
+
+for(const spawn of ZOMBIE_SPAWNS) {
+    spawn.MovementType.RANDOM_MOVEMENT.set()
+    spawn.WanderDistance.set(10)
+}
 ```

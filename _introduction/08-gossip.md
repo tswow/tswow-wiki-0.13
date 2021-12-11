@@ -4,7 +4,7 @@ title: Gossip
 
 This tutorial will be an introduction to Gossip systems. Gossip in World of Warcraft. A gossip is the chat window you see with NPCs in the world. As we have seen previously, some gossip windows are automatically generated for us when we create NPCs such as trainers, but by explicitly creating gossip windows we can fully customize how these menus act and behave.
 
-This gossip tutorial will focus on **static** gossips, that we build with data scripts. It is however possible to create fully **dynamic** gossip systems using live scripts, that will be covered in a future tutorial. 
+This gossip tutorial will focus on **static** gossips, that we build with data scripts. It is however possible to create fully **dynamic** gossip systems using live scripts, that will be covered in a future tutorial.
 
 _Temporary note: **dynamic** gossip systems are not yet implemented in TSWoW, but this tutorial only deals with **static** systems so everything here should work._
 
@@ -12,9 +12,9 @@ _Temporary note: **dynamic** gossip systems are not yet implemented in TSWoW, bu
 
 A gossip menu has a few different parts, and we will briefly explain those here.
 
-**Gossip Page**: A gossip page is a single displayed text window. 
+**Gossip Page**: A gossip page is a single displayed text window.
 
-**Gossip Option**: A gossip option is an option that the player can click. 
+**Gossip Option**: A gossip option is an option that the player can click.
 
 **Option Action**: An option action is what a gossip option does to the menu, such as opening a completely new gossip page, open a trainer window, vendor window, bank and so on. Some actions have separate menus associated with them, while others do not.
 
@@ -28,16 +28,19 @@ In TSWoW, we tie gossip to specific creature templates. This means the first ste
 
 ```ts
 import { std } from "tswow-stdlib";
-import { Pos } from "tswow-stdlib/Misc/Position";
 
 const MY_CREATURE = std.CreatureTemplates
     .create('mymod','mycreature',6373)
-
-MY_CREATURE.Name.set({enGB:'Gossip Test'});
+    .NPCFlags.GOSSIP.set(true)
+    .NPCFlags.BANKER.set(true)
+    .NPCFlags.INNKEEPER.set(true)
+    .NPCFlags.VENDOR.set(true)
+    .Name.set({enGB:'Gossip Test'});
 
 // Spawns this creature just outside of the Northshire Abbey entrance
-MY_CREATURE.spawn('mymod','mycreature_spawn',
-    Pos(0,-8923.843750,-136.506027,80.972542,1.902233))
+MY_CREATURE.Spawns.add('mymod','mycreature_spawn',[
+    {map:0,x:-8923.843750,y:-136.506027,z:80.972542,o:1.902233}
+])
 ```
 
 You can rebuild your scripts and verify that this new creature is standing outside of Northshire Abbey, and you shouldn't be able to interact with it in any way.
@@ -46,7 +49,7 @@ Now, add the following to the bottom of `Gossip.ts`:
 
 ```ts
 // Store the main gossip for this creature
-const MAIN_GOSSIP = MY_CREATURE.Gossip;
+const MAIN_GOSSIP = MY_CREATURE.Gossip.getNew();
 
 // Set the gossip main display text
 MAIN_GOSSIP.Text.add({enGB:'Hello world from Gossip window'});
@@ -67,26 +70,26 @@ Let's create a few basic gossip options we can click on. Add the following code:
 
 ```ts
 // Creates a new option to open a bank
-const BANK_OPTION = MAIN_GOSSIP.Options.add()
-BANK_OPTION.Action.setBanker();
-BANK_OPTION.Icon.setMoneyBag();
-BANK_OPTION.Text.set({enGB:'Please open my bank for me'});
+const BANK_OPTION = MAIN_GOSSIP.Options.addGet()
+BANK_OPTION.Action.BANKER.set()
+BANK_OPTION.Icon.MONEY_BAG.set()
+BANK_OPTION.Text.setSimple({enGB:'Please open my bank for me'});
 ```
 
 {:refdef: style="text-align: center;"}
 ![](../gossip-bank.png)
 {:refdef}
 
-When you rebuild and talk to the NPC, you will notice that the bank opens automatically. This is because, in WotLK, gossips will automatically open many common options automatically if it's the only option available. 
+When you rebuild and talk to the NPC, you will notice that the bank opens automatically. This is because, in WotLK, gossips will automatically open many common options automatically if it's the only option available.
 
 Let's add another option so we can again see our gossip window:
 
 ```ts
 // Creates a new option to an innkeeper.
-const INNKEEPER_OPTION = MAIN_GOSSIP.Options.add()
-INNKEEPER_OPTION.Action.setInnkeeper();
-INNKEEPER_OPTION.Icon.setChat()
-INNKEEPER_OPTION.Text.set({enGB:'Can I stay here?'});
+const INNKEEPER_OPTION = MAIN_GOSSIP.Options.addGet()
+INNKEEPER_OPTION.Action.INNKEEPER.set()
+INNKEEPER_OPTION.Icon.CHAT.set()
+INNKEEPER_OPTION.Text.setSimple({enGB:'Can I stay here?'});
 ```
 
 You should now see that you get both the gossip options you created when you click on the NPC. You should also be able to verify that both options work as intended, and you can both access your bank and set this location as an inn (_note: You cannot set your inn location if GM mode is activated_).
@@ -142,20 +145,15 @@ _Multivendor functionality was made possible using [Rochet2's Multivendor module
 Add the following code:
 
 ```ts
-// Creates a vendor stored on our own Creature ID. 
-// The first vendor we create for a creature MUST
-// use "ownVendor".
-const VENDOR_OPTION = MAIN_GOSSIP.Options.add()
-VENDOR_OPTION.Icon.setVendor()
-VENDOR_OPTION.Text.set({enGB: 'Text'})
-
-const VENDOR = VENDOR_OPTION.Action.setOwnVendor();
-
-// Adds item id 35 to the shop (Bent staff)
-VENDOR.addItem(35);
+const VENDOR_OPTION = MAIN_GOSSIP.Options.addGet()
+VENDOR_OPTION.Icon.VENDOR.set()
+VENDOR_OPTION.Text.setSimple({enGB: 'Text'})
+VENDOR_OPTION.Action.VENDOR.setNew(vendor=>{
+    vendor.Items.add(35);
+});
 ```
 
-You should now be able to open your vendor and purchase a Bent staff for 95 copper. 
+You should now be able to open your vendor and purchase a Bent staff for 95 copper.
 
 {:refdef: style="text-align: center;"}
 ![](../vendor-option.png)
@@ -172,57 +170,6 @@ Price informations is stored in items themselves, and we will learn more about c
 std.Items.load(35).Price.set(50,100);
 ```
 
-To create multiple vendors in a single creature, we will use the second vendor function. Note that the rule to "set the own vendor before multi-vendor" applies once for a single creature, not for individual sub-menus. You can now add any multivendors you'd like to any submenus. The following code adds an additional vendor to your existing menu:
-
-```ts
-const VENDOR_2_OPTION = MAIN_GOSSIP.Options.add()
-VENDOR_2_OPTION.Icon.setCrossedSwords();
-VENDOR_2_OPTION.Text.set({enGB:'Let me see your swords'})
-
-const VENDOR_2 = VENDOR_2_OPTION.Action.setMultivendor()
-
-// Adds item ID 25 (Bent Sword)
-VENDOR_2.addItem(25)
-```
-
-{:refdef: style="text-align: center;"}
-![](../gossip-multivendor-option.png)
-{:refdef}
-
-## Same Gossip for Multiple Creatures
-
-One notable difference between TSWoW and many other gossip systems is that TSWoW always couples a gossip system to a specific creature. We have chosen to do this to make them easier to create without errors, but with the drawback that a gossip menu only applies to a single creature. This also makes it slightly difficult to edit existing gossip menus in WoW, and you are encouraged to write your own when possible.
-
-The TSWoW way to apply a single Gossip window to multiple creatures is to simply use a for-loop to add identical gossip menus to all the creatures that should share them, as this is the safest way that should cause the least amount of unexpected errors. The following code demonstrates how to achieve this easily:
-
-```ts
-// Create the first creature
-const CREATURE_A = std.CreatureTemplates
-    .create('mymod','creature_a',6373)
-CREATURE_A.Name.set({enGB:'Creature A'})
-
-// Create the second creature
-const CREATURE_B = std.CreatureTemplates
-    .create('mymod','creature_b',6373)
-CREATURE_B.Name.set({enGB:'Creature B'})
-
-// Create a list and iterate over both creatures
-const creatures = [CREATURE_A,CREATURE_B];
-for(const creature of creatures) {
-    // Load the gossip context for the current creature
-    const gossip = creature.Gossip;
-    gossip.Text.add({enGB:'My Gossip Menu'})
-
-    // Add an option just like you normally would.
-    const option = gossip.Options.add();
-    option.Text.set({enGB:'Go to Sub-menu'})
-    const newGossip = option.Action.setNewGossip();
-    newGossip.Text.add({enGB:'Sub-menu'});
-}
-```
-
-Generally, cloning data is the preferred way to do most TSWoW modding as it drastically reduces unexpected behavior and takes up very little extra storage space for most applications. Procedural programming is a very powerful tool exactly for this behavior.
-
 ## Summary
 
 This concludes our introduction to Gossips in TSWoW. You have learnt:
@@ -233,25 +180,26 @@ This concludes our introduction to Gossips in TSWoW. You have learnt:
 
 - How to create sub-menus and links to other gossip menus.
 
-- How to apply identical gossip menus to multiple creatures using for-loops.
-
-Our final `Gossip.ts` becomes: 
+Our final `Gossip.ts` becomes:
 
 ```ts
 import { std } from "tswow-stdlib";
-import { Pos } from "tswow-stdlib/Misc/Position";
 
 const MY_CREATURE = std.CreatureTemplates
     .create('mymod','mycreature',6373)
-
-MY_CREATURE.Name.set({enGB:'Gossip Test'});
+    .Name.set({enGB:'Gossip Test'});
+    .NPCFlags.GOSSIP.set(true)
+    .NPCFlags.BANKER.set(true)
+    .NPCFlags.INNKEEPER.set(true)
+    .NPCFlags.VENDOR.set(true)
 
 // Spawns this creature just outside of the Northshire Abbey entrance
-MY_CREATURE.spawn('mymod','mycreature_spawn',
-    Pos(0,-8923.843750,-136.506027,80.972542,1.902233))
+MY_CREATURE.Spawns.add('mymod','mycreature_spawn',[
+    {map:0,x:-8923.843750,y:-136.506027,z:80.972542,o:1.902233}
+])
 
 // Store the main gossip for this creature
-const MAIN_GOSSIP = MY_CREATURE.Gossip;
+const MAIN_GOSSIP = MY_CREATURE.Gossip.getNew();
 
 // Set the gossip main display text
 MAIN_GOSSIP.Text.add({enGB:'Hello world from Gossip window'});
@@ -260,78 +208,42 @@ MAIN_GOSSIP.Text.add({enGB:'Hello world from Gossip window'});
 MAIN_GOSSIP.Text.add({enGB:'Hi world from Gossip window'});
 
 // Creates a new option to open a bank
-const BANK_OPTION = MAIN_GOSSIP.Options.add()
-BANK_OPTION.Action.setBanker();
-BANK_OPTION.Icon.setMoneyBag();
-BANK_OPTION.Text.set({enGB:'Please open my bank for me'});
+const BANK_OPTION = MAIN_GOSSIP.Options.addGet()
+BANK_OPTION.Action.BANKER.set()
+BANK_OPTION.Icon.MONEY_BAG.set()
+BANK_OPTION.Text.setSimple({enGB:'Please open my bank for me'});
 
 // Creates a new option to an innkeeper.
-const INNKEEPER_OPTION = MAIN_GOSSIP.Options.add()
-INNKEEPER_OPTION.Action.setInnkeeper();
-INNKEEPER_OPTION.Icon.setChat();
-INNKEEPER_OPTION.Text.set({enGB:'Can I stay here?'});
+const INNKEEPER_OPTION = MAIN_GOSSIP.Options.addGet()
+INNKEEPER_OPTION.Action.INNKEEPER.set()
+INNKEEPER_OPTION.Icon.CHAT.set()
+INNKEEPER_OPTION.Text.setSimple({enGB:'Can I stay here?'});
 
 // First, we create the sub-menu option
-const SUBMENU_OPTION = MAIN_GOSSIP.Options.add()
-SUBMENU_OPTION.Icon.setCogwheel();
-SUBMENU_OPTION.Text.set({enGB: ''})
+const SUBMENU_OPTION = MAIN_GOSSIP.Options.addGet()
+SUBMENU_OPTION.Icon.COGWHEEL.set()
+SUBMENU_OPTION.Text.setSimple({enGB: 'Go to sub-menu'})
 
 // Now, we create the submenu itself from the option action
-const SUBMENU = SUBMENU_OPTION.Action.setNewGossip();
-SUBMENU.Text.add({enGB:'Hello world from sub-menu'});
-SUBMENU_OPTION.Text.set({enGB: 'Go to sub-menu'})
+SUBMENU_OPTION.Action.GOSSIP.setNew(submenu=>{
+    submenu.Text.add({enGB:'Hello world from sub-menu'});
+    const BACK_LINK = submenu.Options.addGet()
+    BACK_LINK.Text.setSimple({enGB:'Go back to main menu'});
+    BACK_LINK.Action.GOSSIP.setLink(MAIN_GOSSIP.ID)
+})
 
-const BACK_LINK = SUBMENU.Options.add()
-BACK_LINK.Text.set({enGB:'Go back to main menu'});
-BACK_LINK.Action.setGossipLinkID(MAIN_GOSSIP.ID)
-
-// Creates a vendor stored on our own Creature ID. 
+// Creates a vendor stored on our own Creature ID.
 // The first vendor we create for a creature MUST
 // use "ownVendor".
-const VENDOR_OPTION = MAIN_GOSSIP.Options.add()
-VENDOR_OPTION.Icon.setVendor()
-VENDOR_OPTION.Text.set({enGB: 'Text'})
-
-const VENDOR = VENDOR_OPTION.Action.setOwnVendor();
-
-// Adds item id 35 to the shop (Bent staff)
-VENDOR.addItem(35);
+const VENDOR_OPTION = MAIN_GOSSIP.Options.addGet()
+VENDOR_OPTION.Icon.VENDOR.set()
+VENDOR_OPTION.Text.setSimple({enGB: 'Text'})
+VENDOR_OPTION.Action.VENDOR.setNew(vendor=>{
+    vendor.Items.add(35);
+});
 
 // Change the price so players can sell the item for 50 copper and buy it for 1 silver.
 std.Items.load(35).Price.set(50,100);
-
-const VENDOR_2_OPTION = MAIN_GOSSIP.Options.add()
-VENDOR_2_OPTION.Icon.setCrossedSwords();
-VENDOR_2_OPTION.Text.set({enGB:'Let me see your swords'})
-
-const VENDOR_2 = VENDOR_2_OPTION.Action.setMultivendor()
-
-// Adds item ID 25 (Bent Sword)
-VENDOR_2.addItem(25)
-
-// Create the first creature
-const CREATURE_A = std.CreatureTemplates
-    .create('mymod','creature_a',6373)
-CREATURE_A.Name.set({enGB:'Creature A'})
-
-// Create the second creature
-const CREATURE_B = std.CreatureTemplates
-    .create('mymod','creature_b',6373)
-CREATURE_B.Name.set({enGB:'Creature B'})
-
-// Create a list and iterate over both creatures
-const creatures = [CREATURE_A,CREATURE_B];
-for(const creature of creatures) {
-    // Load the gossip context for the current creature
-    const gossip = creature.Gossip;
-    gossip.Text.add({enGB:'My Gossip Menu'})
-
-    // Add an option just like you normally would.
-    const option = gossip.Options.add();
-    option.Text.set({enGB:'Go to Sub-menu'})
-    const newGossip = option.Action.setNewGossip();
-    newGossip.Text.add({enGB:'Sub-menu'});
-}
 ```
 
 Trainers windows work very similar to vendors, and you can also have multiple. Your challenge for this section is to add one or multiple class trainers to this gossip system.

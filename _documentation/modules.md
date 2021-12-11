@@ -24,7 +24,7 @@ Examples of **bad** module names:
 
 ## Endpoints
 
-A module can contain a set of special folders called _endpoints_ that serve a specific purpose. Unless tswow is started with the `--minimal` flag, you can simply create one of these folders in your module and tswow will populate it with appropriate boilerplate and configurations automatically.
+A module can contain a set of special folders called _endpoints_ that serve a specific purpose. Unless tswow is started with the `nowatch` flag, you can simply create one of these folders in your module and tswow will populate it with appropriate boilerplate and configurations automatically.
 
 ### Simple Endpoints
 - _datascripts_ - Contains all datascripts for this module. Written using TypeScript.

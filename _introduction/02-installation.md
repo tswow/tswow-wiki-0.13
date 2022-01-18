@@ -20,7 +20,7 @@ You will need to install the following programs:
 
 - [7-zip](https://www.7-zip.org/a/7z1900-x64.exe) (do **not** use winrar to open 7zip files, we've had reports that this breaks/ignores some files)
 
-- [Node.js (version 12.19 or higher)](https://nodejs.org/dist/v14.15.1/node-v14.15.1-x64.msi)
+- [Node.js (version 14.15 or higher)](https://nodejs.org/dist/v14.15.1/node-v14.15.1-x64.msi)
 
 - [Python 2.7](https://www.python.org/ftp/python/2.7.2/python-2.7.2.amd64.msi) (or any of 3.5, 3.6, 3.7, 3.8)
 

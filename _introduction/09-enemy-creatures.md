@@ -18,7 +18,7 @@ export const ZOMBIE = std.CreatureTemplates
     .create('mymod','zombie',1501)
 
 // Random positions behind northshire abbey, between the sawmill and river.
-const ZOMBIE_SPAWNS = ZOMBIE.Spawns.add('mymod','zombie-spawns',[
+const ZOMBIE_SPAWNS = ZOMBIE.Spawns.addGet('mymod','zombie-spawns',[
     {map: 0,x: -8860.666016,y: -261.928772,z: 80.420403,o: 2.052581},
     {map: 0,x: -8872.766602,y: -269.979706,z: 79.303566,o: 3.072814},
     {map: 0,x: -8863.773438,y: -281.623444,z: 78.845047,o: 4.894153},

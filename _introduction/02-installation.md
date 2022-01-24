@@ -85,10 +85,6 @@ Default.Client = "C:\dev\wow\335\client"
 
 4. Wait for the core database installation. This is a long process on the first installation and can take a long time depending on your machine. 20-30 minutes isn't rare. You know the installation is done when you see a message similar to `TrinityCore rev. 2a67a101096e 2021-04-23 09:24:53 +0200 (tswow branch) (Win64, RelWithDebInfo, Dynamic) (worldserver-daemon) ready...`.
 
-5. To create a gm account, type the following commands into the terminal:
-
-    - `realm send tswow account create myuser mypassword`
-
-    - `realm send tswow account set gmlevel myuser 3 -1`
+5. To create a gm account, type `create account myuser mypassword 3` (this commands requires that at least one worldserver is currently running)
 
 6. You can now start the client with the command `start client` and log in to the game.

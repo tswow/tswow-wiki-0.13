@@ -67,7 +67,7 @@ Let's try to make a more meaningful change to the game by changing the strength 
 
 ```ts
 // Change strength stat for all levels
-std.Classes.load('WARRIOR').Stats.Strength.set(x=>999);
+std.Classes.load('WARRIOR').Stats.Strength.set(x=>99);
 ```
 
 For this change, it will not be sufficient to just rebuild the client because strength is a serverside calculation. This is the case for any kind of change that is not just aesthetic. To rebuild both the client and server, you use the `build data` command. You should notice that both the client and server will restart. Log in as a warrior again and check your strength.

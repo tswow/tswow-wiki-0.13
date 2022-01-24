@@ -32,7 +32,7 @@ The one difference between learning spells normally and through a talent tree is
 
 To illustrate the above section, we will create a very silly example talent consisting of the spells `Fireball` (ID 133), `Shadow bolt` (ID 686), `Auto Attack` (ID 6603), and finally `Sinister Strike` (ID 1752).
 
-Add the following line to your `Necromancer.ts` file:
+Add the following line to your `Talents.ts` file:
 
 ```ts
 const SILLY_TALENT = NECROMANCY_TREE.Talents

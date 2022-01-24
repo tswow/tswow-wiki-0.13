@@ -104,14 +104,14 @@ We have now shown how to add basic gossip options, so let's try and make sub-men
 
 ```ts
 // First, we create the sub-menu option
-const SUBMENU_OPTION = MAIN_GOSSIP.Options.add()
-SUBMENU_OPTION.Icon.setCogwheel();
-SUBMENU_OPTION.Text.set({enGB: ''})
+const SUBMENU_OPTION = MAIN_GOSSIP.Options.addGet()
+SUBMENU_OPTION.Icon.COGWHEEL.set()
+SUBMENU_OPTION.Text.setSimple({enGB: 'Go to sub-menu'})
 
 // Now, we create the submenu itself from the option action
-const SUBMENU = SUBMENU_OPTION.Action.setNewGossip();
-SUBMENU.Text.add({enGB:'Hello world from sub-menu'});
-SUBMENU_OPTION.Text.set({enGB: 'Go to sub-menu'})
+SUBMENU_OPTION.Action.GOSSIP.setNew(submenu=>{
+    submenu.Text.add({enGB:'Hello world from sub-menu'});
+})
 ```
 
 {:refdef: style="text-align: center;"}
@@ -122,12 +122,16 @@ SUBMENU_OPTION.Text.set({enGB: 'Go to sub-menu'})
 ![](../gossip-submenu.png)
 {:refdef}
 
-Now, when you click the third option in your main gossip window, you should see that it leads you to the sub-menu. Now, let's add a link back to the main window:
+Now, when you click the third option in your main gossip window, you should see that it leads you to the sub-menu. Let's add a link back to the main window. complete the submenu callback as follows:
 
 ```ts
-const BACK_LINK = SUBMENU.Options.add()
-BACK_LINK.Text.set({enGB:'Go back to main menu'});
-BACK_LINK.Action.setGossipLinkID(MAIN_GOSSIP.ID)
+// Now, we create the submenu itself from the option action
+SUBMENU_OPTION.Action.GOSSIP.setNew(submenu=>{
+    submenu.Text.add({enGB:'Hello world from sub-menu'});
+    const BACK_LINK = submenu.Options.addGet()
+    BACK_LINK.Text.setSimple({enGB:'Go back to main menu'});
+    BACK_LINK.Action.GOSSIP.setLink(MAIN_GOSSIP.ID)
+})
 ```
 
 You should now see that your sub-menu links back to the main menu, and you can toggle between them indefinitely.

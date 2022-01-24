@@ -248,31 +248,6 @@ DEATH_BOLT.Duration.setSimple(12000,0,12000)
 DEATH_BOLT.AuraDescription.enGB.set('Deals periodic damage.');
 ```
 
-### Summary
-
-In this section, we have learnt:
-- How to create a spell based on another spell
-
-- That we can borrow visual effects from other spells
-
-- That we can borrow spell effects from other spells
-
-- That we can use VSCodiums autocomplete to find out what fields we can change.
-
-- That if we get stuck, we can try to `objectify()` and print our data objects to see if there is something we might have missed.
-
-These methods go a long way to let you create many of the standard spell effects in WoW. However, sometimes even this is not enough. Some spells have such bizarre settings that it's almost impossible to understand them, some spell effects are just impossible to combine, and as we mentioned before even some aren't even possible to implement without serverside `live scripting`. Luckily for us, TSWoW has live scripting implemented, but that is out of scope of this basic tutorial.
-
-Some additional suggestions for what you can try to modify with Death Bolt yourself, using autocomplete to navigate the data structure:
-
-- Change the icon
-
-- Change the amount of direct damage from the bolt
-
-- Change the amount of damage done by the DoT
-
-- Add yet another DoT effect that targets the caster instead (Advanced)
-
 ## Summon Abomination
 
 Our next task is to make a spell to summon an abomination. Like we have now learnt, the first step in creating almost any type of spell is to find the most similar spell and just clone it. Let's use the warlocks summon imp spell, which has ID 688.
@@ -379,6 +354,30 @@ Some things for you to try out yourself:
 
 - Bone Shield is very similar to the priest spell `Inner Fire`. Try to copy the functionality of Inner Fire over to this Bone shield and see if you can get it to also increase your armor while active.
 
+### Summary
+
+In this section, we have learnt:
+- How to create a spell based on another spell
+
+- That we can borrow visual effects from other spells
+
+- That we can borrow spell effects from other spells
+
+- That we can use VSCodiums autocomplete to find out what fields we can change.
+
+- That if we get stuck, we can try to `objectify()` and print our data objects to see if there is something we might have missed.
+
+These methods go a long way to let you create many of the standard spell effects in WoW. However, sometimes even this is not enough. Some spells have such bizarre settings that it's almost impossible to understand them, some spell effects are just impossible to combine, and as we mentioned before even some aren't even possible to implement without serverside `live scripting`. Luckily for us, TSWoW has live scripting implemented, but that is out of scope of this basic tutorial.
+
+Some additional suggestions for what you can try to modify with Death Bolt yourself, using autocomplete to navigate the data structure:
+
+- Change the icon
+
+- Change the amount of direct damage from the bolt
+
+- Change the amount of damage done by the DoT
+
+- Add yet another DoT effect that targets the caster instead (Advanced)
 
 ## Conclusion
 

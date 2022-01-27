@@ -35,15 +35,25 @@ sudo apt-get install git
 ```
 
 #### TrinityCore Dependencies
-```sudo apt-get install git clang cmake make gcc g++ libmariadbclient-dev libssl-dev libbz2-dev libreadline-dev libncurses-dev libboost-all-dev mariadb-server p7zip libmariadb-client-lgpl-dev-compat```
+```
+sudo apt-get install git clang cmake make gcc g++ libmariadbclient-dev libssl-dev libbz2-dev libreadline-dev libncurses-dev libboost-all-dev mariadb-server p7zip libmariadb-client-lgpl-dev-compat
+```
 
 #### Misc Dependencies
-```sudo apt-get install bzip2-devel p7zip-full```
+```
+sudo apt-get install bzip2-devel p7zip-full
+```
 
 ## MySQL Installation
 
 We will need to create a user account that can access MySQL. This is because we don't want to configure TSWoW to use the root user directly, as that usually requires
 the process itself to run as this user.
+
+You may need to first start the mysql service:
+
+```
+sudo service mysql start
+```
 
 Log in to mysql as root:
 ```

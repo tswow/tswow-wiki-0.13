@@ -96,19 +96,19 @@ The source, build and install directories should all be **separate**. Do not pla
     - This download is expected to take some time.
     - It is recommended to start developing on the latest release rather than the bleeding edge, as linux is often only tested for new releases.
 
-2. Copy `source/build.default.yaml` to `source/build.yaml` and open it. Here you can configure where tswow should place `build` and `install` directories.
+2. <span>Copy `source/build.default.yaml` to `source/build.yaml` and open it. Here you can configure where tswow should place `build` and `install` directories.</span>
 
     - <span>**Do not set `install` to point at your normal TSWoW installation unless you know what you're doing, it will frequently flush out all your settings and modules!**</span>
 
-3. In the `source` directory, run the command `npm i`
+3. <span>In the `source` directory, run the command `npm i`</span>
 
-4. In the `source` directory, run the command `npm run build-interactive` (for building everything with a single command, just run `npm run build`).
+4. <span>In the `source` directory, run the command `npm run build-interactive` (for building everything with a single command, just run `npm run build`).</span>
 
-6. You should now have entered the main TSWoW build program. You can now build any components you want
+6. <span>You should now have entered the main TSWoW build program. You can now build any components you want</span>
 
-    - All TypeScript for TSWoW and the transpiler is compiled automatically as long as the build program is running
+    - <span>All TypeScript for TSWoW and the transpiler is compiled automatically as long as the build program is running</span>
 
-    - We currently have a bug where the prompt doesn't allow you to enter anything. Restarting the build script seems to fix this for now.
+    - <span>We currently have a bug where the prompt doesn't allow you to enter anything. Restarting the build script seems to fix this for now.</span>
 
 7. To get a fully working TSWoW installation, you can run the `build full` command, which will compile TrinityCore and all other components necessary.
 

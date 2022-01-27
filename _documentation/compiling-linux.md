@@ -44,39 +44,6 @@ sudo apt-get install git clang cmake make gcc g++ libmariadbclient-dev libssl-de
 sudo apt-get install bzip2-devel p7zip-full
 ```
 
-## MySQL Installation
-
-We will need to create a user account that can access MySQL. This is because we don't want to configure TSWoW to use the root user directly, as that usually requires
-the process itself to run as this user.
-
-You may need to first start the mysql service:
-
-```
-sudo service mysql start
-```
-
-Log in to mysql as root:
-```
-sudo mysql -u root
-```
-
-Run the following commands inside the MySQL interactive prompt:
-
-_This is necessary because MySQL for NodeJS does not work with newer authentication modes._
-```sql
-SET old_passwords=0;
-```
-
-_Recommended to change the username/password here_
-```sql
-CREATE USER 'tswow' IDENTIFIED BY 'password';
-```
-
-_Can replace with more granular privileges once you know the database structure_
-```sql
-GRANT ALL PRIVILEGES ON *.* TO 'tswow';
-```
-
 ### Building TSWoW
 
 When building TSWoW from source, we are concerned about three directories:
@@ -114,7 +81,22 @@ The source, build and install directories should all be **separate**. Do not pla
 
     - <span>To build only TrinityCore, you can use the command `build trinitycore-relwithdebinfo`</span>
 
-8. You should now be able to start TSWoW from the new installation folder.
+## MySQL Installation
+
+If you haven't already set up mysql on your machine, you need to create a user account that can access it. 
+
+You may need to first start the mysql service:
+
+```
+sudo service mysql start
+```
+
+Run the following command to create a new mysql user (replacing 'tswow' and 'password' with your own values):
+```
+sudo mysql -u root -e "SET old_passwords=0; CREATE USER 'tswow' IDENTIFIED BY 'password'; GRANT ALL PRIVILEGES ON *.* TO 'tswow';"
+```
+
+Inside your `install` directory, open `node.conf` and replace all instances of "tswow;password" with your own username/password created above. `Database.WorldSource`, `Database.WorldDest`, `Database.Auth` and `Database.Characters` should all be changed.
 
 ## Known Issues
 

@@ -36,7 +36,7 @@ The source, build and install directories should all be **separate**. Do not pla
 
     - This download is expected to take some time.
   
-2. Copy `source/build.default.yaml` to `source/build.yaml` and open it. Here you can configure where tswow should place `build` and `install` directories. 
+2. Copy `source/build.default.conf` to `source/build.conf` and open it. Here you can configure where tswow should place `build` and `install` directories. 
 
     - <span>**Do not set `install` to point at your normal TSWoW installation unless you know what you're doing, it will frequently flush out all your settings and modules!**</span>
   
@@ -74,6 +74,6 @@ The source, build and install directories should all be **separate**. Do not pla
 
 ## Known Issues
 
-- `build release` doesn't work with a normal `install` directory. To build a release, you must run turn off the build script, change the install directory to an empty/non-existing directory in `source/build.yaml` and start the build script again.
+- `build release` doesn't work with a normal `install` directory. To build a release, you must run turn off the build script, change the install directory to an empty/non-existing directory in `source/build.conf` and start the build script again.
 
     - <span>This new directory can **not** be open in VSCodium/VSCode.</span>

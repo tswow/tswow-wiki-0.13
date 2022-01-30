@@ -74,6 +74,48 @@ The source, build and install directories should all be **separate**. Do not pla
 
 ## Known Issues
 
-- `build release` doesn't work with a normal `install` directory. To build a release, you must run turn off the build script, change the install directory to an empty/non-existing directory in `source/build.conf` and start the build script again.
-
+### Release build install directory
+`build release` doesn't work with a normal `install` directory. To build a release, you must run turn off the build script, change the install directory to an empty/non-existing directory in `source/build.conf` and start the build script again.
     - <span>This new directory can **not** be open in VSCodium/VSCode.</span>
+
+### Missing Windows sdk errors (MSB8036)
+
+- This issue might be related to building on Windows 7 or having multiple instances of Visual Studio installed.
+- If you have this issue, [please let us know](https://discord.gg/M89n6TZh9x) and what your operating system / visual studio versions you have installed.
+
+Some users have reported getting issues when building TrinityCore that looks similar to this in the log:
+
+```
+CMake Error at CMakeLists.txt:18 (project):
+  Failed to run MSBuild command:
+
+    C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/MSBuild/Current/Bin/MSBuild.exe
+
+  to get the value of VCTargetsPath:
+
+    Microsoft (R) Build Engine version 16.11.2+f32259642 for .NET Framework
+    Copyright (C) Microsoft Corporation. All rights reserved.
+
+    Build started 1/29/2022 3:09:38 PM.
+    Project "D:\WowDev\Tools\TSWoW\tswow-build\TrinityCore\CMakeFiles\3.18.3\VCTargetsPath.vcxproj" on node 1 (default targets).
+    C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.Cpp.WindowsSDK.targets(46,5): error MSB8036: The Windows S
+DK version 10.0.19041.0 was not found. Install the required version of Windows SDK or change the SDK version in the project property pages or by right-clicking
+the solution and selecting "Retarget solution". [D:\WowDev\Tools\TSWoW\tswow-build\TrinityCore\CMakeFiles\3.18.3\VCTargetsPath.vcxproj]
+    Done Building Project "D:\WowDev\Tools\TSWoW\tswow-build\TrinityCore\CMakeFiles\3.18.3\VCTargetsPath.vcxproj" (default targets) -- FAILED.
+
+    Build FAILED.
+```
+
+Note the windows sdk version that it requests (10.0.19041.0 in the above example). We managed to get this to work by editing the file `C:\Program Files (x86)\Windows Kits\10\DesignTime\CommonConfiguration\Neutral\UAP\<windows-sdk-version>\UAP.props` (replacing `<windows-sdk-version>` with the version from your error log) and commenting out the line starting with `<WindowsSdkDir>`:
+
+```xml
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+     <!-- Force WindowsSdkDir to always be a parent to this props file -->
+<!--     <WindowsSdkDir>$([MSBUILD]::GetDirectoryNameOfFileAbove('$(MSBUILDTHISFILEDIRECTORY)', 'sdkmanifest.xml'))</WindowsSdkDir> -->
+...
+  </PropertyGroup>
+```
+
+[Original post](https://gitlab.kitware.com/cmake/cmake/-/issues/22440#note_986549)

@@ -44,7 +44,7 @@ You will need to install the following programs:
 
 ## Installation
 
-1. [Download the latest version of TSWoW from here](https://github.com/tswow/tswow/releases)
+1. [Download the latest version of TSWoW from here](https://github.com/tswow/tswow/releases/latest)
 
 2. Extract the TSWoW archive. The installation folder should contain (roughly) the following files and folders:
 

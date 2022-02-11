@@ -140,10 +140,10 @@ NECROMANCER_CLASS.UI.Info.add('- Controls multiple undead servants')
 NECROMANCER_CLASS.UI.Info.add('- Uses mana as a resource')
 NECROMANCER_CLASS.UI.Description.set("Necromancers raise and control the undead.")
 
-// Spell Crit = 0.1*level
-NECROMANCER_CLASS.Stats.SpellCrit.set((x,level)=>1337*level)
-// Melee crit = 0.1*level
-NECROMANCER_CLASS.Stats.MeleeCrit.set((x,level)=>1337*level)
+// Spell Crit = 2*level
+NECROMANCER_CLASS.Stats.SpellCrit.set((x,level)=>2*level)
+// Melee crit = 3*level
+NECROMANCER_CLASS.Stats.MeleeCrit.set((x,level)=>3*level)
 
 export const NECROMANCY_SKILL = std.SkillLines
     .create('tswow-introduction','necromancy-skill')

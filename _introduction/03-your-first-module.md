@@ -18,7 +18,7 @@ Once TSWoW has started, type the command `create module mymodule --datascripts -
 
 ## Building Data Scripts
 
-We can see that TSWoW has already created the basic mod directories for us. If we look at the `datascripts` folder, we can see that there is a a file `mymodule-data.ts` waiting for us. This is the main entry point for your data scripts, and you should not rename it. You can create any other amount of data scripts in this and any subdirectories too, and other script files do not need to be imported by this file to work.
+We can see that TSWoW has already created the basic mod directories for us. If we look at the `datascripts` folder, we can see that there is a a file `datascripts.ts` waiting for us. This is the main entry point for your data scripts, and you should not rename it. You can create any other amount of data scripts in this and any subdirectories too, and other script files do not need to be imported by this file to work.
 
 To build the data script we have here, type the command `build data --readonly` into the TSWoW terminal. You should see output similar to the following:
 ```
@@ -30,7 +30,7 @@ Because we passed the `--readonly` command, no data was actually written for thi
 
 ## Client build
 
-Replace the contents of your `mymodule-data.ts` file with the following:
+Replace the contents of your `datascripts.ts` file with the following:
 
 ```ts
 import { std } from 'tswow-stdlib';

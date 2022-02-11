@@ -16,7 +16,7 @@ Our first task will be to create the definition for our new custom class. Create
 
 ```ts
 export const NECROMANCER_CLASS = std.Classes
-    .create('myname-mymod','necromancer','MAGE')
+    .create('mymod','necromancer','MAGE')
     .Races.add(['HUMAN','ORC','BLOODELF'])
     .Name.enGB.set('Necromancer')
 ```

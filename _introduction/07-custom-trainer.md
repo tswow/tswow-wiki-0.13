@@ -19,7 +19,7 @@ The first step of creating a creature is the exact same as when creating a spell
 To create a new creature, create a new file `Trainer.ts` and type the following code:
 
 ```ts
-import { std } from "tswow-stdlib";
+import { std } from "wow/wotlk";
 
 export const NECROMANCY_TRAINER_HUMAN = std.CreatureTemplates
     .create('tswow-introduction','necromancer-trainer',375)
@@ -94,7 +94,7 @@ Rebuild the game using `build data` and log in again at this location. You shoul
 In this tutorial, you have learnt the basics of how creatures work in World of Warcraft and created a simple trainer NPC. Our final code for `Trainer.ts` becomes:
 
 ```ts
-import { std } from "tswow-stdlib";
+import { std } from "wow/wotlk";
 import { BONE_SHIELD } from "./BoneShield";
 import { DEATH_BOLT } from "./DeathBolt";
 import { DEATH_SKILL, NECROMANCER_CLASS, NECROMANCY_SKILL } from "./Necromancer";

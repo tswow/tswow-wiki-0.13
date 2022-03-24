@@ -9,7 +9,7 @@ This tutorial will teach you all you need to know about how to create talent tre
 TSWoW provides an API to create and load talent trees for any class. Create a new file called `Talents.ts` and add the following code:
 
 ```ts
-import { std } from "tswow-stdlib";
+import { std } from "wow/wotlk";
 import { NECROMANCER_CLASS } from "./Necromancer";
 
 export const NECROMANCY_TREE = NECROMANCER_CLASS.TalentTrees
@@ -124,7 +124,7 @@ In this tutorial, you have learnt how to:
 Our final code in `Talents.ts` becomes:
 
 ```ts
-import { std } from "tswow-stdlib";
+import { std } from "wow/wotlk";
 import { NECROMANCER_CLASS } from "./Necromancer";
 import { SUMMON_ABOMINATION } from "./SummonAbomination";
 

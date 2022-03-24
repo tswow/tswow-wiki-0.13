@@ -332,7 +332,7 @@ We can create this spell just like we have with the others, but as we start to l
 It turns out that "spell resources" is called "Power" in World of Warcraft (not to be confused with _Spell Power_), and the following code will successfully change bone shields resource type to use mana instead:
 
 ```ts
-import { std } from "tswow-stdlib";
+import { std } from "wow/wotlk";
 import { NECROMANCER_CLASS, NECROMANCY_SKILL } from "./Necromancer";
 
 export const BONE_SHIELD =

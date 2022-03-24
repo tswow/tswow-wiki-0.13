@@ -27,7 +27,7 @@ A gossip menu has a few different parts, and we will briefly explain those here.
 In TSWoW, we tie gossip to specific creature templates. This means the first step in creating a gossip is to create a new creature template. Create a new file `Gossip.ts` in your module and add the following code:
 
 ```ts
-import { std } from "tswow-stdlib";
+import { std } from "wow/wotlk";
 
 const MY_CREATURE = std.CreatureTemplates
     .create('mymod','mycreature',6373)
@@ -187,7 +187,7 @@ This concludes our introduction to Gossips in TSWoW. You have learnt:
 Our final `Gossip.ts` becomes:
 
 ```ts
-import { std } from "tswow-stdlib";
+import { std } from "wow/wotlk";
 
 const MY_CREATURE = std.CreatureTemplates
     .create('mymod','mycreature',6373)

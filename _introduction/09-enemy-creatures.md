@@ -11,7 +11,7 @@ Creating an enemy creature is generally no different from any other entity: we f
 Let's create a basic zombie entity and spawn a few of them. Create a new file called `EnemyCreature.ts` and enter the following code:
 
 ```ts
-import { std } from "tswow-stdlib";
+import { std } from "wow/wotlk";
 
 // Create a mob based on the zombies in Deathknell.
 export const ZOMBIE = std.CreatureTemplates
@@ -133,7 +133,7 @@ In this tutorial, we have learnt:
 Our completed code for `EnemyCreature.ts` becomes:
 
 ```ts
-import { std } from "tswow-stdlib";
+import { std } from "wow/wotlk";
 
 // Create a mob based on the zombies in Deathknell.
 export const ZOMBIE = std.CreatureTemplates

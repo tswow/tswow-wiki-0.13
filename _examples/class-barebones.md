@@ -4,8 +4,7 @@ title: Barebones Class
 The following is a brief code example for creating a custom class, give it some spells, a talent and a trainer.
 
 ```ts
-import { std } from "tswow-stdlib";
-import { Pos } from "tswow-stdlib/Misc/Position";
+import { std } from "wow/wotlk";
 
 const MODNAME = 'tswow-necromancer';
 
@@ -60,7 +59,7 @@ SUMMON_ABOMINATION.Icon.set('Interface\\Icons\\Achievement_Boss_patchwerk.blp')
 /******************************************************************
  * TRAINER
  ******************************************************************/
-export const NECRO_TRAINER = 
+export const NECRO_TRAINER =
     std.CreatureTemplates.create('tswow-necromancer','necromancer-trainer',198)
 NECRO_TRAINER.Name.enGB.set('Wilson Carter');
 NECRO_TRAINER.Subname.enGB.set('Necromancy Trainer')
@@ -68,7 +67,7 @@ NECRO_TRAINER.Trainer.Greeting.enGB.set(`Necromancy is like baseball, I know not
 NECRO_TRAINER.Trainer.Class.set(NECROMANCER.ID);
 NECRO_TRAINER.Trainer.addSpell(SUMMON_ABOMINATION.ID,0,1);
 // Spawns this creature just outside Northshire Abbey
-NECRO_TRAINER.spawn('tswow-necromancer','trainer-instance',Pos(0,-8898.656250,-130.632767,81.285889,1.766019))
+NECRO_TRAINER.spawn('tswow-necromancer','trainer-instance',{map:0,x:-8898.656250,y:-130.632767,z:81.285889,o:1.766019})
 
 /******************************************************************
  * TALENTS
@@ -78,7 +77,7 @@ NECROMANCY.Name.enGB.set(`Necromancy`);
 
 const IMPROVED_FIREBALL = std.Spells.load(11069)
 
-export const IMP_ABOMINATION = 
+export const IMP_ABOMINATION =
     std.Spells.create('tswow-necromancer','imp-abomination-spell',11071)
 IMP_ABOMINATION.Name.enGB.set(`Improved Summon Abomination`);
 IMP_ABOMINATION.Description.enGB.set(`Decreases the casting time by your Summon Abomination spell by 9 seconds.`);

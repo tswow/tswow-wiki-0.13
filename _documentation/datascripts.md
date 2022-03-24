@@ -22,7 +22,7 @@ console.log("Hello world")
 The tswow standard library (tswow-stdlib) contains most of the useful tools that you will need when creating datascripts. Almost all of its tools are defined via a single interface that only requires one import in your scripts:
 
 ```ts
-import { std } from "tswow-stdlib"
+import { std } from "wow/wotlk"
 ```
 
 ## Creating Entities
@@ -30,7 +30,7 @@ import { std } from "tswow-stdlib"
 To create new entities, we typically use the `create` method on one of the substructs we can find through the std interface. Below is a basic example to create a new custom creature:
 
 ```ts
-import { std } from "tswow-stdlib"
+import { std } from "wow/wotlk"
 
 std.CreatureTemplates.create('my-module','my-custom-creature')
 ```
@@ -40,7 +40,7 @@ std.CreatureTemplates.create('my-module','my-custom-creature')
 Loading existing entities instead uses the `load` method, also commonly found on substructs to `std`:
 
 ```ts
-import { std } from "tswow-stdlib"
+import { std } from "wow/wotlk"
 
 // Loads creature template with id 25
 std.CreatureTemplates.load(25)
@@ -51,7 +51,7 @@ std.CreatureTemplates.load(25)
 Once we have created or loaded an entity, we can modify it using a special convention evolved from method-chaining that the early developers of tswow dubbed "cell-based programming". Before elaborating, a brief example of how this looks:
 
 ```ts
-import { std } from "tswow-stdlib"
+import { std } from "wow/wotlk"
 
 std.CreatureTemplates
     .create('my-module','my-creature')
@@ -65,7 +65,7 @@ In cell-based programming, we create data by accessing entities in a long method
 Understanding how a cell-based method chain works can be a bit difficult at first, and some users prefer to ignore the technical details and assume the code does what it looks like it's doing, while others prefer to avoid looping back by storing created objects in a variable, as it makes the code look a little bit more like something you would normally expect in the language:
 
 ```ts
-import { std } from "tswow-stdlib"
+import { std } from "wow/wotlk"
 
 // This looks a little more like "normal" TypeScript,
 // but is more verbose and cluttered.
@@ -200,7 +200,7 @@ console.log(spell.Visual.get());
 Calling `getRef()` on a reference will return the referenced entity itself, rather than the reference id. This means you can modify entities across references without externally loading the referenced entity:
 
 ```ts
-import { std } from "tswow-stdlib"
+import { std } from "wow/wotlk"
 
 const spell = std.Spells.load(133)
 
@@ -222,7 +222,7 @@ _A general rule of thumb is to only ever use `getRef` when **reading** data from
 An alternative convention to using `getRef/getRefCopy` to modify references is to use `modRef/modRefCopy`, which instead of returning the referenced entity accepts a callback that receives it. This allows modifying referenced objects without breaking cell-based method chains:
 
 ```ts
-import { std } from "tswow-stdlib"
+import { std } from "wow/wotlk"
 
 std.Spells.load(133)
     .Name.enGB.set('New Firebolt spell')
@@ -247,7 +247,7 @@ Some entities in the game contain arrays of other entities. One such example is 
 Example of various ways to access array entries (using `Spell#Effects`):
 
 ```ts
-import { std } from "tswow-stdlib"
+import { std } from "wow/wotlk"
 
 const spell = std.Spells.create('my-mod','my-new-spell')
 
@@ -312,14 +312,14 @@ Most data that tswow builds is completely rewritten and undone on each execution
 
 First build:
 ```ts
-import { std } from "tswow-stdlib"
+import { std } from "wow/wotlk"
 
 std.CreatureTemplates.load(25).Name.enGB.set('Hello');
 ```
 
 Second build:
 ```ts
-import { std } from "tswow-stdlib"
+import { std } from "wow/wotlk"
 
 //std.CreatureTemplates.load(25).Name.enGB.set('Hello');
 ```
@@ -343,7 +343,7 @@ For files that need to be accessed by multiple modules, or that collide with cus
 This can be done via the `std.LUAXML` interface. Through this interface, we can either `replace` lines, or insert values `before` or `after` a line matching a regular expression.
 
 ```ts
-import { std } from "tswow-stdlib"
+import { std } from "wow/wotlk"
 
 const file = std.LUAXML.file('Interface/GlueXML/GlueStrings.lua')
 file.replace(/RACE_INFO_BLOODELF =/,'RACE_INFO_BLOODELF = "Custom blood elf description";')
@@ -373,7 +373,7 @@ Do you hate having to switch between datascripts and livescripts and spamming ou
 InlineScripts is a new API to write a livescripts _inline_ with your datascripts. A simple example:
 
 ```ts
-import { std } from "tswow-stdlib"
+import { std } from "wow/wotlk"
 
 // This is a normal datascript
 std.Spells.create('my-module','my-spell')
@@ -392,7 +392,7 @@ std.Spells.create('my-module','my-spell')
 It is also possible to register non id-bound events through InlineScripts:
 
 ```ts
-import { std } from "tswow-stdlib"
+import { std } from "wow/wotlk"
 
 std.InlineScripts.Player.OnSay((player, message)=>{
     player.SendBroadcastMessage(`You said: ${message.get()}`);

@@ -8,7 +8,7 @@ You should have read the [Modding Introduction](1_ModdingIntroduction.md) and [i
 
 ## Creating a Module
 
-Start up your VSCodium editor in the TSWoW directory and start TSWoW from the terminal (`npm run start`).
+Start up your VSCodium editor in the TSWoW directory and verify from the terminal that you have all of the packages with (`npm i`), then start TSWoW (`npm run start`).
 
 Once TSWoW has started, type the command `create module mymodule --datascripts --assets --livescripts`. This will create a new directory called _mymodule_ in your modules folder.
 
@@ -33,7 +33,7 @@ Because we passed the `--readonly` command, no data was actually written for thi
 Replace the contents of your `datascripts.ts` file with the following:
 
 ```ts
-import { std } from 'tswow-stdlib';
+import { std } from 'wow/wotlk';
 
 // Load the warrior class
 const WARRIOR_CLASS = std.Classes.load(1)

@@ -123,7 +123,7 @@ In this tutorial, we have:
 
 Our final code for `Necromancer.ts` is as follows:
 ```ts
-import { std } from 'tswow-stdlib';
+import { std } from 'wow/wotlk';
 
 export const NECROMANCER_CLASS = std.Classes
     .create('myname-mymod','necromancer','MAGE')

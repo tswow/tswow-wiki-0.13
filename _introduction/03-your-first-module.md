@@ -33,7 +33,7 @@ Because we passed the `--readonly` command, no data was actually written for thi
 Replace the contents of your `datascripts.ts` file with the following:
 
 ```ts
-import { std } from 'tswow-stdlib';
+import { std } from 'wow/wotlk';
 
 // Load the warrior class
 const WARRIOR_CLASS = std.Classes.load(1)
@@ -87,7 +87,7 @@ For example, if we have a module called "tswow-tutorial", and an item called "Ba
 To illustrate ID generation with string identifiers, we will create a simple sword based on Thunderfury (item id=19019). Create a file `Sword.ts` in your mods data directory and write the following code:
 
 ```ts
-import { std } from 'tswow-stdlib'
+import { std } from 'wow/wotlk'
 
 const THUNDERFURY_2 = std.Items
     .create(

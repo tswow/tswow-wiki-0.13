@@ -78,7 +78,7 @@ Before we can do anything else, we will want to figure out the Spell ID of Shado
 Shadow bolt has the spell ID 686, and we will use that as our "parent" spell similarly to how we used the mage class as the parent for our necromancer. Create a new file called "DeathBolt.ts" and type out the following code:
 
 ```ts
-import { std } from 'tswow-stdlib';
+import { std } from 'wow/wotlk';
 import { DEATH_SKILL, NECROMANCER_CLASS } from './Necromancer';
 
 export const DEATH_BOLT =
@@ -213,7 +213,7 @@ Rebuild the script and bingo, that was it! When we cast death bolt we now see a 
 To add a description to the buff Icon, we can (with the help of autocomplete), find that there exists a property called `AuraDescription` on the spell that works just like a normal description. Our final program for the Death Bolt spell becomes:
 
 ```ts
-import { std } from 'tswow-stdlib';
+import { std } from 'wow/wotlk';
 import { DEATH_SKILL } from './Necromancer';
 
 export const DEATH_BOLT =
@@ -260,7 +260,7 @@ Our next task is to make a spell to summon an abomination. Like we have now lear
 Create a new file called `SummonAbomination.ts` and type the following code:
 
 ```ts
-import { std } from 'tswow-stdlib';
+import { std } from 'wow/wotlk';
 import { NECROMANCER_CLASS, NECROMANCY_SKILL } from "./Necromancer";
 
 export const SUMMON_ABOMINATION = std.Spells.create('tswow-introduction','summon-abomination', 688)

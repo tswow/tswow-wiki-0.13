@@ -52,7 +52,7 @@ For existing characters, it may be necessary to additionally remove them from th
 
 ## Live Scripts
 
-Sometimes, it is necessary to use ids we generate in datascripts in livescripts, usually to attach behaviors to specific creatures, gameobjects or maps. Instead of hardcoding numeric ids, it is recommended to use the `GetID` function in your scripts global scope to read ids directly from the ids.txt file itself. 
+Sometimes, it is necessary to use ids we generate in datascripts in livescripts, usually to attach behaviors to specific creatures, gameobjects or maps. Instead of hardcoding numeric ids, it is recommended to use the `GetID` function in your scripts global scope to read ids directly from the ids.txt file itself.
 
 Currently, TSWoW will generate such statements to the file `coredata/IDs.ts` whenever datascripts are built, and it's recommended to copy them from that file instead of typing them out manually to ensure the correct table id is used.
 
@@ -74,7 +74,7 @@ function Main(events: TSEventHandlers) {
     events.CreatureID.OnDeath(MYMOD_MYCREATURE,(creature,killer)=>{
 
     });
-    
+
     // use in a comparison
     events.Creatures.OnDeath((creature,killer)=>{
         if(killer.GetEntry() === MYMOD_MYCREATURE) {
@@ -85,6 +85,6 @@ function Main(events: TSEventHandlers) {
 
 ## Technical
 
-The system code for persistent allocation is currently stored in `wotlkdata/Ids`, while all ID range definitions and temporary allocation are stored in `tswow-stdlib/datascripts/Ref/Ids.ts`.
+The system code for persistent allocation is currently stored in `wow/data/Ids`, while all ID range definitions and temporary allocation are stored in `wow/wotlk/std/Ref/Ids.ts`.
 
 The server core files that loads IDs are in `TrinityCore/src/server/game/TsWow/Scripting/Public/TSIDs.h` and `TrinityCore/src/server/game/TsWow/Scripting/Private/TSEventLoader.cpp`

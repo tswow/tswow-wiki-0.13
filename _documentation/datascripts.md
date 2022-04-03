@@ -19,7 +19,7 @@ console.log("Hello world")
 
 ## TSWoW Standard Library
 
-The tswow standard library (tswow-stdlib) contains most of the useful tools that you will need when creating datascripts. Almost all of its tools are defined via a single interface that only requires one import in your scripts:
+The tswow standard library (wow/wotlk) contains most of the useful tools that you will need when creating datascripts. Almost all of its tools are defined via a single interface that only requires one import in your scripts:
 
 ```ts
 import { std } from "wow/wotlk"

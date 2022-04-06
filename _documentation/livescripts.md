@@ -6,6 +6,9 @@ _Note: As TSWoW develops, some caveats listed on this page might disappear._
 
 Live Scripts are the server scripts of TSWoW, just like Eluna or C++ scripts in TrinityCore. They are written in TypeScript (transpiled to C++) or C++ and can be hotswapped directly into the server without restarting it.
 
+## Building
+To build livescripts, the `build scripts` command is used.
+
 ## Entry point
 
 The main file for all live scripts in a module is `module-name/livescripts/livescripts.ts` (for C++, livescripts.h/livescripts.cpp). In this file, we define an entrypoint as such:

@@ -43,34 +43,18 @@ The source, build and install directories should all be **separate**. Do not pla
 3. In the `source` directory, run the command `npm i`
 
 4. In the `source` directory, run the command `npm run build-interactive` (to build everything without an interactive prompt, use `npm run build`).
-
-5. Install dependencies (TSWoW expects these to be in the `build` directory, so you need most even if you normally compile TrinityCore
-
-    - <span>[Install Boost](https://sourceforge.net/projects/boost/files/boost-binaries/1.72.0/boost_1_72_0-msvc-14.2-64.exe/download)</span>
-        - <span>The typical path to install this to is `C:\local\boost_1_72_0`</span>
-        - <span>Open an elevated command prompt and type this command: `"setx BOOST_ROOT C:/local/boost_1_72_0" /M` (replacing the path with your boost path)</span>
-        - <span>Should not be necessary if you can already compile TrinityCore</span>
-    - <span>[Install CMake](https://github.com/Kitware/CMake/releases/download/v3.18.3/cmake-3.18.3-win64-x64.zip)</span>
-        - <span>Install it to `build/cmake` (The path `build/cmake/cmake-3.18.3-win64-x64` should exist) </span>
-    - <span>[Install OpenSSL v1.1.1](https://slproweb.com/products/Win32OpenSSL.html)</span>
-        - <span>Set installation path to `build/openssl` </span>
-        - <span>Set it to copy OpenSSL binaries to "The OpenSSL binaries (/bin) directory".</span>
-    - <span>[Install MySQL v5.7.32-x64](https://dev.mysql.com/get/Downloads/MySQL-5.7/mysql-5.7.32-winx64.zip)</span>
-        - <span>Extract it to `build/mysql` (The path `build/mysql/mysql-mysql-5.7.32-winx64` should exist)</span>
-    - <span>[Install blpconverter](https://github.com/tswow/BLPConverter/releases/download/1.0/BLPConverter.exe)</span>
-        - <span>Place it at `build/blpconverter.exe`</span>
         
-6. You should now have entered the main TSWoW build program. You can now build any components you want
+5. You should now have entered the main TSWoW build program. You can now build any components you want
 
     - All TypeScript for TSWoW and the transpiler is compiled automatically as long as the build program is running
 
     - We currently have a bug where the prompt doesn't allow you to enter anything. Restarting the build script seems to fix this for now.
 
-7. To get a fully working TSWoW installation, you can run the `build full` command, which will compile TrinityCore and all other components necessary. 
+6. To get a fully working TSWoW installation, you can run the `build full` command, which will compile TrinityCore and all other components necessary. 
 
     - <span>To build only TrinityCore, you can use the command `build trinitycore-relwithdebinfo`</span>
 
-8. You should now be able to start TSWoW from the new installation folder.
+7. You should now be able to start TSWoW from the new installation folder.
 
 ## Known Issues
 

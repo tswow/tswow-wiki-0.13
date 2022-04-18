@@ -16,7 +16,7 @@ Temporary allocation simply means that we have an auto-incrementing id that star
 
 Persistent allocation means that we bind an ID to a specific mod/name combination, as explained in the introduction tutorial. This ensures that, for example, if we create a creature template with the full identifier "my-mod:my-creature", this creature template will **always** receive the same ID if patches are built multiple times. This is necessary for tables that are referenced externally, such as spell IDs that are stored in player spellbooks, items that are stored in inventories, classes that are stored in character stats etc.
 
-Persistent IDs are stored in the file `coredata/datasets/<dataset>/ids.txt`, for most typical cases `coredata/datasets/default/ids.txt`. This file is written in plaintext, as users may sometimes have to edit it manually. For example, if they remove a module that inserted a value into a table that requires continuity they must choose how to resolve this issue so at to not corrupt the characters database if they are developing a live server.
+Persistent IDs are stored in the file `datasets/<dataset>/ids.txt`, for most typical cases `modules/default/datasets/default/ids.txt`. This file is written in plaintext, as users may sometimes have to edit it manually. For example, if they remove a module that inserted a value into a table that requires continuity they must choose how to resolve this issue so at to not corrupt the characters database if they are developing a live server.
 
 ### Strategies for handling ID gaps
 
@@ -26,7 +26,7 @@ Since 0.13, TSWoW will attempt to automatically find and report gap errors. Ther
 This is the simplest method, but also the most destructive. Simply type in `clear ids default` (or any other dataset name in place of 'default') and run your datascripts again. This will force the build script to recalculate all persistent ids, but will completely break the characters database. This is a good solution when a server is just in development because it's very easy to do.
 
 #### Manually rewriting the id file
-Users may also open their id file, typically located at `coredata/datasets/default.ids.txt` and remove the lines causing discontinuity. For example, if a user registered two development classes `modid:a` to id 12 and `modid:b` to id 13 and later removing `modid:a`, they may open the id file and change the class lines as such:
+Users may also open their id file, typically located at `modules/default/datasets/default/ids.txt` and remove the lines causing discontinuity. For example, if a user registered two development classes `modid:a` to id 12 and `modid:b` to id 13 and later removing `modid:a`, they may open the id file and change the class lines as such:
 
 ```
 ChrClasses|modid:a|12|12|

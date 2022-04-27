@@ -140,7 +140,7 @@ const myDictionary : = CreateDictionary<uint64,string>({ // <-- works!
 Maps can currently only be iterated using callback functions:
 
 ```ts
-const myDict : TSDictionary<uint64,string> = MakeDictionary<uint64,string>({
+const myDict : TSDictionary<uint64,string> = CreateDictionary<uint64,string>({
     1: "value1",
     2: "value2"
 });

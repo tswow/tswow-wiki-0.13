@@ -26,13 +26,6 @@ Occasional stuttering and framerate drops when hardware cursor is enabled.
 - **Affected Graphic Cards**: `GTX 1060`, `GTX 2060`
 - **Workaround**:
   - Under video settings, disable `Hardware cursor`
-  
-## Dark models
-
-Sometimes, units and gameobjects are shaded very dark, and on custom servers has caused crashes for some users. There is currently no known workaround.
-
-- **Affected OS**: `Windows 10`
-- **Affected Graphic Cards**: `Radeon RX 560 (driver 30.0.14023.3004)`
 
 ## M1 Macs
 

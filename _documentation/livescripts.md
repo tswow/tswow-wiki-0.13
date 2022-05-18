@@ -42,6 +42,15 @@ If two objects in TSWoW refer to each others and form a cycle, they will not be 
 
 Since livescripts written in TypeScript are transpiled to C++, they have a few caveats, but also a few improvements over normal TypeScript and JavaScript.
 
+### Keywords
+
+These are special variable names that you cannot use.
+
+| **Type**          | **Reason**                        
+|:------------------|:-
+| template          | Refers to [templates](https://www.cplusplus.com/doc/oldtutorial/templates/) in C++
+
+
 ### Callback Functions
 
 Callback functions are used either to register events to the `TSEvents`, or as callbacks to map/array higher order functions (filter, reduce, forEach etc.).

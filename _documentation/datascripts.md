@@ -260,13 +260,13 @@ const oldEff = spell.Effects.get(0);
 eff.Type.SCHOOL_DAMAGE.set();
 
 // Adds a new spell effect and modifies it in a callback
-spell.Effects.addMod(()=>{
-    eff.Type.SCHOOL_DAMAGE.set();
+spell.Effects.addMod((e)=>{
+    e.Type.SCHOOL_DAMAGE.set();
 })
 
 // Modifies an existing spell effect in a callback
-spell.Effects.mod(0, ()=>{
-    eff.Type.SCHOOL_DAMAGE.set()
+spell.Effects.mod(0, (e)=>{
+    e.Type.SCHOOL_DAMAGE.set()
 })
 ```
 

@@ -16,7 +16,9 @@ The purpose of this document is to:
 
 - [Visual Studio 2019+](https://visualstudio.microsoft.com/downloads/)
 
-All other dependencies can be installed during the installation.
+- [All the normal tswow dependencies](https://tswow.github.io/tswow-wiki/introduction/02-installation/#prerequisites)
+
+All further dependencies are automatically installed by tswow.
 
 ### Installation
 

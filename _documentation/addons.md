@@ -97,8 +97,8 @@ export function SharedFunction() {
       <!-- This does not work for functions in "modulename-addon.ts" -->
       <!-- This code itself is Lua, rather than TypeScript, even though it calls a TypeScript function. -->
       <OnLoad>
-        require('addon.some-file').ExampleFunction()
-        require('shared.some-shared-file').SharedFunction()
+        require('TSAddons.modulename.addon.some-file').ExampleFunction()
+        require('TSAddons.modulename.shared.some-shared-file').SharedFunction()
       </OnLoad>
       </Scripts>
    	  <Anchors>
